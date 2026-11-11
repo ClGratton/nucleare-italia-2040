@@ -1,0 +1,78 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{mathptmx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{adjustbox}
+\usepackage{placeins}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[authoryear,round]{natbib}
+\usepackage{microtype}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\usepackage{authblk}
+\urlstyle{same}
+\usepackage{lineno}
+\linenumbers
+\renewcommand{\linenumberfont}{\normalfont\tiny\color{gray}}
+\usepackage{xcolor}
+
+\title{The cost-optimal share of nuclear power in a zero-emission Italian electricity system: a capacity expansion analysis at three-hour resolution with auction prices}
+\author{Claudio Gratton}
+\affil{Independent researcher, Italy}
+\date{Preprint, November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent Italy approved in 2026 a law to reintroduce nuclear power, while the public debate still compares technologies through their levelised cost of electricity. We estimate the least-cost zero-emission Italian power system for a 2040 demand of 400\,TWh with a capacity expansion model in which one fleet serves four weather years and every technology that can produce, store or shift electricity is a decision variable under one cost rule; technologies without commercial plants have a first-plant (PI) and a target (OB) case. Imports follow a rule of net self-sufficiency: in each year Italy imports no more than it exports, and it gets no help from abroad in the three critical weeks of each year, so that the plan would still work if every country planned the same way. The result is one curve: the annualised fixed cost of nuclear (fixN, EUR/kW-yr, combining construction cost, cost of capital and construction time) against optimal nuclear capacity. Cost cases are points on it. With the Dukovany cost (contract price net of fuel plus owner's costs, 8{,}540\,EUR/kW, 5\% cost of capital, seven years, fixN 670), the three-hour central system has <<RUN:ss0_PI_670_h3:N_GW|1>>\,GW of nuclear (<<RUN:ss0_PI_670_h3:sh|1>>\% of demand) in PI and <<RUN:ss0_OB_670_h3:N_GW|1>>\,GW (<<RUN:ss0_OB_670_h3:sh|1>>\%) in OB, and the gap between the system without and with nuclear is <<GAP:ss0_PI_none_h3:ss0_PI_670_h3|2>> and <<GAP:ss0_OB_none_h3:ss0_OB_670_h3|2>>\,EUR/MWh. Allowing net imports of up to 10\% of demand saves only <<EXPR:V('RUN:ss0_PI_670_h6:cost_new')-V('RUN:ss10_PI_670_h6:cost_new')|2>> (PI) and <<EXPR:V('RUN:ss0_OB_670_h6:cost_new')-V('RUN:ss10_OB_670_h6:cost_new')|2>>\,EUR/MWh (OB) with nuclear, against <<EXPR:V('RUN:ss0_PI_none_h6:cost_new')-V('RUN:ss10_PI_none_h6:cost_new')|2>> and <<EXPR:V('RUN:ss0_OB_none_h6:cost_new')-V('RUN:ss10_OB_none_h6:cost_new')|2>> without it. The six-hour step underestimates the value of nuclear, so headline values are three-hour results; a Richardson estimate puts the PI gap near <<RICHS:PI:670:G1|1>>\,EUR/MWh towards a one-hour step, while for OB the three-hour gap is a lower bound. At six hours nuclear falls below 10\,GW above a fixN of about <<THR6:PI:s:5:10|-1>> (PI) and <<THR6:OB:s:5:10|-1>> (OB), about <<EXPR:V('CPX:'+str(V('THR6:PI:s:5:10'))+':5:7')|-2>> and <<EXPR:V('CPX:'+str(V('THR6:OB:s:5:10'))+':5:7')|-2>>\,EUR/kW with seven years of construction. Two conditions halve the result or more, both through the fixed cost: at a 7\% cost of capital the central case gives <<RUN:ss0_PI_7pc_923_h3:N_GW|0>>\,GW in PI and <<RUN:ss0_OB_7pc_923_h3:N_GW|0>> in OB at three hours. Fifteen-year construction at the central cost gives <<N6:PI:s:5:792.5|0>> and <<N6:OB:s:5:792.5|0>>\,GW at six hours; worst weather years raise the optimum to about <<RUN:ss0_wx4_PI_670_worst:N_GW|0>>\,GW. Under the earlier rule, imports with a capacity credit and no exports, the central case had <<RUN:c3_PI_670_h3:N_GW|0>>\,GW (PI). About <<EXPR:V('RUN:ss0_PI_670_h3:N_GW')/1.055|0>> APR1000 units are needed; the construction pace is a constraint to verify.
+\end{abstract}
+
+\noindent\textbf{Keywords:} nuclear power; capacity expansion; Italy; system cost; cost of capital; import dependence; variable renewables
+
+\medskip
+\noindent\textbf{Highlights}
+\begin{itemize}\setlength\itemsep{0pt}
+\item One curve links the annualised fixed cost of nuclear to optimal capacity; cost cases are points on it.
+\item Imports follow net self-sufficiency: no net imports over a year and no foreign help in critical weeks.
+\item Central case (8{,}540\,EUR/kW including owner's costs): <<RUN:ss0_PI_670_h3:N_GW|1>>\,GW (<<RUN:ss0_PI_670_h3:sh|1>>\% of demand) in PI and <<RUN:ss0_OB_670_h3:N_GW|1>>\,GW (<<RUN:ss0_OB_670_h3:sh|1>>\%) in OB at three hours.
+\item With nuclear, a 10\% net import allowance saves about 1--1.5\% of system cost: a poor target.
+\item A 7\% cost of capital leaves <<RUN:ss0_PI_7pc_923_h3:N_GW|0>> and <<RUN:ss0_OB_7pc_923_h3:N_GW|0>>\,GW; the six-hour step underestimates nuclear.
+\end{itemize}
+
+\input{intro}
+\input{methods}
+\input{results}
+\input{discussion}
+
+\section{Conclusions}\label{sec:conclusions}
+How much nuclear a zero-emission Italian power system should contain is a function of one quantity, the annualised fixed cost of nuclear fixN, which combines construction cost, cost of capital and construction time (Fig.~\ref{fig:share}), once the system is required not to lean on other countries. For the central case, Dukovany at 8{,}540\,EUR/kW (contract price net of fuel plus owner's costs), seven years and 5\% (fixN 670), the three-hour least-cost system under net self-sufficiency has <<RUN:ss0_PI_670_h3:N_GW|1>>\,GW of nuclear (<<RUN:ss0_PI_670_h3:sh|1>>\% of demand) in PI and <<RUN:ss0_OB_670_h3:N_GW|1>>\,GW (<<RUN:ss0_OB_670_h3:sh|1>>\%) in OB, and the value of nuclear, the cost of the system without it minus the cost with it, is <<GAP:ss0_PI_none_h3:ss0_PI_670_h3|2>> and <<GAP:ss0_OB_none_h3:ss0_OB_670_h3|2>>\,EUR/MWh, lower bounds because the step is still coarse. The import rule matters and is not a technical detail: a plan that counts on net imports or on foreign capacity in the critical weeks looks cheaper because it uses plants that other countries build and pay for. With nuclear, a 10\% net import allowance saves <<EXPR:V('RUN:ss0_PI_670_h6:cost_new')-V('RUN:ss10_PI_670_h6:cost_new')|2>>\,EUR/MWh (PI, six hours) and is a poor target. At six hours nuclear falls below 10\,GW above a fixN of about <<THR6:PI:s:5:10|-1>> (PI) and <<THR6:OB:s:5:10|-1>> (OB), about <<EXPR:V('CPX:'+str(V('THR6:PI:s:5:10'))+':5:7')|-2>> and <<EXPR:V('CPX:'+str(V('THR6:OB:s:5:10'))+':5:7')|-2>>\,EUR/kW with seven years and <<EXPR:V('CPX:'+str(V('THR6:PI:s:5:10'))+':5:15')|-2>> and <<EXPR:V('CPX:'+str(V('THR6:OB:s:5:10'))+':5:15')|-2>> with fifteen. Fifteen years of construction at the central cost leave <<N6:PI:s:5:792.5|0>> and <<N6:OB:s:5:792.5|0>>\,GW, and <<N6:PI:s:5:878|0>> and <<N6:OB:s:5:878|0>>\,GW with the risk cost as well; the worst weather years raise the optimum to about <<RUN:ss0_wx4_PI_670_worst:N_GW|0>>\,GW with a wider gap.
+
+Our recommendation is a nuclear fleet of about <<RUN:ss0_PI_670_h3:N_GW|0>>\,GW, about <<RUN:ss0_PI_670_h3:sh|0>>\% of 2040 demand (PI, three hours; <<RUN:ss0_OB_670_h3:N_GW|0>>\,GW in OB), in a system that is self-sufficient on an annual net basis and in the critical weeks, built at about 8{,}500\,EUR/kW including owner's costs, with about seven years of construction, one series design and engineering completed before construction starts, and financed at a real cost near 5\% (public or guaranteed, as at Dukovany). The condition that changes the recommendation is the fixed cost of nuclear, that is financing and construction time: at a 7\% cost of capital the economic fleet falls to about <<RUN:ss0_PI_7pc_923_h3:N_GW|0>>\,GW (PI) and <<RUN:ss0_OB_7pc_923_h3:N_GW|0>> (OB) at three hours, and fifteen-year construction at the central cost has almost the same effect. Owner's costs remain the least documented input: about <<N6:PI:s:5:604|0>>\,GW without them and about <<N6:PI:s:5:699|0>>\,GW with the upper case (9{,}030\,EUR/kW), at six hours. About <<EXPR:V('RUN:ss0_PI_670_h3:N_GW')/1.055|0>> APR1000 units are needed (about <<EXPR:V('RUN:ss0_PI_670_h3:N_GW')/1.4|0>> APR1400), <<EXPR:V('RUN:ss0_PI_670_h3:N_GW')/1.055/15|1>> a year for 15 years or about <<EXPR:V('RUN:ss0_PI_670_h3:N_GW')/15|1>>\,GW a year against 3.9 in France in 1977--1990, at <<EXPR:V('RUN:ss0_PI_670_h3:N_GW')/1.055/6|0>> to <<EXPR:V('RUN:ss0_PI_670_h3:N_GW')/1.055/4|0>> sites; whether the country can sustain this pace is not determined by the model and has to be verified. Technologies without commercial plants (hydrogen with geological storage, direct air capture, small modular reactors) reduce the value of nuclear only at cost assumptions that no contract supports today.
+
+The model is a regime system for 2040 demand with all fleets already built: it does not describe the situation in 2040. It has one node, no ramp constraints, four weather years and no simulation of neighbouring systems, and its adequacy reserve and nuclear availability are declared assumptions. Where the simplifications favour one option we quantify them in Section~\ref{sec:results}.
+
+\section*{Data and code availability}\label{sec:data}
+The model code, input data and results are in the accompanying repository. The v7 model is in \texttt{v7/} (\texttt{code/\allowbreak hl5.py}, \texttt{hl7.py}, \texttt{spec7.py}, \texttt{techs\_v7.json}, \texttt{driver7.py}, \texttt{sweep\_ss.py} for the net self-sufficiency runs; raw runs in \texttt{results.jsonl}), with the reproduction commands in \texttt{v7/README.md}. Results are in \texttt{results/\allowbreak v7.json} and \texttt{results/\allowbreak v7\_sweep.json}; \texttt{v7data.py}, \texttt{tables\_v7.py}, \texttt{make\_figures.py}, \texttt{figband.py} and \texttt{make\_tables.py} generate all figures and tables from the json files, and \texttt{prepare\_data.py} builds the hourly input from Open Power System Data \citep{OPSD2020} and PECD \citep{PECD2021}. The v6 scripts are in \texttt{v6/}.
+
+\section*{Declaration of generative AI and AI-assisted technologies in the writing process}
+During the preparation of this work the author used Claude (Anthropic) to search and summarise sources, write the model code, run the calculations and draft the text. The author reviewed and edited the content and takes full responsibility for the content of the publication.
+
+\section*{Declaration of competing interest}
+The author declares no known competing financial interests or personal relationships that could have influenced the work reported in this paper.
+
+\section*{Funding}
+This research did not receive any specific grant from funding agencies in the public, commercial or not-for-profit sectors.
+
+\FloatBarrier
+\input{appendix}
+\clearpage
+
+\bibliographystyle{plainnat}
+\bibliography{refs}
+\end{document}

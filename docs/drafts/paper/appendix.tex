@@ -1,0 +1,67 @@
+
+\appendix
+\section*{Supplementary material}
+\renewcommand{\thesubsection}{S\arabic{subsection}}
+\renewcommand{\thetable}{S\arabic{table}}
+\setcounter{table}{0}
+
+\subsection{Monthly analysis}\label{app:monthly}
+The monthly analysis of Section~\ref{sec:monthly} uses 2024 monthly output of solar (GSE) and wind (Terna) \citep{GSE2025,Terna2025m}, flat demand of 312.3\,TWh and the real lifetime costs of Table~\ref{tab:inputs}, derived from auction prices with Eq.~\eqref{eq:conv}. The overbuild factor is the ratio of mean monthly output to the output of the worst month; the seasonal deficit is the sum of the shortfalls of monthly output below demand. With solar only the overbuild is 1.95 and the deficit 16.8\% of annual energy (about 52\,TWh); with a 50/50 energy mix of solar and wind they fall to 1.35 and 5\%. Daily storage assumes that 60\% of the energy of the solar share passes through batteries, one cycle per day and 85\% round-trip efficiency, at the real MACSE cost of 11{,}466\,EUR per MWh of capacity per year \citep{MACSE2025}. Table~\ref{tab:monthly} reports the results.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Monthly analysis: cost per MWh of energy that meets demand in every month (EUR/MWh).}\label{tab:monthly}
+\begin{tabular}{p{9.2cm}r}
+\toprule
+Configuration & EUR/MWh \\
+\midrule
+Solar only, overbuilt for January, no storage & 82 (96 NZIA) \\
+Solar only, overbuilt, daily batteries & 110 (125 NZIA) \\
+Solar at mean capacity, seasonal lithium-ion batteries (one cycle per year) & about 2{,}000 \\
+Solar, seasonal hydrogen in salt caverns$^a$ & about 390 \\
+Solar and wind 50/50, overbuilt, daily batteries & 76--92 (84) \\
+\quad with grid cost of 14\,EUR/MWh \citep{Franzmann2026} & 90--106 (98) \\
+Best case$^c$, seasonal iron-air storage & about 115 \\
+Best case$^c$, overbuilt & about 55 (68 with grid) \\
+\bottomrule
+\multicolumn{2}{p{11.5cm}}{\footnotesize $^a$ Storage at 37.6\,EUR/kg for purely seasonal use \citep{DCU2026}, 33.3\,kWh/kg, electrolysis 67\%, reconversion 60\%; electrolyser and turbine capital costs excluded, so the value is a lower bound. $^c$ Solar and wind 30\% below the central real costs (29.5 and 44.2\,EUR/MWh), batteries at half the real MACSE cost, iron-air at the 20\,USD/kWh target \citep{Form2026} with 100\% efficiency, no cost for calm periods, heat waves or land.}\\
+\end{tabular}
+\end{table}
+
+Covering 2024 consumption with overbuilt solar alone would need about 570\,GW, or about 0.97 million hectares at 1{,}700\,ha/GW \citep{ISPRA2026}, 3.2\% of the 30.1 million hectares of the national territory (our calculation); rooftops could host 140--193\,GW \citep{ISPRA2026}, 149--206\,TWh at 1{,}066 h. Existing pumped hydro (7.3\,GW, 53\,GWh in the model) covers about 7 hours at full power \citep{Pumped2025}, roughly one thousandth of the seasonal requirement.
+
+\subsection{Nuclear cost per MWh}\label{app:nuclear}
+Table~\ref{tab:lcoe} gives the stand-alone cost per MWh of nuclear at a 90\% load factor, 80-year life, uniform spending during construction and 32\,EUR/MWh for operation, fuel and the back-end fee. In the system model the load factor is endogenous (7{,}473 equivalent hours, 85\%, in the central PI case at three hours), so stand-alone values are lower than the cost per MWh actually produced in the least-cost systems. The formula is $\mathrm{lcoe}=K\phi(r,T_c)\mathrm{CRF}(r,80)/(0.9\times8760)\times1000+32$.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Stand-alone nuclear cost (EUR/MWh) of the five cases at 90\% load factor, 5\% and 7\%.}\label{tab:lcoe}
+\input{tab_lcoe}
+\end{table}
+
+Reference construction costs: Shin Kori 3 and 4 (Korea) about 2{,}400\,USD/kW ex post, new Korean units about 3{,}300\,USD/kW \citep{HSF2026,KHNP2025}; Barakah (four APR1400 units) a 20.4 billion USD construction contract (3{,}643\,USD/kW for 5.6\,GW; 4{,}086\,EUR/kW in 2025 euros with the CPI-U factor 1.255 for uniform spending over 2012--2024) and 24.4 billion USD of total financing, which is not used \citep{WNAuae}; the model uses 4{,}670 with owner's costs; IEA assumption for the EU in 2030, 5{,}100\,USD/kW \citep{IEA2024WEO}; Dukovany CZK\,407 billion for two APR1000 units, gross 7{,}813--7{,}850\,EUR/kW (at 24.688 CZK per EUR \citep{EurostatFX}) with fuel for about ten years according to \citet{WNNKHNPplans} and CZK\,15 billion more for the first fuel according to \citet{CT24Dukovany} and \citet{ForbesDukovany}, against the model's central value of 8{,}540, which removes the 382\,EUR/kW of fuel (4.85\,EUR/MWh $\times$ 10 years $\times$ 0.9 $\times$ 8{,}760\,h / 1{,}000; fuel cost of the World Nuclear Association \citep{WNAecon}) and adds owner's costs of 12.57\% of overnight cost \citep{INLowner} \citep{Dukovany2024,WNNDukovanySigned2025,EnerdataDukovany2025}; Flamanville 13.2 billion EUR in 2015 euros excluding interim interest \citep{EDFFlamanville2022} for 1.65\,GW gross \citep{Folz2019}, that is 8{,}000\,EUR/kW in 2015 euros and about 10{,}300 in 2025 euros with the euro-area HICP (factor 1.2875, 128.75 over 100.00; Eurostat dataset prc\_hicp\_aind, updated 6 February 2026, marked discontinued and replaced by prc\_hicp\_ainr, accessed 9 November 2026) \citep{EurostatHICP}; Hinkley Point C about \pounds35 billion in 2015 prices for 3.26\,GW \citep{Hinkley2026}; Vogtle 3 and 4 about 31 billion USD without financing charges \citep{EnergytechVogtle,IEEFAVogtle}, 15{,}656\,EUR/kW in 2025 euros (the model uses 15{,}540), within the 12{,}300--17{,}570\,USD/kW of \citet{Lazard2025}. All five cases are overnight costs in 2025 euros per kW: dollar values of the sources are brought to 2025 with the US consumer price index (CPI-U) and converted at 1 EUR = 1.1188 USD, the Bank of Italy reference rate of 26 October 2026 \citep{BancaItaliaFX}. The risk case, 9{,}680\,EUR/kW with 15 years, is the median of four recent Western builds in 2025 euros (Mochovce 3--4 about 8{,}760, Olkiluoto 3 about 9{,}060, Flamanville 3 about 10{,}300, Vogtle 3--4 15{,}540), calculation and sources in Section~\ref{sec:methods}; its results are interpolated on the curve. The fuel cost of 4.85\,EUR/MWh follows from 4.62\,USD/MWh in September 2021 prices \citep{WNAecon}, the US CPI-U factor 1.174 (274.310 in September 2021, 321.943 in the 2025 average over eleven months \citep{BLSCPI}; annual means before 2016 from the monthly series \citep{FREDCPI}) and 1.1188; the runs used 4.91. Without netting the fuel, Dukovany at 8{,}980\,EUR/kW (fixN 696) gives <<N6:PI:s:5:696|1>>\,GW (PI) and <<N6:OB:s:5:696|1>> (OB) at six hours; without owner's costs, 7{,}470\,EUR/kW (fixN 604) gives <<N6:PI:s:5:604|1>> and <<N6:OB:s:5:604|1>>\,GW at three hours. Interest during construction in our formulation adds 13\% for five years at 5\%, against 17\% in Banca d'Italia's calculation \citep{Bankitalia2025}.
+
+\subsection{Monthly and hourly denominators}\label{app:denom}
+The monthly calculation divides cost by total demand. The hourly model divides by demand not covered by hydropower (356.6 of 400\,TWh); on total demand costs are 0.8915 times the hourly figure (356.6 over 400), for example <<EXPR:V('RUN:ss0_PI_670_h3:cost_new')*0.8915|1>> instead of <<RUN:ss0_PI_670_h3:cost_new|2>>\,EUR/MWh for the central PI case at three hours. Hence the monthly figures of Section~\ref{sec:monthly} and the hourly ones are not directly comparable.
+
+\subsection{Input assumptions}\label{app:decl}
+The capital share of the real solar cost is 76.4\% of 42.2\,EUR/MWh (the rest is operation, 9.94\,EUR/MWh), and the cost multipliers of the blocks apply to the capital part only. Renewables and storage keep the 5\% rate except in the 7\% variants. The 100-hour storage cost of 1{,}486\,EUR/MWh-yr uses an implicit exchange rate of 1.08\,USD per euro. Assumptions that are our own, not sourced: the 10\,GW ceiling of concentrated solar power, the 20-year life and 20\% O\&M of 100-hour storage, the 3-year build time of gas with CCS, the 1.287 scaling of the grid at 7\%, the DAC costs, and the 17\% mark-up of import prices in the critical weeks. Table~\ref{tab:inputs} lists all inputs.
+
+\subsection{Curve points}
+\begin{table}[htbp]
+\centering
+\caption{The curve under net self-sufficiency at 5\%, six-hour step, with the equivalent construction cost at seven years: system cost (EUR/MWh), nuclear capacity (GW) and share of total demand (\%), PI and OB.}\label{tab:curve5}
+\input{tab_curve5}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{The curve under net self-sufficiency at 7\%, with imports with a capacity credit at 5\% and 7\%, and without imports at 5\% and 7\%, six-hour step.}\label{tab:other}
+\input{tab_other}
+\end{table}
+
+\begin{table}[htbp]
+\centering
+\caption{From the previous model to the present one, OB case, six hours, cumulative; cost in EUR/MWh.}\label{tab:bridgeob}
+\input{tab_bridge_ob}
+\end{table}

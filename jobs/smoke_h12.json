@@ -1,0 +1,125 @@
+[
+ {
+  "tag": "v8_PI_r5_opt_h12",
+  "spec": {
+   "techs": "techs_v8.json",
+   "mode": "ZD",
+   "default_novel": "first",
+   "step": 12,
+   "years": [
+    2016,
+    2017,
+    2018,
+    2019
+   ],
+   "off": [
+    "WAVE",
+    "LDES"
+   ],
+   "export": {
+    "X": 0.0,
+    "X_exp": 0.0,
+    "cap_frac": 0.5284,
+    "price": 61.07
+   },
+   "nuc": {
+    "capex": 10200,
+    "y": 9,
+    "av_scale": 0.9782608695652174,
+    "r": 0.05
+   }
+  }
+ },
+ {
+  "tag": "v8_OB_r5_opt_h12",
+  "spec": {
+   "techs": "techs_v8.json",
+   "mode": "ZD",
+   "default_novel": "target",
+   "step": 12,
+   "years": [
+    2016,
+    2017,
+    2018,
+    2019
+   ],
+   "off": [
+    "WAVE"
+   ],
+   "export": {
+    "X": 0.0,
+    "X_exp": 0.0,
+    "cap_frac": 0.5284,
+    "price": 61.07
+   },
+   "nuc": {
+    "capex": 10200,
+    "y": 9,
+    "av_scale": 0.9782608695652174,
+    "r": 0.05
+   }
+  }
+ },
+ {
+  "tag": "v8_PI_r5_N00_h12",
+  "spec": {
+   "techs": "techs_v8.json",
+   "mode": "ZD",
+   "default_novel": "first",
+   "step": 12,
+   "years": [
+    2016,
+    2017,
+    2018,
+    2019
+   ],
+   "off": [
+    "WAVE",
+    "LDES"
+   ],
+   "export": {
+    "X": 0.0,
+    "X_exp": 0.0,
+    "cap_frac": 0.5284,
+    "price": 61.07
+   },
+   "allow": [
+    "s",
+    "w",
+    "b"
+   ]
+  }
+ },
+ {
+  "tag": "v8_PI_r5_N12_h12",
+  "spec": {
+   "techs": "techs_v8.json",
+   "mode": "ZD",
+   "default_novel": "first",
+   "step": 12,
+   "years": [
+    2016,
+    2017,
+    2018,
+    2019
+   ],
+   "off": [
+    "WAVE",
+    "LDES"
+   ],
+   "export": {
+    "X": 0.0,
+    "X_exp": 0.0,
+    "cap_frac": 0.5284,
+    "price": 61.07
+   },
+   "nuc": {
+    "capex": 10200,
+    "y": 9,
+    "av_scale": 0.9782608695652174,
+    "r": 0.05
+   },
+   "N_fix": 12.0
+  }
+ }
+]
