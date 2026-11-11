@@ -1,0 +1,792 @@
+{
+ "_doc": "Technology data of v8 (2026-11-11). One cost rule for every technology: annual cost = overnight capex (development and grid connection included, contingency and subsidies excluded) x interest during construction (build_y, real rate) x CRF(real rate, life) + fixed O&M. Real 2025 euros, costs of plants contracted or built in 2024-2026, no learning to 2040 except in the 'target' cases of technologies without commercial plants. Sources: docs/audit/v8_symmetric_costs.md (with URLs) and docs/audit/audit_v8_findings.md. Auction prices (FER-X, MACSE) are NOT used as costs.",
+ "global": {
+  "r": 0.05,
+  "grid_thr_total_GW": 137.0,
+  "scale_grid_with_rate": true,
+  "peak_ref_step": 3,
+  "grid_pv": 13.0,
+  "grid_on": 8.0,
+  "src": "grid_thr_total_GW: 137 GW is the TOTAL wind+PV stock that the Terna plan enables (43 existing + 94), so the existing fleet kept in the model is subtracted (v7 bug: only new blocks were counted). peak_ref_step: the reserve requirement uses the peak of the 3-hour data at every time step (v7 used the peak of the step-averaged load: 64.7/67.0/76.9 GW at 12/6/3 h). Grid charge 13 (PV) and 8 (wind) EUR/MWh at 1,066 and 1,709 h = 245 EUR/kW over 40 years (Terna: 23 bn EUR for 94 GW), transmission only; it now follows the discount rate."
+ },
+ "disp": [
+  {
+   "name": "NUC",
+   "grp": "nuclear",
+   "on": true,
+   "rate_sensitive": true,
+   "capex_kW": 10200,
+   "build_y": 9,
+   "life": 60,
+   "om_fix_MWh": 27.75,
+   "om_cf": 0.9,
+   "grid_MWh": 2.0,
+   "var": 12.25,
+   "minload": 0.5,
+   "credit": "av",
+   "avail": "AV",
+   "cases": {
+    "v7": {
+     "capex_kW": 8540,
+     "build_y": 7,
+     "life": 80,
+     "om_fix_MWh": 17.0,
+     "var": 15.0
+    }
+   },
+   "src": "Central case = Dukovany 5-6 as in the Czech notification to the European Commission (SA.117794, OJ C/2026/2825, 27 May 2026). Capex per NET kW: EPC 407 bn CZK + state preparation and owner's costs 85 bn CZK (CT24, 13 Oct 2025) = 492 bn CZK / 24.688 CZK/EUR (ECB 2025 average) = 19.93 bn EUR for 2 x 976 MWe (recital 40) = 10,210 EUR/kW, rounded 10,200; fuel contract (separate, 15-20 bn CZK) and contingency excluded. Official overnight bracket EUR [20-25] bn including fuel and contingency = 9,890-12,450 EUR/kW net without fuel. Construction 9 years and operating life 60 years as in the Czech financial model (recital 89). OPEX: midpoint 40 EUR/MWh of the official range [35-45] (recital 95; fixed O&M, lifecycle investment, fuel, waste account, decommissioning): variable 12.25 = fuel 7.5 + marginal 4.75 (midpoints of recital 96), fixed 27.75 EUR/MWh at 90% load factor. Availability: mean 0.90 (15.4 TWh on 1,952 MW, recital 41) through nuc.av_scale. Cases: 'v7' restores the superseded v7 inputs."
+  },
+  {
+   "name": "SMR",
+   "grp": "smr",
+   "on": true,
+   "novel": true,
+   "rate_sensitive": true,
+   "capex_kW": null,
+   "build_y": 5,
+   "life": 60,
+   "om_fix_MWh": 27.75,
+   "om_cf": 0.9,
+   "grid_MWh": 2.0,
+   "var": 12.25,
+   "minload": 0.5,
+   "credit": "av",
+   "avail": "AV",
+   "cases": {
+    "first": {
+     "capex_kW": 17200
+    },
+    "target": {
+     "capex_kW": 11700
+    },
+    "rr": {
+     "capex_kW": 6250
+    },
+    "it": {
+     "capex_kW": 3500
+    }
+   },
+   "src": "BWRX-300 Darlington: unit 1 7.7 bn CAD = 17200 EUR/kW, 4 units 20.9 bn CAD = 11700 (POWER 05/2025). Build 5 y per unit (construction from 2025, unit 1 in service 2029-2030). O&M, grid as large nuclear (proxy, no SMR value found). rr: Rolls-Royce 5000-7500 midpoint, it: Il Sole 24 Ore 3500 (not contracts)"
+  },
+  {
+   "name": "HYDRO",
+   "grp": "hydro",
+   "on": true,
+   "builtin": "hydro",
+   "cap_GW": 15.0,
+   "floor": 0.37,
+   "credit": 1.0,
+   "excl": true
+  },
+  {
+   "name": "HYDRO_NEW",
+   "grp": "hydro_new",
+   "on": true,
+   "flat": true,
+   "blocks": [
+    {
+     "cap_hi": 0.24,
+     "capex_kW": 6500,
+     "life": 25,
+     "om_fix_kW": 100
+    }
+   ],
+   "hours": 5000,
+   "monthly_shape": "hydro",
+   "credit": "av",
+   "cases": {
+    "low": {
+     "capex_kW": 5000
+    },
+    "high": {
+     "capex_kW": 8500,
+     "om_fix_kW": 140
+    }
+   },
+   "src": "ARERA 239/2025 (v7_storage_flex.md sez.2); 0.24 GW PNIEC; 5000 h; shape of existing hydro",
+   "build_y": 3
+  },
+  {
+   "name": "IMPORT",
+   "grp": "import",
+   "on": true,
+   "var": 115.94,
+   "credit": 0.0,
+   "avail": 1.0,
+   "blocks": [
+    {
+     "cap_hi": 11.535,
+     "capex_kW": 0
+    },
+    {
+     "name": "ELMED",
+     "cap_hi": 0.6,
+     "capex_kW": 1417
+    },
+    {
+     "name": "SACOI3",
+     "cap_hi": 0.4,
+     "capex_kW": 1435
+    },
+    {
+     "name": "GRITA2",
+     "cap_hi": 1.0,
+     "capex_kW": 1900
+    },
+    {
+     "name": "SOMPLAGO",
+     "cap_hi": 0.25,
+     "capex_kW": 1120
+    },
+    {
+     "name": "LECAVE",
+     "cap_hi": 0.5,
+     "capex_kW": 1200
+    },
+    {
+     "name": "ALTRO",
+     "cap_hi": 4.58,
+     "capex_kW": 1435
+    }
+   ],
+   "life": 40,
+   "cases": {
+    "low": {
+     "price": 57.97
+    },
+    "high": {
+     "price": 173.91
+    },
+    "capex_low": {
+     "capex_scale": 0.697
+    },
+    "capex_high": {
+     "capex_scale": 1.324
+    },
+    "credit0": {
+     "credit": 0.0,
+     "scarcity_avail": 0.0
+    },
+    "credit100": {
+     "credit": 1.0,
+     "scarcity_avail": 1.0
+    },
+    "lim2024": {
+     "energy_cap_TWh": 55.9
+    },
+    "pm1": {
+     "scarcity_price_mult": 1.0
+    },
+    "pm2": {
+     "scarcity_price_mult": 2.0
+    },
+    "pm3": {
+     "scarcity_price_mult": 3.0
+    },
+    "v7credit": {
+     "credit": 0.38,
+     "scarcity_avail": 0.38,
+     "scarcity_price_mult": 1.17,
+     "scarcity_rank": "vre"
+    },
+    "vre_weeks": {
+     "scarcity_rank": "vre"
+    }
+   },
+   "src": "v8 central: net self-sufficiency (set in the job spec: export.X = 0), no imports and no capacity credit in the 3 weeks of each year with the highest residual load (load minus the output of 100 GW of PV and 40 GW of onshore wind; v7 ranked weeks by low PV+wind and missed the January peaks). Import price 115.94 EUR/MWh (PUN 2025, GME). Exports: capacity 6,095/11,535 of the import capacity (Terna 2025 export and import limits), revenue 61.07 EUR/MWh (France 2025 day-ahead average, GME/RTE), variants 0 and 115.94. New lines: capex as v7 with interest during construction (4 y, assumption) and O&M 1.5%/yr (proxy, assumption). | v7 note: existing 11.535 GW (ARERA 366/2025); blocks Terna/ARERA (v7_storage_flex.md sez.8.2); total new 7.33 GW = Terna 2040 need (Nord 4.38 + Est 1.85 + Nord Africa 1.10). Price: PUN 2025 average 115.94 EUR/MWh (GME), varied x0.5 and x1.5. Credit 38% = 4.4/11.5 (capacity market 2025). No export modelled. Availability in the 5% worst weeks of each year (lowest mean of normalised PV and onshore profiles, 3",
+   "scarcity_avail": 0.0,
+   "scarcity_price_mult": 1.0,
+   "build_y": 4,
+   "om_frac": 0.015,
+   "scarcity_rank": "residual"
+  },
+  {
+   "name": "INTERR",
+   "grp": "interr",
+   "on": true,
+   "blocks": [
+    {
+     "cap_hi": 2.4,
+     "capex_yr_kW": 46.0
+    },
+    {
+     "cap_hi": 1.35,
+     "capex_yr_kW": 105.0
+    }
+   ],
+   "hours_yr": 120,
+   "var": 0.0,
+   "credit": 1.0,
+   "avail": 1.0,
+   "cases": {
+    "high": {
+     "scale": 2.93
+    }
+   },
+   "src": "ARERA 12/2026 (2.4 GW at 46000 EUR/MW-yr, max 120 h/yr); to 3.75 GW at 105000 (ARERA 564/2023). Activation price not found: 0."
+  },
+  {
+   "name": "GEO_EX",
+   "grp": "geo",
+   "on": true,
+   "flat": true,
+   "blocks": [
+    {
+     "cap_hi": 0.817,
+     "cap_lo": 0.817,
+     "om_fix_kW": 98
+    }
+   ],
+   "TWh": 4.49,
+   "credit": "av",
+   "src": "Terna 2024; 4.49 TWh net in 2040 (-1%/yr), IRENA O&M 98 EUR/kW-yr"
+  },
+  {
+   "name": "GEO_G1",
+   "grp": "geo",
+   "on": true,
+   "flat": true,
+   "blocks": [
+    {
+     "cap_hi": 0.183,
+     "capex_kW": 3589,
+     "life": 25,
+     "om_fix_kW": 98
+    }
+   ],
+   "hours": 6920,
+   "credit": "av",
+   "cases": {
+    "low": {
+     "capex_kW": 3000
+    },
+    "high": {
+     "capex_kW": 5293
+    }
+   },
+   "src": "IRENA 2024, PNIEC +183 MW",
+   "build_y": 3
+  },
+  {
+   "name": "GEO_G2",
+   "grp": "geo",
+   "on": true,
+   "flat": true,
+   "blocks": [
+    {
+     "cap_hi": 0.8,
+     "capex_kW": 5675,
+     "life": 25,
+     "om_fix_kW": 98
+    }
+   ],
+   "hours": 7709,
+   "credit": "av",
+   "cases": {
+    "low": {
+     "capex_kW": 4572
+    },
+    "high": {
+     "capex_kW": 8476,
+     "om_fix_kW": 207
+    }
+   },
+   "src": "NREL ATB 2024, pipeline Rete Geotermica 0.8 GW",
+   "build_y": 3
+  },
+  {
+   "name": "GEO_EGS",
+   "grp": "geo",
+   "on": true,
+   "novel": true,
+   "flat": true,
+   "blocks": [
+    {
+     "cap_hi": 0.5,
+     "capex_kW": null,
+     "life": 25,
+     "om_fix_kW": 98
+    }
+   ],
+   "hours": 7446,
+   "credit": "av",
+   "cases": {
+    "first": {
+     "capex_kW": 6257
+    },
+    "target": {
+     "capex_kW": 2681
+    }
+   },
+   "src": "Fervo 7000 USD/kW now, target 3000 USD/kW; 0.5 GW for 2040 is a declared estimate",
+   "build_y": 3
+  },
+  {
+   "name": "BIO_GAS",
+   "grp": "bio",
+   "on": true,
+   "eff": 0.38,
+   "fuel_th": 88.5,
+   "TWh_el": 4.0,
+   "monthly_flat_tol": 0.07,
+   "cap_exist_GW": 1.175,
+   "capex_kW": 2898,
+   "life": 20,
+   "om_frac": 0.04,
+   "credit": 0.95,
+   "avail": 1.0,
+   "cases": {
+    "low": {
+     "TWh_el": 2.5,
+     "capex_kW": 2498
+    },
+    "high": {
+     "TWh_el": 7.5,
+     "capex_kW": 4347
+    }
+   },
+   "src": "v7_geo_bio_csp_marine.md sez.2: biogas fuel = opportunity cost of biomethane 233 EUR/MWh_el x 0.38; limits 2.5/4.0/7.5 TWh_el",
+   "build_y": 2
+  },
+  {
+   "name": "BIO_SOL",
+   "grp": "bio",
+   "on": true,
+   "eff": 0.25,
+   "fuel_th": 33.0,
+   "TWh_el": 2.5,
+   "monthly_flat_tol": 0.07,
+   "cap_exist_GW": 0.711,
+   "capex_kW": 2898,
+   "life": 20,
+   "om_frac": 0.04,
+   "credit": 0.95,
+   "avail": 1.0,
+   "cases": {
+    "low": {
+     "TWh_el": 1.0,
+     "capex_kW": 2498
+    },
+    "high": {
+     "TWh_el": 4.1,
+     "capex_kW": 4347
+    }
+   },
+   "src": "chips 33 EUR/MWh_th (AIEL 2025), efficiency 25%",
+   "build_y": 2
+  },
+  {
+   "name": "BIO_RSU",
+   "grp": "bio",
+   "on": true,
+   "eff": 0.22,
+   "fuel_th": 0.0,
+   "TWh_el": 2.2,
+   "must": true,
+   "monthly_flat_tol": 0.07,
+   "cap_exist_GW": 0.625,
+   "capex_kW": 2898,
+   "life": 20,
+   "om_frac": 0.04,
+   "credit": 0.95,
+   "avail": 1.0,
+   "no_new": true,
+   "cases": {
+    "low": {
+     "TWh_el": 1.8
+    },
+    "high": {
+     "TWh_el": 2.4
+    }
+   },
+   "src": "waste: disposal obligation, zero fuel cost, efficiency 22%. Bioliquids (0.5 TWh, 0.13% of demand) excluded.",
+   "build_y": 2
+  },
+  {
+   "name": "CSP",
+   "grp": "csp",
+   "on": true,
+   "blocks": [
+    {
+     "cap_hi": 0.01,
+     "cap_lo": 0.0,
+     "om_fix_kW": 67,
+     "exist": true
+    },
+    {
+     "cap_hi": 10.0,
+     "capex_kW": 3287,
+     "life": 25,
+     "om_fix_kW": 67
+    }
+   ],
+   "daily_MWh_per_MW": 2900.0,
+   "credit": "profile",
+   "avail": 1.0,
+   "cases": {
+    "first": {
+     "capex_kW": 9491.0
+    },
+    "target": {
+     "capex_kW": 3287.0
+    },
+    "low": {
+     "om_fix_kW": 49
+    },
+    "c12": {
+     "cap_new_GW": 0.95
+    },
+    "c3": {
+     "cap_new_GW": 3.0
+    },
+    "y2800": {
+     "daily_MWh_per_MW": 2800.0
+    },
+    "y3300": {
+     "daily_MWh_per_MW": 3300.0
+    },
+    "ch8": {
+     "credit_hours": 8.0
+    }
+   },
+   "src": "Yield: Andasol 1-3 (50 MW, 7.5 h storage, DNI 2136) guaranteed net 165 GWh/yr = 3307 h/MW (Dinter, Operation experience, SolarPACES/SASEC; observed annual output not found), scaled linearly by DNI 1875 (middle of 1800-1950 for Sicily, given by the coordinator, not measured by us) = 2903, rounded 2900. ENEA 2026 4100 MWh/MW at Priolo is a simulation for a 1 MW plant with 50000 m2 per MW (81.5 kWh/m2), solar multiple not stated: not used. Capex first plant: Andasol 1 EUR 310 M for 49.9 MW (2008), SolarPACES USD 10618.6/kW in 2020 USD / 1.1188 = 9491 EUR/kW (only European plant with a published cost and 7.5 h storage; recent Spanish plants such as Solgest-1 do not publish cost); target: IRENA 2024 world average 3677 USD/kW / 1.1188 = 3287 EUR/kW. Credit: mean over the top 1% load steps of min(1, daily budget on that day / 4 h) with the daily budget from the national PV profile; 10 GW is OUR ceiling (not sourced); sensitivity 3 GW (c3). | v8: target capex is the IRENA 2024 world average, driven by Chinese plants (not Andasol); 3 years of construction added.",
+   "novel": true,
+   "credit_hours": 4.0,
+   "build_y": 3
+  },
+  {
+   "name": "WAVE",
+   "grp": "wave",
+   "on": true,
+   "flat": true,
+   "blocks": [
+    {
+     "cap_hi": 1.25
+    }
+   ],
+   "avail": 0.16,
+   "lcoe": 506.0,
+   "credit": "av",
+   "cases": {
+    "low": {
+     "lcoe": 232.0
+    },
+    "high": {
+     "lcoe": 750.0
+    }
+   },
+   "src": "OceanSET 2022 capex 6.4 M EUR/MW, CF 16% Italy, 506 EUR/MWh; flat profile is an approximation. Tidal currents excluded (0.031% of demand)."
+  },
+  {
+   "name": "GAS_CCS",
+   "grp": "gas",
+   "on": true,
+   "novel": true,
+   "mode": [
+    "NZ"
+   ],
+   "capex_kW": null,
+   "build_y": 3,
+   "life": 30,
+   "om_fix_kW": 44.0,
+   "om_var": 2.0,
+   "eff": 0.53,
+   "capture": null,
+   "ts_eur_t": 163.0,
+   "gas_eur_MWh": 38.5,
+   "co2_per_MWh_th": 0.202,
+   "upstream_t_MWh": 0.1,
+   "seq_Mt_yr": 4.0,
+   "credit": 0.95,
+   "avail": 1.0,
+   "cases": {
+    "first": {
+     "capex_kW": 6300,
+     "capture": 0.7
+    },
+    "target": {
+     "capex_kW": 2800,
+     "capture": 0.95
+    }
+   },
+   "src": "v7_ccs_dac_smr.md sez.1-2. O&M 44 EUR/kW-yr and 2 EUR/MWh are the ACER CCGT values (hydrogen.md), a proxy favourable to gas: no CCS O&M found. Build 3 y is my assumption."
+  },
+  {
+   "name": "GAS_NOCCS",
+   "grp": "gas",
+   "on": true,
+   "mode": [
+    "NZ"
+   ],
+   "variant_only": true,
+   "capex_kW": 1850,
+   "build_y": 3,
+   "life": 30,
+   "om_fix_kW": 44.0,
+   "om_var": 2.0,
+   "eff": 0.62,
+   "capture": 0.0,
+   "gas_eur_MWh": 38.5,
+   "co2_per_MWh_th": 0.202,
+   "upstream_t_MWh": 0.1,
+   "credit": 0.95,
+   "avail": 1.0,
+   "src": "GridLab 2025 (2000 USD/kW), NETL 62% LHV; all emissions offset by DAC"
+  }
+ ],
+ "stor": [
+  {
+   "name": "BATT",
+   "grp": "battery",
+   "on": true,
+   "builtin": "batt",
+   "eff": 0.85,
+   "dur": 4.0,
+   "cases": {
+    "macse": {
+     "eur_kWh": null,
+     "dur": 6.6
+    }
+   },
+   "eur_kWh": 168.6,
+   "life": 15,
+   "build_y": 2,
+   "om_kWh": 4.486,
+   "credit_dur": 6.6,
+   "src": "ARERA 332/2026/R/eel (24 Sep 2026, second MACSE auction): 4-hour lithium system 150.5 EUR per usable kWh (battery 72, power electronics 15, EPC 46.5, external and connection 17) x 1.12 oversizing against degradation = 168.6; O&M 4.486 EUR/kWh-yr; life 15 y; construction 2 y. Round-trip efficiency 85% (Terna study, ARERA 168/2025). The MACSE 2025 award price (12,959 EUR/MWh-yr, implied about 95 EUR/kWh) is NOT used: analysts report bids relying on post-contract revenues and low returns. credit_dur 6.6: capacity credit = power x 4/6.6, i.e. the same adequacy contribution per kWh as in v7 (assumption)."
+  },
+  {
+   "name": "PUMPED",
+   "grp": "pumped",
+   "on": true,
+   "GW": 7.3,
+   "GWh": 53.0,
+   "eff": 0.75,
+   "credit_p": 1.0,
+   "src": "Terna 7.3 GW (7287.5 MW), Ambrosetti 53 GWh, 75%"
+  },
+  {
+   "name": "PUMPED_NEW",
+   "grp": "pumped_new",
+   "on": true,
+   "dur": 8.0,
+   "GWh_hi": 35.0,
+   "eur_kWh": 291.0,
+   "life": 30,
+   "eff": 0.75,
+   "cases": {
+    "low": {
+     "eur_kWh": 175.0
+    },
+    "high": {
+     "eur_kWh": 500.0
+    }
+   },
+   "src": "pipeline 3.26 GW / 26 GWh, up to the Terna-Snam scenario 4.5 GW / 35 GWh; 2330 EUR/kW at 8 h",
+   "build_y": 5,
+   "om_frac": 0.015
+  },
+  {
+   "name": "CAES",
+   "grp": "caes",
+   "on": true,
+   "novel": true,
+   "dur": null,
+   "eur_kWh": null,
+   "life": 30,
+   "eff": 0.65,
+   "cases": {
+    "first": {
+     "dur": 8.0,
+     "eur_kWh": 239.0
+    },
+    "target": {
+     "dur": 10.0,
+     "eur_kWh": 105.0
+    }
+   },
+   "src": "Hydrostor Silver City 1914 EUR/kW 239 EUR/kWh 8 h; Energy Dome target 0.7 x 150.5; life 30 y declared (not found); efficiency 65% (Willow Rock)",
+   "build_y": 3,
+   "om_frac": 0.015
+  },
+  {
+   "name": "H2",
+   "grp": "h2",
+   "on": true,
+   "novel": true,
+   "h2": true,
+   "cases": {
+    "first": {
+     "el_capex": 2056,
+     "eta_el": 0.63,
+     "sto": 113.0,
+     "t_capex": 1079,
+     "t_fom": 31.0,
+     "t_vom": 3.5,
+     "eta_t": 0.4,
+     "t_life": 35,
+     "el_build_y": 2,
+     "t_build_y": 4,
+     "sto_cap_share": 0.8
+    },
+    "target": {
+     "el_capex": 450,
+     "eta_el": 0.69,
+     "sto": 56.0,
+     "t_capex": 1324,
+     "t_fom": 44.0,
+     "t_vom": 2.0,
+     "eta_t": 0.55,
+     "t_life": 30,
+     "el_build_y": 2,
+     "t_build_y": 4,
+     "sto_cap_share": 0.8
+    },
+    "cav": {
+     "sto": 119.0
+    },
+    "cav_lo": {
+     "sto": 95.0
+    },
+    "cav_hi": {
+     "sto": 143.0
+    }
+   },
+   "src": "first: electrolyser 2,056 EUR/kW installed = IEA Global Hydrogen Review 2025 global average 2,000-2,600 USD/kWe (2024) at 1.1188 USD/EUR, O&M 3%/yr, 63% LHV; turbine as v7 (ACER) with 4 years of construction; storage 113 EUR per MWh of working capacity per year (Hystories D8.6, depleted gas field, 3.76 EUR/kg; a desk study, range 2.06-14.95 EUR/kg), 80% treated as capital for the rate scaling (assumption). | hydrogen.md sto = EUR per MWh of working capacity per YEAR (annual cost, one cycle/yr; Hystories 3.76 EUR/kg x 30 kg/MWh = 113). cav: lined rock caverns 1.25 EUR/kWh (1.0-1.5, coordinator) x (CRF 5%,30 y = 0.0651 + 3% O&M) = 119 (95-143)."
+  },
+  {
+   "name": "LDES",
+   "grp": "ldes",
+   "on": true,
+   "dur": 100.0,
+   "E_cost": 1486.0,
+   "eta": 0.5,
+   "src": "Iron-air, 100 h: 1,486 EUR/MWh-yr is the maker's 2021 target (20 USD/kWh), no observed cost exists. v8: switched off in the first-plant (PI) jobs, kept at this value in the target (OB) jobs.",
+   "novel": true,
+   "cases": {
+    "first": {
+     "E_cost": 1486.0
+    },
+    "target": {
+     "E_cost": 1486.0
+    }
+   }
+  }
+ ],
+ "dsm": [
+  {
+   "name": "EV_SMART",
+   "grp": "ev",
+   "on": true,
+   "kind": "shift",
+   "base": "ev",
+   "share": 0.25,
+   "window": 4,
+   "window_off": 3,
+   "var": 0.0,
+   "cases": {
+    "low": {
+     "share": 0.15
+    },
+    "high": {
+     "share": 0.35
+    }
+   },
+   "src": "T&E 2024 (Car I 25%, 35%); 12 h window; infrastructure cost for unidirectional smart charging not found: 0 here (upper bound of the benefit)"
+  }
+ ],
+ "dac": {
+  "name": "DAC",
+  "on": true,
+  "mode": [
+   "NZ"
+  ],
+  "novel": true,
+  "eur_t": null,
+  "elec_MWh_per_t": 0.0,
+  "heat_MWh_per_t": 0.0,
+  "heat_as_elec": false,
+  "cases": {
+   "first": {
+    "eur_t": 650
+   },
+   "target": {
+    "eur_t": 100
+   }
+  },
+  "src": "v7_ccs_dac_smr.md sez.3. 650 and 100 EUR/t are full costs, energy included (coordinator): no electricity in the balance. Variant dac_energy not run: no split energy / non-energy cost found in the sources."
+ },
+ "vre": {
+  "pv": {
+   "terra": {
+    "life": 25,
+    "build_y": 1,
+    "om_kW": 20.0,
+    "degr": 0.005,
+    "capex_kW": 950.0,
+    "yield_mult": 1.12
+   },
+   "agrivoltaico": {
+    "life": 25,
+    "build_y": 1,
+    "om_kW": 20.0,
+    "degr": 0.005,
+    "capex_kW": 1200.0,
+    "yield_mult": 1.12
+   },
+   "tetti-industriali": {
+    "life": 25,
+    "build_y": 1,
+    "om_kW": 20.0,
+    "degr": 0.005,
+    "capex_kW": 950.0
+   },
+   "tetti-altri": {
+    "life": 25,
+    "build_y": 1,
+    "om_kW": 20.0,
+    "degr": 0.005,
+    "capex_kW": 1250.0
+   },
+   "exist_terra": {
+    "om_kW": 20.0,
+    "yield_mult": 0.857
+   },
+   "exist_tetti": {
+    "om_kW": 20.0,
+    "yield_mult": 0.857
+   },
+   "src": "EUR/kWp. Ground (single-axis tracker, 10-30 MW, development, connection and land included): 950 (PoliMi Renewable Energy Report 2025: 900-1,000 at 30 MW, 1,000-1,100 at 10 MW; Italia Solare Oct 2025: 1,000 at 1 MW). Agrivoltaic 30 MW: 1,200 (PoliMi 1,100-1,300). Industrial roofs: 950 = mean of GSE for ARERA 239/2025 (850, 0.2-1 MW) and PoliMi (1,000-1,100 at 500 kW). Other roofs: 1,250 = mean of GSE (1,100 up to 200 kW) and IEA PVPS Italy 2024 (1,400 residential). O&M 20 EUR/kWp-yr (GSE). Life 25 y (PoliMi; GSE 20, Fraunhofer 30). Degradation 0.5%/yr (Fraunhofer assumes 0.25, observed US fleet median 0.75): mean output over the life = 0.94 of year 1. Build 1 y (assumption). yield_mult 1.12 on ground and agrivoltaic blocks: tracker yield over the fixed-tilt PECD yield of the model (developer P50 in MASE filings: Puglia 1,596-1,712 kWh/kWp against 1,462 in the model). Existing plants: O&M only; yield scaled by 0.857 so that the existing fleet in the model (1,304 h) matches the observed national fleet (GSE 2025: 1,117 h)."
+  },
+  "on": {
+   "capex_kW": 1600.0,
+   "life": 25,
+   "build_y": 2,
+   "om_kW": 40.0,
+   "exist_om_kW": 40.0,
+   "src": "Onshore wind 30 MW: 1,600 EUR/kW (PoliMi 2025: 1,500-1,700; GSE for ARERA 239/2025: 1,580-1,700), O&M 40 EUR/kW-yr (GSE 35-40), life 25 y, build 2 y (assumption). Blocks differ by full-load hours (2,400 to 1,200); existing fleet 13.6 GW at 1,600 h (observed 2025: 1,626 h) pays O&M only."
+  },
+  "off": {
+   "fixed": {
+    "capex_kW": 3400.0,
+    "life": 25,
+    "build_y": 3,
+    "om_kW": 80.0
+   },
+   "floating": {
+    "capex_kW": 4750.0,
+    "life": 25,
+    "build_y": 3,
+    "om_kW": 100.0
+   },
+   "blocks": {
+    "O1": "fixed",
+    "O2": "floating",
+    "O3": "floating",
+    "O4": "floating",
+    "O5": "floating"
+   },
+   "src": "Offshore wind at today's estimated costs (none built in Italy): bottom-fixed 3,400 EUR/kW (PoliMi 2025: 3,300-3,500), floating 4,750 EUR/kW (PoliMi 2025: 4,500-5,000; Sapienza/ANEV 2026: 4,850), O&M 80 and 100 EUR/kW-yr (Sapienza/ANEV 2026: 80-127 for floating), life 25 y, build 3 y (assumption). v7 used cost estimates for 2040-2050 with learning (3,200-3,600 EUR/kW) for the block that was built."
+  }
+ }
+}
