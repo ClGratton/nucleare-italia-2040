@@ -6,7 +6,7 @@ If something looks wrong, write it in `results/NOTES.md`, push it and stop: the 
 ## 1. Set up
 
 1. Python 3.11 or newer. Create a virtual environment in `.venv` and install `requirements.txt` (numpy, scipy, highspy).
-2. Check the machine: number of physical cores and free memory. Workers = physical cores minus one, and no more than free memory in GB divided by 3.
+2. Check the machine: number of physical cores and free memory. Workers = physical cores minus one, and no more than free memory in GB divided by 2 (a 3-hour run uses about 1.3 GB; the `wx8` runs of batch 3 about 2.6 GB, so for those divide by 3). The number of workers can be raised at any time: stop `run_jobs.py` and start it again with the same command and a higher `--workers`; finished runs are skipped and only the interrupted ones start again. Keep the machine from going to sleep while a batch runs.
 
 ## 2. Smoke test (about 5 minutes)
 
