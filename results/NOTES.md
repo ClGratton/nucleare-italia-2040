@@ -25,3 +25,6 @@
 - Restarted again at 14:33 to re-apply the rule: 8.42 GB free after stopping, so floor(8.42/2) = 4 workers (same number). 14 runs done; the 4 interrupted runs start again.
 - 20 runs done at 16:24, all Optimal, no `FAILED` lines. With 4 workers each OB run takes 3092-3539 s (PI runs took 1095-1652 s with 2 workers; different run types, so not a like-for-like comparison). `check_results.py`: 24 runs checked, 0 problems.
 - 30 runs done at 17:52, all Optimal, no `FAILED` lines (PI r7 runs: 2165-2728 s with 4 workers). `check_results.py`: 34 runs checked, 0 problems.
+- Restarted at 17:53 with 6 workers at the operator's request (8.05 GB free after stopping; the runbook rule would give floor(8.05/2) = 4). 30 runs done and skipped; the 4 interrupted runs (PI r7 N24-N36, 1-13 min in) start again.
+- From about 19:40 an Android emulator (about 1.7 GB) ran on the same machine; available memory fell to 0.25-0.5 GB and Windows paged heavily. The OB r7 runs took 5895-7278 s instead of about 3000 s; no run failed.
+- 40 runs done at 20:33, all Optimal, no `FAILED` lines. `check_results.py`: 44 runs checked, 0 problems.
