@@ -28,3 +28,8 @@
 - Restarted at 17:53 with 6 workers at the operator's request (8.05 GB free after stopping; the runbook rule would give floor(8.05/2) = 4). 30 runs done and skipped; the 4 interrupted runs (PI r7 N24-N36, 1-13 min in) start again.
 - From about 19:40 an Android emulator (about 1.7 GB) ran on the same machine; available memory fell to 0.25-0.5 GB and Windows paged heavily. The OB r7 runs took 5895-7278 s instead of about 3000 s; no run failed.
 - 40 runs done at 20:33, all Optimal, no `FAILED` lines. `check_results.py`: 44 runs checked, 0 problems.
+- Batch finished at about 21:55: 48/48 runs, all Optimal, no `FAILED` lines. Last OB r7 runs: 2720-7643 s (slowed by the memory shortage above). `check_results.py`: 52 runs checked, 0 problems.
+- Batch time on the clock: about 10 h 15 min (11:40 to 21:55, including the restarts).
+
+## batch3_variants_h3 (38 runs)
+- Run one variant group at a time with `--only <group>` (same command otherwise), so that the 4 `wx8` runs get their own worker count: free memory / 2 for the other groups, free memory / 3 for `wx8`, measured before each group.
