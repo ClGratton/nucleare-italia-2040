@@ -20,3 +20,4 @@
 
 ## batch1_value_curve_h3 (48 runs)
 - Started with 2 workers (8.66 GB available).
+- 10 runs done at 13:33 (PI r5, N00 to N36), all Optimal, 1095-1652 s each, no `FAILED` lines. `check_results.py`: 14 runs checked, 0 problems.
