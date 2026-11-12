@@ -24,3 +24,4 @@
 - After the runbook change (924a421, free memory / 2), restarted at 13:36 with 4 workers (8.29 GB available); the 2 interrupted runs start again.
 - Restarted again at 14:33 to re-apply the rule: 8.42 GB free after stopping, so floor(8.42/2) = 4 workers (same number). 14 runs done; the 4 interrupted runs start again.
 - 20 runs done at 16:24, all Optimal, no `FAILED` lines. With 4 workers each OB run takes 3092-3539 s (PI runs took 1095-1652 s with 2 workers; different run types, so not a like-for-like comparison). `check_results.py`: 24 runs checked, 0 problems.
+- 30 runs done at 17:52, all Optimal, no `FAILED` lines (PI r7 runs: 2165-2728 s with 4 workers). `check_results.py`: 34 runs checked, 0 problems.
