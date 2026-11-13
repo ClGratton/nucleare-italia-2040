@@ -50,3 +50,7 @@
 - The machine rebooted without a clean shutdown in the afternoon (Windows Kernel-Power event 41 at 15:33; event 6008 dates the unexpected stop at 14:23). 8 runs had finished; the runs in progress were lost. Restarted at 18:5x with the same command; this restart also counts as the single retry of `v8_OB_r5_nosmr_N20_h3`. Only 2.91 GB were free after the reboot (a Gradle build and other programs were running), so 1 worker.
 - The retry of `v8_OB_r5_nosmr_N20_h3` succeeded: Optimal, 1491 s. Its cost (107.911) and that of `v8_OB_r5_nosmr_opt_h3` (107.53, N 15.65 GW) are again identical to batch 1 OB r5 N20 and batch 2 OB r5 opt.
 - 10 runs done at 19:47. `check_results.py`: 100 runs checked, 0 problems. Restarted with 2 workers (4.59 GB free); the run started 1 minute earlier starts again.
+- Batch finished at about 23:35: 20/20 runs, all Optimal; one `FAILED` (N20 r5, see above) that succeeded on its single retry. `check_results.py`: 110 runs checked, 0 problems.
+- The r7 nosmr runs show the same pattern as r5: from 12 GW up the cost equals batch 1 OB r7 (131.491, 132.516, 134.598, 137.5, 141.778, 146.689, 152.289), at 4 and 8 GW it is higher (132.436 and 131.744 against 131.261 and 131.359).
+- `v8_OB_r7_nosmr_opt_h3`: cost 131.434, N 11.044 GW, against batch 2 `v8_OB_r7_opt_h3` cost 131.164, N 0.0 GW (with SMRs available).
+- `v8_OB_r7_nosmr_N20_h3` took 6771 s, about three times the neighbouring runs; no error.
