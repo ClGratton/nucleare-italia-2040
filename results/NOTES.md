@@ -33,3 +33,5 @@
 
 ## batch3_variants_h3 (38 runs)
 - Run one variant group at a time with `--only <group>` (same command otherwise), so that the 4 `wx8` runs get their own worker count: free memory / 2 for the other groups, free memory / 3 for `wx8`, measured before each group.
+- Workers per group so far: exp0 1 (an Android emulator was using memory), exppar 3, x10 2.
+- 10 runs done at 01:19 (exp0, exppar, x10 PI opt), all Optimal, no `FAILED` lines. `check_results.py`: 62 runs checked, 0 problems.
