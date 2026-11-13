@@ -25,12 +25,12 @@ CASES = [  # name, overnight capex EUR/kW, construction years
     ('Dukovany official, central', 10200, 9), ('Dukovany, 7 years', 10200, 7), ('Dukovany, top of EC bracket', 12700, 9),
     ('v7 central capex', 8540, 7), ('Barakah', 5500, 8), ('Saeul budget', 2965, 8), ('Risk median', 9680, 15), ('Vogtle', 13400, 10)]
 
-def load(path, step, rate):
+def load(path, step, rate, infix=''):
     C = {}; f0 = {}; E = {}
     for l in open(path):
         try: j = json.loads(l)
         except Exception: continue
-        m = re.match(rf'v8_(PI|OB)_{rate}_N(\d+)_h{step}$', j['tag'])
+        m = re.match(rf'v8_(PI|OB)_{rate}_{infix}N(\d+)_h{step}$', j['tag']) or (infix and re.match(rf'v8_(PI|OB)_{rate}_N(00)_h{step}$', j['tag']))
         if not m: continue
         cs, N = m.group(1), int(m.group(2)); r = j['res']
         C.setdefault(cs, {})[N] = r['cost_new']; E[cs] = r['obj_EUR_yr'] / r['cost_new'] / 1e6
@@ -38,10 +38,11 @@ def load(path, step, rate):
     return C, f0, E
 
 def main():
-    ap = argparse.ArgumentParser(); ap.add_argument('path'); ap.add_argument('--step', type=int, default=6); ap.add_argument('--rate', default='r5')
+    ap = argparse.ArgumentParser(); ap.add_argument('path'); ap.add_argument('--step', type=int, default=6); ap.add_argument('--rate', default='r5'); ap.add_argument('--infix', default='', help="e.g. nosmr_ for the runs without small modular reactors")
     a = ap.parse_args(); r = 0.05 if a.rate == 'r5' else 0.07
-    C, f0, E = load(a.path, a.step, a.rate)
+    C, f0, E = load(a.path, a.step, a.rate, a.infix)
     for cs in sorted(C):
+        if cs not in f0: continue
         Ns = sorted(C[cs]); c = C[cs]; e = E[cs]; f = f0[cs]
         print(f"\n== {cs}, {a.rate}, {a.step} h; runs made at fixN {f:.1f} EUR/kW-yr; energy {e:.1f} TWh ==")
         print("N GW   cost EUR/MWh   marginal value of the next block, EUR/kW-yr")
