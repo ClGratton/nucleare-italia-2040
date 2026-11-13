@@ -39,3 +39,12 @@
 - 30 runs done at 05:59 (up to nuc), all Optimal, no `FAILED` lines. `check_results.py`: 82 runs checked, 0 problems.
 - Batch finished at about 12:20: 38/38 runs, all Optimal, no `FAILED` lines. The wx8 runs are the slowest: PI 5635 and 7812 s, OB 12496 and 13949 s (2 in parallel). `check_results.py`: 90 runs checked, 0 problems.
 - Batch time on the clock: about 14 h 20 min (22:00 to 12:20).
+
+## After the three batches
+- `git pull` after batch 3: the new job file is `jobs/batch5_ob_without_smr_h3.json` (commit 2fd26c3). `batch4_value_curve_h6.json` was already there at the start and its results are already in `results/v8_runs_h6.jsonl`, so it is not run here.
+
+## batch5_ob_without_smr_h3 (20 runs)
+- Started at 12:25 with 3 workers (7.25 GB available).
+- At about 13:35 `run_jobs.py` printed `FAILED v8_OB_r5_nosmr_N20_h3:` with an empty stderr tail (so run7.py ended without a result line and without an error message). Available memory at that moment: 5.0 GB; no memory event in the Windows System log. It will be retried once, after the rest of the batch, with the same command.
+- Observation for the model owner, not checked further: the nosmr runs at N = 16, 24, 28, 32, 36 GW give exactly the same cost as the batch-1 OB r5 runs at the same N (107.532, 109.024, 111.202, 113.98, 117.292), while N = 4, 8, 12 differ (e.g. N04: 111.76 here, 108.239 in batch 1). This would happen if batch-1 runs used no SMRs from 16 GW up; I have not checked the capacity mix.
+- The machine rebooted without a clean shutdown in the afternoon (Windows Kernel-Power event 41 at 15:33; event 6008 dates the unexpected stop at 14:23). 8 runs had finished; the runs in progress were lost. Restarted at 18:5x with the same command; this restart also counts as the single retry of `v8_OB_r5_nosmr_N20_h3`.
