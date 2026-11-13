@@ -73,6 +73,19 @@ def variants(step=3):
             out.append(job(f"v8_{cs}_r5_{name}_opt_h{step}", sp))
     return out
 
+def ob_without_smr(step=3, Ns=(4, 8, 12, 16, 20, 24, 28, 32, 36), rates=(0.05, 0.07)):
+    """OB value curve with small modular reactors switched off. In the OB case SMRs at target cost (11,700 EUR/kW, 5-year build) cost almost
+    the same per kW-year as large reactors (934 against 911 at 5%; 1,231 against 1,239 at 7%), so in the fixed-N runs of batch 1 the model fills
+    the gap with SMRs and the curve is flat at the SMR cost. These runs give the value of nuclear capacity as a whole. N = 0 is the same as batch 1."""
+    out = []
+    for r in rates:
+        for N in Ns:
+            sp = base('OB', step, r); sp['off'] = sp['off'] + ['SMR']; sp['N_fix'] = float(N)
+            out.append(job(f"v8_OB_{rt(r)}_nosmr_N{N:02d}_h{step}", sp, r))
+        sp = base('OB', step, r); sp['off'] = sp['off'] + ['SMR']
+        out.append(job(f"v8_OB_{rt(r)}_nosmr_opt_h{step}", sp, r))
+    return out
+
 def write(name, jobs):
     p = os.path.join(ROOT, 'jobs', name); json.dump(jobs, open(p, 'w'), indent=1); print(name, len(jobs), 'jobs')
 
@@ -82,3 +95,4 @@ if __name__ == '__main__':
     write('batch2_optimum_h3.json', free_optimum(3))
     write('batch3_variants_h3.json', variants(3))
     write('batch4_value_curve_h6.json', value_curve(6, rates=(0.05,)) + free_optimum(6, rates=(0.05,)))
+    write('batch5_ob_without_smr_h3.json', ob_without_smr(3))
