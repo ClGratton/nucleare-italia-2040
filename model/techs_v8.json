@@ -183,7 +183,7 @@
     "pm3": {
      "scarcity_price_mult": 3.0
     },
-    "v7credit": {
+    "credit38": {"credit": 0.38, "scarcity_avail": 0.38}, "v7credit": {
      "credit": 0.38,
      "scarcity_avail": 0.38,
      "scarcity_price_mult": 1.17,

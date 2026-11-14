@@ -86,6 +86,18 @@ def ob_without_smr(step=3, Ns=(4, 8, 12, 16, 20, 24, 28, 32, 36), rates=(0.05, 0
         out.append(job(f"v8_OB_{rt(r)}_nosmr_opt_h{step}", sp, r))
     return out
 
+def review_checks(step=3):
+    """Two checks asked by the independent review of 14 November, free nuclear, 5%.
+    credit38: the central trade rule with ONE change, foreign plants count for 38% in the critical weeks (credit and availability), to separate
+    that effect from the other four changes bundled in the v7 trade rule.
+    grid350: grid charge at 350 EUR/kW above 108 GW of wind+PV (model/techs_v8_grid350.json) instead of 245 EUR/kW above 137 GW."""
+    out = []
+    for cs in ('PI', 'OB'):
+        sp = base(cs, step); sp['cases'] = {'IMPORT': 'credit38'}; out.append(job(f"v8_{cs}_r5_credit38_opt_h{step}", sp))
+    for cs in ('PI', 'OB'):
+        sp = base(cs, step); sp['techs'] = 'techs_v8_grid350.json'; out.append(job(f"v8_{cs}_r5_grid350_opt_h{step}", sp))
+    return out
+
 def write(name, jobs):
     p = os.path.join(ROOT, 'jobs', name); json.dump(jobs, open(p, 'w'), indent=1); print(name, len(jobs), 'jobs')
 
@@ -96,3 +108,5 @@ if __name__ == '__main__':
     write('batch3_variants_h3.json', variants(3))
     write('batch4_value_curve_h6.json', value_curve(6, rates=(0.05,)) + free_optimum(6, rates=(0.05,)))
     write('batch5_ob_without_smr_h3.json', ob_without_smr(3))
+    write('batch6_review_checks_h3.json', review_checks(3))
+    write('smoke6_h12.json', review_checks(12))
