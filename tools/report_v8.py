@@ -118,7 +118,7 @@ INK = '#1f2933'; MUT = '#6b7785'; GRID = '#e3e7ec'; BLUE = '#2a6fb0'; ORA = '#c8
 plt.rcParams.update({'font.size': 8.5, 'axes.edgecolor': MUT, 'axes.labelcolor': INK, 'xtick.color': MUT, 'ytick.color': MUT, 'axes.spines.top': False, 'axes.spines.right': False,
                      'font.family': 'DejaVu Sans', 'axes.linewidth': 0.6})
 T = {'it': dict(x='Potenza nucleare (GW)', y='Valore del blocco successivo (€/kW all\'anno)', c5='capitale al 5%', c7='capitale al 7%', pi='Primo impianto (PI)', ob='Obiettivo (OB), senza piccoli reattori',
-                obs='Obiettivo (OB), con piccoli reattori disponibili', cen='Dukovany, contratto', top='massimo intervallo UE', vog='Vogtle', bar='Barakah', yc='Costo del sistema (€/MWh)', band='entro l\'1% dal minimo',
+                obs='Obiettivo (OB), con piccoli reattori disponibili', cen='Dukovany, contratto', top='massimo intervallo ufficiale', vog='Vogtle', bar='Barakah', yc='Costo del sistema (€/MWh)', band='entro l\'1% dal minimo',
                 var='Nucleare ottimo (GW)'),
      'en': dict(x='Nuclear capacity (GW)', y='Value of the next block (EUR/kW-yr)', c5='5% cost of capital', c7='7% cost of capital', pi='First plant (PI)', ob='Target (OB), no SMRs',
                 obs='Target (OB), SMRs available', cen='Dukovany contract', top='top of EC bracket', vog='Vogtle', bar='Barakah', yc='System cost (EUR/MWh)', band='within 1% of the minimum',
