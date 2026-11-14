@@ -12,7 +12,8 @@ system that does not lean on other countries, the 3-hour model gives 23.2 GW (44
 commercial plants are at first-plant costs (PI), and 15.7 GW (30.5%) when they are at their makers' target costs (OB), at a
 5% real cost of capital. At 7%: 15.6 GW (PI) and 11.1 GW (OB, all small modular reactors). The optimum is flat: in PI at 5%
 every capacity between 16 and 28 GW costs within 1% of the minimum. About 15 GW is in or near the optimum in every case except
-OB at 7% (11 GW) and the variants that rely on foreign capacity in the critical weeks (7 to 12 GW).
+OB at 7% (11 GW), OB with nuclear at the top of the official cost bracket and no small reactors (8 GW), and the variants that rely on
+foreign capacity in the critical weeks (7 to 12 GW).
 
 ## 2. Model (unchanged structure, corrected inputs)
 
@@ -66,12 +67,12 @@ All numbers: `docs/results_v8.md` (sections 1-5). Key ones:
 Central (3 h): PI 5% 23.2 GW, 44.5% of demand, system cost 114.42 against 127.77 EUR/MWh without nuclear, saving 13.35 EUR/MWh = 4.8 bn EUR/yr. PI 7%: 15.6 GW, 29.9%, saving 8.59. OB 5%: 15.7 GW, 30.5%, 107.53 against 114.39, saving 6.86 = 2.4 bn EUR/yr. OB 7%: 11.1 GW, all SMR, 21.6%, saving 2.62.
 
 Value curve (EUR/kW-yr at which a block of capacity is worth building; independent of the cost of nuclear). PI 5%: 0-4 GW 1,318; 4-8 1,220; 8-12 1,149; 12-16 1,074; 16-20 973; 20-24 921; 24-28 868; 28-32 755; 32-36 672; 36-40 462. PI 7%: 1,582; 1,467; 1,387; 1,286; 1,162; 1,098; 1,028; 898; 800; 545. OB 5% with SMRs available: 0-4 GW 1,459, then 934, 934, 927 (the cost of SMRs at target, which replace large reactors), 877, 812, 717. OB 7% with SMRs: 1,465; 1,231; 1,228; 1,148; 1,054; 981; 858.
-The OB curve without SMRs (value of nuclear as a whole) is batch 5, not yet run: do not state it.
+OB without SMRs (value of nuclear as a whole; batch 5, 20 runs): at 5%: 0-4 GW 1,145; 4-8 1,087; 8-12 1,058; 12-16 965; 16-20 877; 20-24 812; 24-28 717; 28-32 663; 32-36 616. At 7%: 1,360; 1,301; 1,262; 1,148; 1,054; 981; 858; 801; 740. Free optimum without SMRs: 15.65 GW at 5% (same as with SMRs available: none is built), 11.0 GW of large reactors at 7% (cost 131.43 against 131.16 with SMRs). From 12-16 GW upward the two OB curves coincide. Cost cases on the OB 5% curve without SMRs (best N; within 1%): Dukovany official 16 (12-20), saving 6.85; 7 years 20 (12-24); top of bracket 8 (0-12), saving 0.88; risk median 12 (8-16); Vogtle 0 (0-8). At 7%: Dukovany official 12 (4-16), saving 2.30; top of bracket 0.
 
-Flat optimum (range of N on the 4-GW grid within 1% of the minimum cost, central cost): PI 5% 16-28 GW; PI 7% 12-20; OB 5% 4-20; OB 7% 4-16.
+Flat optimum (range of N on the 4-GW grid within 1% of the minimum cost, central cost): PI 5% 16-28 GW; PI 7% 12-20; OB 5% 12-20 (4-20 on the curve where SMRs fill the gap); OB 7% 4-16.
 
 Cost cases on the PI 5% curve (best N on the 4-GW grid; range within 1% of the minimum): Dukovany official 24 (16-28); 7 years 24 (20-28); top of bracket 12 (8-20); risk median 16 (12-24); Vogtle: see results_v8.md; Barakah 36; Saeul budget 40 (36-40). See results_v8.md section 3 for every curve.
-The first 4 GW are worth 1,318 (PI) and 1,459 (OB) EUR/kW-yr at 5%, more than nuclear at Vogtle cost (1,147).
+The first 4 GW are worth 1,318 EUR/kW-yr in PI at 5%, more than nuclear at Vogtle cost (1,147); in OB without SMRs they are worth 1,145, equal to the Vogtle cost (the 1,459 of the OB curve with SMRs available measures large reactors against a system already filled with SMRs and is not the value of nuclear).
 
 Systems (3 h, 5%). PI with nuclear: 76 GW PV, 33.4 GW onshore wind, 23.2 GW nuclear, 129 GWh batteries, 2.1 TWh hydrogen storage, 17.7 TWh swapped with neighbours each way, nuclear load factor 87.5%. PI without nuclear: 193 GW PV, 59.6 GW onshore (every block), 2.6 GW offshore, 281 GWh batteries, 14.8 TWh hydrogen storage, 27.7 TWh swapped. OB with nuclear: 85 GW PV, 44.6 GW onshore, 15.7 GW nuclear, 10 GW CSP, 214 GWh compressed air. OB without: 161 GW PV, 59.6 GW onshore, 10 GW CSP, 152 GWh batteries, 8.7 TWh hydrogen storage.
 
@@ -89,14 +90,14 @@ Error register: 98 entries (`docs/audit/audit_history.md`): cost inputs 15, cita
 
 ## 7. Limits still open (state them; direction on nuclear in brackets)
 
-One node, grid cost 245 EUR/kW transmission only, distribution not costed (understates nuclear); four weather years, eight-year stress variant (27.1 GW in PI); 3-hour data; hydro with the same monthly budget every year, no dry years; neighbours not simulated, export price is an annual average (favours the system that exports more = without nuclear); OPEX 40 is the midpoint of an official range (35 would lower fixN by about 39 EUR/kW-yr, 45 raise it by 39); capacity credits are assumptions (batteries at power x 4/6.6, hydro 15 GW at 1.0); build times of minor technologies assumed; existing wind kept at O&M although beyond its life in 2040; perfect foresight; nuclear load factor 87.5-89% results from the optimisation with availability 90% and may be optimistic against fleets that modulate (France 2024: 67%); hydrogen storage cost from a desk study; OB value curve without SMRs pending (batch 5); the monthly cost analysis and the comparison with other studies of the v7 white paper were not re-verified and are left out of v8.
+One node, grid cost 245 EUR/kW transmission only, distribution not costed (understates nuclear); four weather years, eight-year stress variant (27.1 GW in PI); 3-hour data; hydro with the same monthly budget every year, no dry years; neighbours not simulated, export price is an annual average (favours the system that exports more = without nuclear); OPEX 40 is the midpoint of an official range (35 would lower fixN by about 39 EUR/kW-yr, 45 raise it by 39); capacity credits are assumptions (batteries at power x 4/6.6, hydro 15 GW at 1.0); build times of minor technologies assumed; existing wind kept at O&M although beyond its life in 2040; perfect foresight; nuclear load factor 87.5-89% results from the optimisation with availability 90% and may be optimistic against fleets that modulate (France 2024: 67%); hydrogen storage cost from a desk study; the monthly cost analysis and the comparison with other studies of the v7 white paper were not re-verified and are left out of v8.
 
 ## 8. Recommendation (one, with the condition that changes it)
 
-Plan a nuclear fleet of about 15 GW (about 15 APR1000 units of 976 MW net, about 30% of 2040 demand) as the part that is justified in nearly every case: it is the optimum with alternatives at target cost (OB 5%: 15.7 GW), with capital at 7% and first-plant costs (PI 7%: 15.6 GW), and with nuclear at the top of the official cost bracket (14.0-14.4 GW); and keep the option to grow to about 23 GW if hydrogen, compressed air and solar thermal do not reach their target costs (PI 5%: 23.2 GW; 16-28 GW within 1% of the minimum cost).
+Plan a nuclear fleet of about 15 GW (about 15 APR1000 units of 976 MW net, about 30% of 2040 demand) as the part that is justified in nearly every case: it is the optimum with alternatives at target cost (OB 5%: 15.7 GW), with capital at 7% and first-plant costs (PI 7%: 15.6 GW), and with nuclear at the top of the official cost bracket in PI (14.0 GW); and keep the option to grow to about 23 GW if hydrogen, compressed air and solar thermal do not reach their target costs (PI 5%: 23.2 GW; 16-28 GW within 1% of the minimum cost).
 Conditions: built as at Dukovany (about 10,200 EUR/kW net including owner's costs, 9 years, capital near 5% real) and a system that does not rely on foreign capacity in the critical weeks.
 What changes it: capital at 7% together with alternatives at target cost (11 GW, as small reactors); or accepting dependence on foreign capacity in the critical weeks (7-12 GW).
-The first 4 GW are worth building in every cost case examined at 5%, Vogtle included.
+Where the 15 GW does not hold: in OB with nuclear at the top of the cost bracket the optimum is 14.4 GW only as small reactors at their target cost; with large reactors alone it is 8 GW, and any capacity between 0 and 12 GW is within 1% of the minimum (saving 0.88 EUR/MWh). In PI the first 4 GW are worth building in every cost case examined at 5%, Vogtle included.
 
 ## 9. Style rules
 
