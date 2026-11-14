@@ -1,0 +1,67 @@
+\section{Discussion}\label{sec:discussion}
+
+\subsection{Why earlier versions of this study moved between 74\% and 29\%}\label{sec:trajectory}
+The headline result of this study changed with each version \citep{Repo}: 34\,GW and 74\% of demand in the first document, a three-hour model with each weather year optimised on its own and nuclear at 7{,}600\,EUR/kW; 20\,GW and 33\% with renewables at their real lifetime cost (v2); 23\,GW and 36\% with four weather years optimised together (v3 and v4); 24.8\,GW and 45\% with a land limit on PV (v5); 38.5\,GW and 59\% with the 2040 demand and no imports (v6); 16.0\,GW and 29\% with imports with a foreign capacity credit, all technologies and owner's costs (v7); 23.0\,GW and 45\% with no net imports and no foreign capacity in the critical weeks. The versions differ in time step, demand and rules: this is a record of the history, not a comparison of homogeneous results.
+
+The large swings came from changed rules, costs and demand. The flat optimum (Section~\ref{sec:flat}) explains movements of a few GW, not the whole swing: in PI at 5\% every capacity between 16 and 28\,GW costs within 1\% of the minimum, but 36\,GW costs 4.3\% more than the optimum. Within the flat range a single optimal capacity overstates what the model knows, and the value curve with the range within 1\% states it more accurately.
+
+The present value in PI is close to that of the previous version, although many things changed between the two: the cost of nuclear, the costs of PV, wind and batteries, the export price (from zero to 61.07\,EUR/MWh), the criterion for the critical weeks, nuclear availability (from 92\% to 90\%) and two code fixes. The two largest changes have opposite sign. The fixed cost of nuclear rose by 36\%, from 670 to 911\,EUR/kW-yr, when the contract price in the Commission's decision, the owner's costs and the net capacity replaced a price from which fuel had been wrongly deducted and which was divided by gross capacity. Renewables and batteries went to their full bottom-up cost in place of auction prices: ground-mounted PV from 58 to 89\,EUR/kWp-yr (+54\%), batteries from 11{,}466 to 21{,}547\,EUR/MWh-yr (+88\%), onshore wind from about 150 to 159\,EUR/kW-yr. Either group of changes alone would have moved the result far: the nuclear inputs of the previous version with the present costs of the other technologies give 33.6\,GW in PI, and the present nuclear cost with the trade rule of the previous version gives 11.9\,GW (the two bundles of Table~\ref{tab:variants}).
+
+The corrections came from audits (Appendix~\ref{app:audit}). They went in both directions; the two code bugs found before this version, a grid threshold applied to new plants only and wind and grid costs that did not follow the rate in the 7\% runs, had both penalised nuclear.
+
+\subsection{The import-dependence choice}\label{sec:dependence}
+Among the system rules, the trade rule has the largest effect (Table~\ref{tab:variants}). The trade rule of the previous version about halves nuclear, to 11.9\,GW in PI and 7.2\,GW in OB, and the saving from nuclear falls from 13.35 to 5.96\,EUR/MWh in PI and from 6.86 to 2.14 in OB. That rule is a bundle of five changes (Section~\ref{sec:variants}), and the halving cannot be attributed to one of them: it comes from foreign plants available in the critical weeks together with no annual balance, so that imports become a firm source all year. Of the single changes we have, a net-import allowance of 10\% of demand matters little in PI, where the optimum goes from 23.2 to 23.4\,GW, and matters in OB, where it goes from 15.7 to 12.6\,GW and the saving from 6.86 to 4.09\,EUR/MWh; the allowance lowers the cost of the PI system by 0.31\,EUR/MWh with nuclear (from 114.42 to 114.11) and by 1.85 without it (from 127.77 to 125.92).
+
+The price of the central rule is the difference in system cost against the trade rule of the previous version, at 5\% and in EUR/MWh. With nuclear the system costs 114.42 against 109.99 in PI (4.44 more, EUR\,1.6 billion a year) and 107.53 against 103.38 in OB (4.15 more, EUR\,1.5 billion). Without nuclear it costs 127.77 against 115.95 in PI (11.82 more, EUR\,4.2 billion) and 114.39 against 105.52 in OB (8.87 more, EUR\,3.2 billion). Under the previous rule Italy imports 52.0\,TWh a year (PI with nuclear), 57.7 (PI without), 56.0 (OB with) and 70.7 (OB without) and exports nothing; in 2025 it imported 55.2\,TWh and exported 7.4, a net 47.8\,TWh \citep{GME2025}. The previous rule is therefore about today's dependence, and the central case of this paper is a choice to end it.
+
+Whether foreign capacity will be available in the scarce weeks depends on the plans of the neighbouring countries, which the model does not simulate; if every country counted on its neighbours for the same weeks, the capacity would not exist. The central rule is a policy choice, not a datum, and it favours nuclear, because self-sufficiency costs less with nuclear than without. We state both results so that the reader can apply either.
+
+The price earned by exports is the remaining uncertainty in the central rule. It is an annual average of the French price, while the surplus of a system with much solar occurs when the neighbours also have a surplus. Between exports that earn nothing and exports that earn the import price the PI optimum goes from 25.4 to 18.0\,GW. The average price favours the system that exports more, the one without nuclear (27.7 against 17.7\,TWh a year in PI).
+
+\subsection{Policy reading and recommendation}\label{sec:policy}
+\begin{table}[!t]
+\centering\footnotesize
+\caption{Open limits, by direction of the bias on optimal nuclear capacity, with its size where known.}\label{tab:limits}
+\begin{tabularx}{\linewidth}{@{}P{8.0cm}L@{}}
+\toprule
+Limit & Size or remark\\
+\midrule
+\multicolumn{2}{@{}l}{\emph{Favour nuclear (removing them would lower optimal nuclear capacity)}}\\
+Trade rule: balanced swap, no foreign capacity in critical weeks (a policy choice) & 11.9 and 7.2\,GW under the trade rule of the previous version (bundle)\\
+Nuclear overnight cost at the bottom of the Commission bracket & Midpoint: 16\,GW in PI and 12\,GW in OB at 5\% (grid)\\
+No cost decline to 2040 for PV, wind, batteries and electrolysers; nuclear is also at today's cost, but the observed trend of the others is downward & Not quantified\\
+Caps on ground-mounted and agrivoltaic PV are our choice; every such block is at its cap in the PI system without nuclear & Not quantified\\
+Assumed shape of nuclear availability, 95\% in the peak months; no common-mode outages; no ramp constraints; load factor of 87.5--89.1\% from the optimisation & Fleets that modulate run less (France 2024: 67\%, authors' estimate, see the audit file in \citealp{Repo})\\
+Demand flexibility limited to smart charging of 25\% of electric cars and to interruptible load & Not quantified\\
+\midrule
+\multicolumn{2}{@{}l}{\emph{Favour the system without nuclear (removing them would raise optimal nuclear capacity)}}\\
+Grid charge of 245\,EUR/kW above 137\,GW, an assumption below the bound from the Terna plan (about 350\,EUR/kW above 108\,GW); one node; distribution not costed & A check run with the bound gives more nuclear; three-hour results in the repository\\
+Four weather years in the central case & 27.1\,GW in PI with eight years; 15.5\,GW in OB\\
+Three-hour data; hourly data not rebuilt & Direction known from the 12-, 6- and 3-hour steps, size unknown\\
+Neighbours not simulated; export price is an annual average & Favours the system that exports more\\
+Existing wind kept at operating cost although beyond its life in 2040; perfect foresight over the weather years & Not quantified\\
+Hydrogen storage cost from a desk study of a depleted gas field (3.76\,EUR/kg; range 2.06--14.95) & Applies if the cost is in the upper part of the range\\
+\midrule
+\multicolumn{2}{@{}l}{\emph{Both directions or unknown}}\\
+OPEX of 40\,EUR/MWh, midpoint of the 35--45 in the Commission decision & 35 lowers fixN by about 39\,EUR/kW-yr, 45 raises it by 39\\
+OB puts every technology without commercial plants at target cost, SMRs included & A lower bound for nuclear on that axis only; at the top of the bracket OB has more nuclear than PI (14.4 against 14.0\,GW)\\
+CSP ceiling of 10\,GW, reached in both OB systems (our assumption) & Not quantified\\
+Hydropower with the same monthly budget every year, no dry years; capacity credits, build times of minor technologies and SMR operating cost are assumptions or proxies & Unknown\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Three variables that policy can influence decide the annual fixed cost of nuclear: the cost of capital, the build time and the construction cost. At the central construction cost, raising the cost of capital from 5\% to 7\% lowers the optimum from 23.2 to 15.6\,GW in PI and from 15.7 to 11.1\,GW in OB; shortening the build from 9 to 7 years raises it to 26.7 and 18.2\,GW; a construction cost at the top of the Commission bracket lowers it to 14.0\,GW in PI. A real rate near 5\% corresponds to public or guaranteed financing. The package for Dukovany, which the Commission is still investigating, combines a preferential state loan with a two-way contract whose strike price is in a bracket of 85--105\,EUR/MWh in 2024 prices and a target return on equity of 6--8\% (recitals 91 and 106 of \citealp{ECDukovany2026}); the regulated asset base of Sizewell C has a real cost of capital of 6.73\% during construction \citep{NAOSizewell2026}.
+
+\emph{Plan a nuclear fleet of about 15\,GW}, about 15 APR1000 units of 976\,MW net and about 30\% of 2040 demand, as the part that is justified in most cases: it is the optimum with alternatives at target cost (OB at 5\%: 15.7\,GW), with capital at 7\% and first-plant costs (PI at 7\%: 15.6\,GW), and with nuclear at the top of the Commission bracket in PI (14.0\,GW). \emph{Keep the option to grow to about 23\,GW} if hydrogen, compressed air and solar thermal do not reach their target costs (PI at 5\%: 23.2\,GW, with 16 to 28\,GW within 1\% of the minimum cost).
+
+\emph{How many cases.} Take the five cost cases from the contract cost upward (contract, midpoint and top of the bracket, risk median, Vogtle) and the four curves (PI and OB without SMRs, at 5\% and 7\%). On the 4\,GW grid, 16\,GW is within 1\% of the minimum cost in 11 of these 20 cells (our count from Table~\ref{tab:allcasesN}). About 15\,GW is in or near the optimum at 5\% with nuclear between the contract cost and the midpoint of the bracket (midpoint: 16\,GW in PI, 12\,GW in OB), and at 7\% in PI at the contract cost.
+
+\emph{Conditions.} The fleet is built at the Dukovany contract cost, about 10{,}200\,EUR/kW net including owner's costs, in 9 years, with capital near 5\% real, and the system does not rely on foreign capacity in the critical weeks.
+
+\emph{Where the 15\,GW does not hold.} It does not hold when two unfavourable conditions combine: OB at 7\% (11\,GW, as small reactors); OB at the top of the bracket without small reactors (8\,GW, with 0 to 12\,GW within 1\% and a saving of 0.88\,EUR/MWh; 14.4\,GW only as small reactors at their target cost); 7\% with the top of the bracket (4\,GW in PI, with 0 to 12\,GW within 1\%, and none in OB); 7\% with the risk median (8\,GW in PI, none in OB); OB at the Vogtle cost (none, with 0 to 8\,GW within 1\%). Nor does it hold under the trade rule of the previous version, which counts on foreign capacity in the critical weeks and on net imports of 52 to 71\,TWh a year, about today's level (7 to 12\,GW). In PI the first 4\,GW are worth building in every cost case examined at 5\%, Vogtle included.
+
+The model describes a steady state, with no limit on the build rate and no transition path: the time needed to reach 15\,GW is outside its scope.
+
+\subsection{Limitations}\label{sec:limits}
+Table~\ref{tab:limits} lists the limits that remain open, by the direction of their effect on optimal nuclear capacity. Three more points concern the scope of the paper. The central nuclear cost is our sum of a contract price, in current prices with escalation clauses, and of owner's costs from a press source, and the aid package is not approved. The system without nuclear in PI builds 193\,GW of PV and 59.6\,GW of onshore wind, far more than the 114--137\,GW and 29--39\,GW of the Terna and Snam scenarios for 2040 \citep{DDS2024}; the PV and wind supply curves are our estimates. The monthly cost analysis and the comparison with other studies of earlier versions were not re-verified with the present inputs and are left out.

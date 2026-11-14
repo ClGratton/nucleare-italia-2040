@@ -1,0 +1,82 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{mathptmx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{adjustbox}
+\usepackage{placeins}
+\usepackage{float}
+\usepackage[margin=2.3cm]{geometry}
+\usepackage[authoryear,round]{natbib}
+\usepackage{microtype}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage{xurl}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\usepackage{authblk}
+\urlstyle{same}
+\usepackage{lineno}
+\linenumbers
+\renewcommand{\linenumberfont}{\normalfont\tiny\color{gray}}
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}}
+\setlength{\bibsep}{1pt plus 1pt}
+\renewcommand{\bibfont}{\footnotesize}
+\renewcommand{\topfraction}{0.92}\renewcommand{\bottomfraction}{0.8}\renewcommand{\textfraction}{0.06}\renewcommand{\floatpagefraction}{0.85}
+\setcounter{topnumber}{3}\setcounter{totalnumber}{4}
+\emergencystretch=2em
+
+\title{The value of nuclear capacity in a zero-emission Italian power system: a capacity expansion analysis with one cost rule for every technology}
+\author{Claudio Gratton}
+\affil{Independent researcher, Italy}
+\date{Preprint, version 8, November 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent We estimate how much nuclear capacity the least-cost Italian power system with zero direct emissions contains for a 2040 demand of 400\,TWh, with a linear capacity expansion model, a three-hour step and four weather years. Every technology, nuclear included, follows one cost rule (overnight cost, interest during construction, capital recovery, fixed operating cost); auction prices are not used. The central nuclear cost is the Dukovany contract price plus owner's costs, 10{,}200\,EUR/kW net, the bottom of the bracket reported by the European Commission: 911\,EUR/kW-yr at a 5\% real cost of capital. Trade is a balanced annual swap with no foreign capacity in the critical weeks, a policy choice that favours nuclear. The result is a value curve: the annual cost at which each further block of nuclear capacity is worth building, from which any cost case is read. At 5\% the optimum is 23.2\,GW (44.5\% of demand) with technologies without commercial plants at first-plant costs and 15.7\,GW (30.5\%) with them at target costs; at 7\%, 15.6 and 11.1\,GW (the latter all small modular reactors). The optimum is flat: with first-plant costs every capacity between 16 and 28\,GW costs within 1\% of the minimum. At the midpoint of the bracket the best capacity is 16 and 12\,GW. A trade rule close to today's import dependence gives 11.9 and 7.2\,GW and a system cost lower by 4.44 and 4.15\,EUR/MWh. About 15\,GW is in or near the optimum in most cases examined.
+\end{abstract}
+
+\noindent\textbf{Keywords:} nuclear power; capacity expansion; Italy; system cost; value curve; cost of capital; import dependence
+
+\medskip
+\noindent\textbf{Highlights}
+\begin{itemize}\setlength\itemsep{0pt}
+\item One cost rule for every technology, nuclear included; costs of plants, not auction prices.
+\item The result is a value curve of nuclear capacity, from which any nuclear cost case is read.
+\item Optimum at 5\%: 23.2\,GW with first-plant costs of unproven technologies, 15.7\,GW with their target costs.
+\item The optimum is flat: 16 to 28\,GW cost within 1\% of the minimum with first-plant costs.
+\item A trade rule close to today's import dependence gives 11.9 and 7.2\,GW; ending the dependence is a choice with a price.
+\end{itemize}
+
+\input{intro}
+\input{methods}
+\input{results}
+\input{discussion}
+
+\section{Conclusions}\label{sec:conclusions}
+With one cost rule for every technology, the Dukovany contract price plus owner's costs (10{,}200\,EUR/kW net, the bottom of the bracket that the European Commission reports) and a system that does not lean on other countries, the least-cost Italian power system with zero direct emissions for a 2040 demand of 400\,TWh contains 23.2\,GW of nuclear (44.5\% of demand) with technologies without commercial plants at first-plant costs and 15.7\,GW (30.5\%) with them at target costs, at a 5\% real cost of capital. At 7\% the values are 15.6\,GW and 11.1\,GW, the latter all small modular reactors at their target cost. Nuclear lowers the system cost by 13.35 and 6.86\,EUR/MWh at 5\%, that is EUR\,4.8 and 2.4 billion a year.
+
+The answer is a curve and not a point. With first-plant costs every capacity between 16 and 28\,GW costs within 1\% of the minimum at 5\%, and the first 4\,GW are worth 1{,}318\,EUR/kW-yr, more than nuclear at the Vogtle cost (1{,}147); with target costs and no small reactors they are worth 1{,}145, just below it. The flat optimum explains movements of a few GW between versions of this study; the swing between 74\% and 29\% of demand came from changed rules, costs and demand.
+
+We recommend planning a fleet of about 15\,GW, about 30\% of 2040 demand, with the option to grow to about 23\,GW if hydrogen, compressed air and solar thermal do not reach their target costs. On the grid of the value curves, 16\,GW is within 1\% of the minimum cost in 11 of the 20 combinations of five cost cases from the contract cost upward and four curves. The conditions are construction at the Dukovany contract cost in nine years, capital near 5\% real, and a system that does not rely on foreign capacity in the critical weeks. The 15\,GW does not hold when two unfavourable conditions combine, such as capital at 7\% with alternatives at target cost (11\,GW, as small reactors), nor under a trade rule close to today's import dependence (7 to 12\,GW); ending that dependence costs 4.44\,EUR/MWh with nuclear and 11.82 without it at first-plant costs. Section~\ref{sec:limits} lists the open limits by the direction of their bias.
+
+\FloatBarrier
+\input{appendix}
+\FloatBarrier
+
+\section*{Statements}
+\paragraph{Data and code availability.}\label{sec:data} The repository is private until publication and will be made public on publication at \url{https://github.com/ClGratton/nucleare-italia-2040} \citep{Repo}. It holds everything needed to reproduce the results: the model (\texttt{model/hl5.py}, \texttt{blocks\_v6.py}, \texttt{hl7.py}, \texttt{spec7.py}, \texttt{run7.py}), the inputs (\texttt{model/techs\_v8.json}, where every input has a note on its source, and \texttt{data/inputs\_main.npz}), the job lists, one result line per run (\texttt{results/v8\_runs.jsonl} and, for the six-hour step, \texttt{v8\_runs\_h6.jsonl}), the tools that compute the value curves and the report (\texttt{tools/value\_curve.py}, \texttt{tools/report\_v8.py}), the report itself (\texttt{docs/results\_v8.md}) and the audit files with the full error register (\texttt{docs/audit/}). Web sources were accessed in November 2026. For this version the sources were read again where possible; in the reference list, [S] marks a source that was located by web search on 14 November 2026 but not read again, and [N] one whose value was not verified again.
+
+\paragraph{Use of generative AI.} The author used Claude (Anthropic) to search and summarise sources, write the model code, run the calculations, audit the inputs and draft the text; the author reviewed and edited the content and takes full responsibility for it.
+
+\paragraph{Competing interests and funding.} The author declares no competing interests. This research received no specific grant from any funding agency.
+
+\bibliographystyle{plainnat}
+\bibliography{refs}
+\end{document}

@@ -1,0 +1,17 @@
+\section{Introduction}\label{sec:intro}
+
+In 2026 the Italian Parliament gave final approval to a law that delegates to the government the reintroduction of nuclear power \citep{Delega2026}. The law authorises no plant and selects no site. How much nuclear capacity a zero-emission Italian power system should contain, and under which conditions, is therefore a practical question.
+
+The public debate relies mostly on the levelised cost of electricity (LCOE), by which utility-scale solar photovoltaics (PV) is much cheaper than new nuclear \citep{IEA2024WEO,FraunhoferEN2024}. The LCOE divides the cost of a plant by the energy it produces, regardless of when it produces it, so it does not measure the cost of meeting demand in every hour. System studies do: \citet{Sepulveda2018} find that firm low-carbon resources lower the cost of fully decarbonised power systems by 10--62\%. For Italy, \citet{Lombardi2020} describe near-optimal systems based on solar, wind and synthetic fuels, without nuclear; \citet{Mastrantuono2026} find that new nuclear lowers total system cost, in a model where nuclear capacity has an exogenous cap, so the optimal amount is not identified.
+
+A second problem is the stability of the answer. Earlier versions of the present study gave a nuclear share between 74\% and 29\% of demand as inputs and rules were corrected (Section~\ref{sec:trajectory}), so the result must be stated in a form that shows why it moves.
+
+This paper makes four contributions.
+\begin{enumerate}\setlength\itemsep{1pt}
+\item \emph{One cost rule for every technology, nuclear included.} The annual cost of each technology is its overnight cost times interest during construction and the capital recovery factor over its technical life, plus fixed operating cost. Costs are those of plants, most of them contracted or built in 2024--2026, from official or regulatory sources where they exist and otherwise from university, industry or press sources, each named with its input. Auction prices are not used as costs, because they can be combined with grants or rely on revenues outside the contract.
+\item \emph{The result as a value curve of nuclear capacity.} Runs with nuclear capacity fixed at $N$ give the system cost $C(N)$ and, from it, the annual fixed cost at which each further block of capacity is worth building. The curve does not depend on the cost assumed for nuclear, so any cost case is read on it, and it shows how flat the optimum is.
+\item \emph{Trade as a balanced swap.} In the central rule Italy imports as much as it exports in every year and gets no energy and no capacity credit from abroad in the critical weeks. This is a policy choice that favours nuclear, so we also report the result and the system cost under a rule close to today's import dependence.
+\item \emph{Open code, data and a full error register.} The repository holds the model, every input with its source, one result line per run and the register of the 98 errors found in the project so far (Appendix~\ref{app:audit}).
+\end{enumerate}
+
+The model describes a steady-state system, with 2040 demand and all fleets already built; it is not a transition path. It has one node. Section~\ref{sec:methods} describes the model, the cost rule and the value-curve method, Section~\ref{sec:results} the results, Section~\ref{sec:discussion} discusses them and lists the limitations with the direction of their bias, and Section~\ref{sec:conclusions} concludes.

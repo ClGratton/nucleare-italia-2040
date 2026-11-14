@@ -1,0 +1,135 @@
+\section{Methods and data}\label{sec:methods}
+
+\subsection{Capacity expansion model}\label{sec:model}
+The model is a linear programme that chooses the capacities and the dispatch of all technologies so as to meet demand in every time step at least cost, with zero direct emissions. It has one node. One fleet must serve the four weather years 2016--2019, which are optimised together, with a three-hour step: 11{,}680 steps, about 350{,}000 variables and 440{,}000 constraints per run. It is solved with HiGHS \citep{HiGHS}; all runs reported here ended with status optimal. The decision variables are the capacities of solar photovoltaics (PV: ground-mounted, agrivoltaic, industrial and other roofs, by zone, with finite land), onshore and offshore wind (finite blocks), large nuclear reactors, small modular reactors (SMRs), batteries, hydrogen (electrolyser, underground storage, turbine), compressed air, 100-hour storage, new pumped hydro, new hydropower, geothermal, bioenergy, concentrated solar power with storage (CSP), interruptible load, smart charging and new interconnection. Existing hydropower (15\,GW, 43.4\,TWh a year) and pumped hydro are given.
+
+With $K_i$ the capacity of technology $i$, $c_i$ its annual fixed cost (Section~\ref{sec:rule}), $g_{i,t}$ its output in step $t$ with variable cost $v_i$, $m_t$ imports and $x_t$ exports, the objective over $Y=4$ years is
+\begin{equation}
+\min\; Y\sum_i c_i K_i+\sum_t\Big(\sum_i v_i\,g_{i,t}+p_m\,m_t-p_x\,x_t\Big),
+\end{equation}
+with import price $p_m=115.94$\,EUR/MWh, the 2025 average Italian price, and export revenue $p_x=61.07$\,EUR/MWh, the 2025 average French price \citep{GME2025}. The energy balance in each step of length $\Delta$ is
+\begin{equation}
+\sum_i g_{i,t}+\sum_s\big(d_{s,t}-q_{s,t}\big)+m_t-x_t+u_t=L_t ,\label{eq:balance}
+\end{equation}
+where $d_{s,t}$ and $q_{s,t}$ are discharge and charge of storage $s$, $u_t$ is the net effect of demand shifting and $L_t$ is demand. Solar and wind output is bounded by the profile, $g_{b,t}\le K_b\,\rho_b\,s_t$ for block $b$ with scale $\rho_b$, so curtailment is free. Nuclear output moves between a minimum and a maximum share of the available capacity,
+\begin{equation}
+\mu\,a_t\,N\Delta\le n_t\le a_t\,N\Delta ,
+\end{equation}
+with minimum load $\mu=0.5$ and a monthly availability $a_t$ whose shape is an assumption: 95\% in the winter and summer months, less in spring and autumn, with a mean of 90\%, the load factor in the Commission decision on Dukovany (15.4\,TWh a year on 1{,}952\,MW; \citealp{ECDukovany2026}). Each storage follows
+\begin{equation}
+e_{t+1}=e_t+\eta\,q_t-d_t,\qquad 0\le e_t\le E,\qquad q_t,\,d_t\le E\Delta/\tau ,
+\end{equation}
+with efficiency $\eta$, duration $\tau$ and cyclic levels; hydrogen has separate capacities for electrolyser, store and turbine. Hydropower must produce a given energy $H_m$ in each month $m$, with a minimum flow equal to 37\% of the monthly mean and a maximum power of 15\,GW; the monthly budgets are the same in every weather year. There are no ramp constraints.
+
+\paragraph{Adequacy.} Firm capacity must be at least 1.1 times the peak load:
+\begin{equation}
+\sum_i \kappa_i K_i\ge 1.1\,\hat L ,\qquad \hat L=76.9\ \mathrm{GW},
+\end{equation}
+where $\hat L$ is the peak of the three-hour data and is used at every time step, so the requirement (84.6\,GW, our calculation) does not change when the model is run at a coarser step. The credits $\kappa_i$ are assumptions: nuclear, geothermal and new hydropower at their availability; existing hydro (15\,GW), existing and new pumped hydro, compressed air and 100-hour storage at full power; batteries at their power times 4/6.6; hydrogen turbines and bioenergy at 0.95; interruptible load at 1.0; CSP from its profile in the highest load steps; solar PV, wind and imports at zero.
+
+\paragraph{Trade.} Imports use the interconnection capacity $I$, which is 11{,}535\,MW today \citep{ARERA366} and can be expanded with up to 7.33\,GW of new lines at their cost. Exports have their own variable in the balance~\eqref{eq:balance} and are limited to a fraction of the import capacity, the ratio of the export and import limits of Terna, the grid operator \citep{TernaCapObj2025}:
+\begin{equation}
+x_t\le \frac{6{,}095}{11{,}535}\,I\,\Delta .
+\end{equation}
+Annual trade is balanced in each weather year $y$ with demand $D_y$:
+\begin{equation}
+-X_{\mathrm{exp}}\,D_y\;\le\;\sum_{t\in y}\big(m_t-x_t\big)\;\le\;X\,D_y ,\qquad X=X_{\mathrm{exp}}=0 ,\label{eq:swap}
+\end{equation}
+so in the central rule Italy is neither a net importer nor a net exporter: it swaps energy with its neighbours, paying 115.94 and earning 61.07\,EUR/MWh. In the critical weeks imports are not available ($m_t=0$) and interconnection has no capacity credit. The critical weeks are the three weeks of each year with the highest mean residual load, defined as load minus the output of a reference mix of 100\,GW of PV and 40\,GW of onshore wind. The reason for the rule is that the plan must work if every neighbour planned the same way. It is a policy choice and it favours nuclear: today Italy depends on imports (55.2\,TWh imported and 7.4 exported in 2025; \citealp{GME2025}), and Section~\ref{sec:dependence} gives the cost of ending that dependence. The neighbouring systems are not simulated.
+
+\paragraph{Grid.} Every new solar and onshore wind plant pays a transmission charge equivalent to 13 and 8\,EUR/MWh, about 245\,EUR/kW over 40 years, and nuclear pays 2\,EUR/MWh; offshore wind pays none. New wind and solar capacity above a total stock of 137\,GW pays the charge a second time. The model keeps 37.8\,GW of existing plants (24.2\,GW of PV and 13.6\,GW of onshore wind), so the second charge starts at 99.2\,GW of new plants. The charge, the threshold and the factor of two are assumptions of the authors, not figures of the grid operator. Terna's 2025 development plan gives over EUR\,23 billion and 65\,GW more renewables by 2030 on the 43\,GW installed in 2023 \citep{TernaPdS2025}: up to about 350\,EUR/kW above 108\,GW, an upper bound because the plan also serves security and demand. Our value is below that bound, which favours the system without nuclear; a check run with 350\,EUR/kW above 108\,GW gives more nuclear (three-hour check runs in the repository). The charge follows the discount rate like every other capital cost. Distribution grids are not costed.
+
+\paragraph{Demand and profiles.} Demand is 400\,TWh: a base of 338\,TWh, 15\,TWh of heat pumps and 47\,TWh of electric vehicles, consistent with the 404--439\,TWh of the Terna and Snam scenario report \citep{DDS2024}. The base follows the Terna load of 2016--2019, paired with the same weather year; solar and wind capacity factors are those of the Pan-European Climatic Database \citep{PECD2021}. New ground-mounted and agrivoltaic plants have trackers, with a yield 1.12 times the fixed-tilt profile, and degradation of 0.5\% a year lowers the mean output over the life to 0.94 of the first year. Existing PV and onshore wind plants pay operating cost only; the PV yield is scaled to the 1{,}117 hours of the national fleet in 2025 \citep{GSEPV2025} and existing wind runs 1{,}600 hours. System costs are divided by the 356.6\,TWh of demand not met by existing hydropower. The nuclear share is nuclear output over total demand, so it includes the nuclear energy exported in the swap.
+
+\subsection{One cost rule for every technology}\label{sec:rule}
+The annual fixed cost per unit of capacity is
+\begin{equation}
+c_i=K^{\mathrm{on}}_i\;\phi(r,T_i)\;\mathrm{CRF}(r,L_i)+F_i ,\qquad
+\phi(r,T)=\frac1T\sum_{k=0}^{T-1}(1+r)^{T-k-1/2},\qquad
+\mathrm{CRF}(r,n)=\frac{r(1+r)^n}{(1+r)^n-1},\label{eq:rule}
+\end{equation}
+where $K^{\mathrm{on}}_i$ is the overnight cost, with development and grid connection included and contingency, subsidies and grants excluded, $\phi$ is interest during construction with uniform spending over the build time $T_i$, CRF the capital recovery factor over the technical life $L_i$, $F_i$ the fixed operation and maintenance (O\&M) cost and $r$ the real cost of capital, 5\% in the central case and 7\% as the alternative, the same for every technology. Costs are in real 2025 euros, per unit of net capacity and with realistic output. There is no cost decline to 2040, except in the target case defined below. Three inputs are annual prices and do not go through Eq.~\eqref{eq:rule}: hydrogen storage, 100-hour storage and interruptible load.
+
+The sources differ in kind (Table~\ref{tab:inputs} and Appendix~\ref{app:inputs}). Official or regulatory documents give the nuclear contract price, build time and operating cost (the Commission decision), the cost of batteries and of interruptible load (the regulator ARERA), the cost of roof PV and of wind and the O\&M of PV (a study of the state agency GSE for ARERA) and the cost of electrolysers (the International Energy Agency, IEA). A university report (Politecnico di Milano) and an industry association (Italia Solare) give the cost of ground-mounted and agrivoltaic PV and of wind. Press sources give the owner's costs of Dukovany and the cost of SMRs. Studies or makers' targets give hydrogen storage, compressed air and 100-hour storage. Most costs are of plants contracted or built in 2024--2026; the first-plant cost of CSP (Andasol, 2008) and the Barakah cost case (a 2009 contract) are older and revalued.
+
+Auction prices are not used as costs. The price of the first auction of FER-X, the Italian scheme of two-way contracts for renewables, was 56.82\,EUR/MWh for solar \citep{FERXmain2025}; it can be combined with capital grants of up to 40\%, in which case the tariff is cut by up to 35\%, and with tax credits \citep{AndersenFERX}. The price of the first auction of MACSE, the Italian mechanism that procures storage capacity, was 12{,}959\,EUR/MWh-yr, and according to analysts it relied on revenues after the contract and on low returns \citep{ModoMACSE}.
+
+\begin{table}[!tb]
+\centering\footnotesize
+\caption{Main cost inputs under the common rule; annual cost at 5\% from Eq.~\eqref{eq:rule}; life and build time in years. Nuclear operating expenditure (OPEX) of 40\,EUR/MWh is 27.75 fixed (at a 90\% load factor) and 12.25 variable. Sources: EC+TV, contract price in \citet{ECDukovany2026} plus owner's costs from \citet{CT24Dukovany}; PM, \citet{PoliMiRER2025}; IS, \citet{ItaliaSolare2025}; GSE, \citet{GSELCOE2025}; PVPS, \citet{IEAPVPS2024}; AR, \citet{ARERA332}; IEA, \citet{IEAGHR2025}; HY, \citet{HystoriesD86}; DA, Darlington BWRX-300 \citep{POWERDarlington2025}. Roof PV: mean of GSE (850) and PM (1{,}000--1{,}100) for industrial roofs, of GSE (1{,}100) and PVPS (1{,}400) for other roofs. Batteries: 150.5\,EUR/kWh times 1.12 for oversizing, 85\% round-trip efficiency. No floating offshore plant has been built in Italy. The other inputs are in Appendix~\ref{app:inputs}.}\label{tab:inputs}
+\begin{tabularx}{\linewidth}{@{}P{3.15cm}P{2.95cm}P{2.55cm}P{0.8cm}P{3.0cm}L@{}}
+\toprule
+Technology & Overnight cost & Fixed O\&M & Life, build & Annual cost at 5\% & Source\\
+\midrule
+Large nuclear (central) & 10{,}200\,EUR/kW net & OPEX 40\,EUR/MWh & 60, 9 & 911\,EUR/kW-yr (1{,}239 at 7\%) & EC+TV\\
+SMR, first plant (PI) & 17{,}200\,EUR/kW & as nuclear (proxy) & 60, 5 & 1{,}264\,EUR/kW-yr & DA, unit 1\\
+SMR, target (OB) & 11{,}700\,EUR/kW & as nuclear (proxy) & 60, 5 & 934\,EUR/kW-yr (1{,}231 at 7\%) & DA, four units\\
+PV ground, tracker & 950\,EUR/kWp & 20\,EUR/kWp-yr & 25, 1 & 89\,EUR/kWp-yr & PM, IS, GSE\\
+PV agrivoltaic & 1{,}200\,EUR/kWp & 20\,EUR/kWp-yr & 25, 1 & 107\,EUR/kWp-yr & PM\\
+PV industrial roofs & 950\,EUR/kWp & 20\,EUR/kWp-yr & 25, 1 & 89\,EUR/kWp-yr & GSE, PM (mean)\\
+PV other roofs & 1{,}250\,EUR/kWp & 20\,EUR/kWp-yr & 25, 1 & 111\,EUR/kWp-yr & GSE, PVPS (mean)\\
+Onshore wind & 1{,}600\,EUR/kW & 40\,EUR/kW-yr & 25, 2 & 159\,EUR/kW-yr & PM, GSE\\
+Offshore wind, floating & 4{,}750\,EUR/kW & 100\,EUR/kW-yr & 25, 3 & 463\,EUR/kW-yr & PM\\
+Batteries, 4 h & 168.6\,EUR/kWh usable & 4.486\,EUR/kWh-yr & 15, 2 & 21{,}547\,EUR/MWh-yr & AR\\
+Electrolyser (PI) & 2{,}056\,EUR/kW & 3\% a year & 20, 2 & & IEA\\
+Hydrogen storage (PI) & \multicolumn{4}{@{}l}{113\,EUR per MWh of working capacity per year (depleted gas field, desk study)} & HY\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\paragraph{First-plant and target cases.} Technologies without commercial plants (the hydrogen chain, compressed air, CSP at scale, SMRs, 100-hour storage and enhanced geothermal) have a first-plant cost, from demonstrators or first contracts, and a target cost declared by their makers. We call the two cases PI and OB, from the Italian \emph{primo impianto} (first plant) and \emph{obiettivo} (target). In PI all these technologies are at first-plant cost, and 100-hour storage is off because no observed cost exists. In OB all of them are at target cost. OB is a lower bound for nuclear only on this axis, the cost of technologies without commercial plants: PV, wind and batteries keep today's costs in both cases, and because SMRs are at target cost too, OB can contain more nuclear than PI when large reactors are expensive (Section~\ref{sec:variants}). Large nuclear has the same cost in both cases.
+
+\subsection{Nuclear cost: the central case and the other cases}\label{sec:nuclear}
+The central case is Dukovany 5--6, two APR1000 reactors of Korea Hydro \& Nuclear Power (KHNP). Its overnight cost, 10{,}200\,EUR/kW net, is our sum of two public figures: the price of the engineering, procurement and construction (EPC) contract, which is in the European Commission's decision to open the in-depth investigation of the Czech state aid (case SA.117794, published on 27 May 2026; \citealp{ECDukovany2026}), and the owner's costs reported by Czech television \citep{CT24Dukovany}, which are not in the decision. The decision itself gives only a bracket for the overnight cost, and our figure is at its bottom. The Commission has not approved the two-unit aid package: the investigation is open. The value is built in seven steps.
+\begin{enumerate}\setlength\itemsep{1pt}
+\item \emph{Construction contract.} The EPC contract signed with KHNP in June 2025 is worth CZK\,407 billion \citep{WNNDukovanySigned2025}. The fuel contract is separate, CZK\,15--20 billion for about ten years, and is not inside the CZK\,407 billion \citep{ECDukovany2026,CT24Dukovany}.
+\item \emph{Owner's costs.} State preparation and owner's costs are CZK\,85 billion \citep{CT24Dukovany}, inside the Commission's bracket of EUR\,3.0--5.0 billion for development capital expenditure.
+\item \emph{Exchange rate.} At the 2025 average of the reference rate of the European Central Bank (ECB), 24.688\,CZK per euro \citep{EurostatFX}, CZK\,492 billion are EUR\,19.93 billion.
+\item \emph{Net capacity.} The sellable capacity is up to 976\,MWe per unit (1{,}055\,MWe is gross), 1{,}952\,MW in all, with 15.4\,TWh a year, a load factor of 90\% (recitals 40--41 of the decision).
+\item \emph{Overnight cost.} EUR\,19.93 billion over 1{,}952\,MW is 10{,}210\,EUR/kW net, rounded to 10{,}200 (our calculation); the EPC contract alone is 8{,}446\,EUR/kW net. The decision (recital 93) gives a bracket of EUR\,20--25 billion in 2024 prices for the overnight cost of both units, with EPC, fuel, owner's costs and contingency: 10{,}095--12{,}710\,EUR/kW net without fuel in 2025 euros. Our value is at the bottom of this bracket, that is a plant built without spending the contingency. The midpoint (11{,}400\,EUR/kW) and the top (12{,}700\,EUR/kW) of the bracket are cost cases.
+\item \emph{Time, life and operating cost.} The Czech financial model in the decision (recitals 89 and 95) has a construction phase of 9 years, 60 years of operation and an operating expenditure (OPEX) of 35--45\,EUR/MWh, which covers fixed O\&M, lifecycle investment, fuel, the waste account and decommissioning. We use the midpoint, 40\,EUR/MWh: 12.25 variable (fuel 7.5 and other variable costs 4.75) and 27.75 fixed at a 90\% load factor.
+\item \emph{Annual fixed cost.} With Eq.~\eqref{eq:rule}, $\phi(5\%,9)=1.255$ and $\mathrm{CRF}(5\%,60)=0.0528$ (our calculation),
+\begin{equation}
+\mathrm{fixN}=10{,}200\,\phi\,\mathrm{CRF}+27.75\times0.9\times8.76+\text{grid}=676+219+16=911\ \mathrm{EUR/kW\text{-}yr},
+\end{equation}
+where the grid term is the charge of 2\,EUR/MWh; fixN is 1{,}239\,EUR/kW-yr at 7\%.
+\end{enumerate}
+
+The other cost cases (Table~\ref{tab:cases}) keep the operating cost, the life and the availability of the central case and change the overnight cost and the build time, so they differ only in fixN and can be read on the value curve. Barakah is the December 2009 contract of USD\,20.4 billion for four units \citep{WNAuae}, revalued to 5{,}500\,EUR/kW including an uplift of 12.57\% for owner's costs (about 4{,}800 without it); it is a floor, because the final cost is not public. The Saeul and Shin Hanul figure, 2{,}965\,EUR/kW, is a budget and not a final cost (authors' estimate, see the audit file in \citealp{Repo}). The risk case is the median of four Western first-of-a-kind builds in 2025 euros per kW: Mochovce 3--4 about 8{,}756 \citep{WNNMochovce4}, Olkiluoto 3 about 9{,}064 \citep{NEIOL3}, Flamanville 3 about 10{,}300 \citep{EDFFlamanville2022} and Vogtle 3--4 (nominal costs from the cited sources, converted to 2025 euros as recorded in the audit history, \citealp{Repo}); the median is the mean of the two central values, 9{,}680\,EUR/kW (our calculation), with 15 years of construction. It excludes Hinkley Point C; with it the median would be about 10{,}300. Vogtle is 13{,}400\,EUR/kW with 10 years, the midpoint of the 13{,}100--13{,}700 range obtained when all financing is removed from the USD\,31 billion of capital and financing costs that the owners are projected to pay \citep{APVogtle2023}; the previous version used 15{,}540 because it had removed only part of the financing, so interest was counted twice. The figures of Barakah, Saeul, Flamanville and Mochovce are per gross kW and are understated by about 4--7\% against a net basis.
+
+\begin{table}[!tb]
+\centering\footnotesize
+\caption{Nuclear cost cases: overnight cost, build time and annual fixed cost fixN from Eq.~\eqref{eq:rule}, with the operating cost, life (60 years) and availability of the central case.}\label{tab:cases}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Cost case & Overnight cost & Build & fixN at 5\% & fixN at 7\%\\
+ & EUR/kW & years & EUR/kW-yr & EUR/kW-yr\\
+\midrule
+Saeul and Shin Hanul budget & 2{,}965 & 8 & 426 & 519\\
+Barakah (floor) & 5{,}500 & 8 & 590 & 759\\
+Dukovany contract, 7 years & 10{,}200 & 7 & 877 & 1{,}168\\
+Dukovany contract, central & 10{,}200 & 9 & 911 & 1{,}239\\
+Risk median & 9{,}680 & 15 & 988 & 1{,}434\\
+Dukovany, midpoint of the Commission bracket & 11{,}400 & 9 & 991 & 1{,}357\\
+Dukovany, top of the Commission bracket & 12{,}700 & 9 & 1{,}077 & 1{,}484\\
+Vogtle & 13{,}400 & 10 & 1{,}147 & 1{,}603\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+SMRs follow the same rule with the costs of the Darlington BWRX-300 project, 17{,}200\,EUR/kW for unit 1 (PI) and 11{,}700\,EUR/kW for the four-unit programme (OB) \citep{POWERDarlington2025}, a build time of 5 years and the operating cost of large reactors as a proxy, because no value for SMRs was found: 1{,}264 and 934\,EUR/kW-yr at 5\%. In this paper nuclear capacity always includes SMRs.
+
+\subsection{The value-curve method}\label{sec:method}
+Let $C(N;f)$ be the minimum system cost per MWh when nuclear capacity is fixed at $N$ and its annual fixed cost is $f$. With $N$ fixed, $f$ multiplies a constant in the objective and changes neither the feasible set nor the optimal choice of everything else. For any other fixed cost $f'$, therefore,
+\begin{equation}
+C(N;f')=C(N;f)+\frac{(f'-f)\,N}{E},\label{eq:identity}
+\end{equation}
+with $E=356.6$\,TWh a year the energy by which costs are divided ($C$ in EUR/MWh, $E$ in MWh, $N$ in kW, $f$ in EUR/kW-yr). One set of runs at the central cost therefore gives the cost curve of every cost case that differs only in fixN. The marginal value of the block of capacity between $N_1$ and $N_2$ is the fixed cost at which the system is indifferent between having the block or not:
+\begin{equation}
+v(N_1,N_2)=f-\frac{\big[C(N_2;f)-C(N_1;f)\big]\,E}{N_2-N_1}.\label{eq:value}
+\end{equation}
+By Eq.~\eqref{eq:identity}, $v$ does not depend on $f$: it is a property of the rest of the system. $C$ is the optimal value of a linear programme as a function of a right-hand side, hence convex in $N$, so $v$ falls as $N$ grows; a block is worth building when its value exceeds the fixed cost of nuclear, and the optimal capacity for a cost case is where the curve crosses that cost.
+
+We computed $C(N)$ for $N=0,4,\dots,40$ and 48\,GW, in PI and OB, at 5\% and 7\%. For each cost case we report the best $N$ on this 4\,GW grid and the range of grid points whose cost is within 1\% of the minimum, which measures how flat the optimum is. Separate runs with free capacity give the exact optimum of the central case and of the variants.
+
+The fixed capacity $N$ is that of large reactors. In PI, SMRs at their first-plant cost remain available and play no material role. In OB we computed two curves: one with SMRs switched off, which is the value of nuclear as a whole and is the OB curve used in the paper unless stated, and one with SMRs available at their target cost, which shows the substitution between large and small reactors (Section~\ref{sec:smr}).
