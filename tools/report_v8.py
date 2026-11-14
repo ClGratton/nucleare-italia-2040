@@ -140,7 +140,7 @@ def fig_value(lang):
         for name, k, y, key in (('Dukovany contract, central', 10200, 9, 'cen'), ('top', 12700, 9, 'top'), ('Vogtle', 13400, 10, 'vog'), ('Barakah', 5500, 8, 'bar')):
             fx = fixN(k, r, y); ax.axhline(fx, color=INK if key == 'cen' else MUT, lw=0.9 if key == 'cen' else 0.5, ls='-' if key == 'cen' else (0, (4, 3)))
             below = key == 'top'
-            ax.text(47.5, fx - 14 if below else fx + 12, f"{t[key]} {fx:,.0f}".replace(',', '.' if lang == 'it' else ','), ha='right', va='top' if below else 'bottom', fontsize=6.8,
+            ax.text(47.5, fx - 14 if below else fx + 12, t[key] + ' ' + f"{fx:,.0f}".replace(',', '.' if lang == 'it' else ','), ha='right', va='top' if below else 'bottom', fontsize=6.8,
                     color=INK if key == 'cen' else MUT, bbox=dict(fc='white', ec='none', pad=0.4, alpha=0.85))
         ax.set_title(ttl, fontsize=8.5, color=INK, loc='left'); ax.set_xlim(0, 48); ax.set_ylim(0, 1700); ax.set_xlabel(t['x']); ax.grid(axis='y', color=GRID, lw=0.5); ax.set_axisbelow(True)
     axs[0].set_ylabel(t['y']); axs[0].legend(frameon=False, fontsize=6.8, loc='lower left'); numfmt(axs[0], lang)
