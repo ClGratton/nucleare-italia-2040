@@ -50,6 +50,21 @@ Marginal value of a block of nuclear capacity = annual fixed cost (EUR/kW-yr) at
 | 40 | 122.926 | 180 |
 | 48 | 139.329 |  |
 
+**OB 5%, no SMR** (runs at fixN 911.0)
+
+| N GW | Cost EUR/MWh | Marginal value of the next block EUR/kW-yr |
+|---|---|---|
+| 0 | 114.388 | 1145 |
+| 4 | 111.760 | 1087 |
+| 8 | 109.790 | 1058 |
+| 12 | 108.141 | 965 |
+| 16 | 107.532 | 877 |
+| 20 | 107.911 | 812 |
+| 24 | 109.024 | 717 |
+| 28 | 111.202 | 663 |
+| 32 | 113.980 | 616 |
+| 36 | 117.292 |  |
+
 **PI 7%** (runs at fixN 1239.3)
 
 | N GW | Cost EUR/MWh | Marginal value of the next block EUR/kW-yr |
@@ -84,6 +99,21 @@ Marginal value of a block of nuclear capacity = annual fixed cost (EUR/kW-yr) at
 | 40 | 160.818 | 201 |
 | 48 | 184.120 |  |
 
+**OB 7%, no SMR** (runs at fixN 1239.3)
+
+| N GW | Cost EUR/MWh | Marginal value of the next block EUR/kW-yr |
+|---|---|---|
+| 0 | 133.789 | 1360 |
+| 4 | 132.436 | 1301 |
+| 8 | 131.744 | 1262 |
+| 12 | 131.491 | 1148 |
+| 16 | 132.516 | 1054 |
+| 20 | 134.598 | 981 |
+| 24 | 137.500 | 858 |
+| 28 | 141.778 | 801 |
+| 32 | 146.689 | 740 |
+| 36 | 152.289 |  |
+
 ## 3. Cost cases read on the value curves
 
 fixN = capex x idc(r, y) x CRF(r, 60) + 27.75 x 0.9 x 8.76 + grid; O&M, availability and life as in the central case for every cost case.
@@ -115,6 +145,19 @@ fixN = capex x idc(r, y) x CRF(r, 60) + 27.75 x 0.9 x 8.76 + grid; O&M, availabi
 | Risk median | 9,680 | 15 | 988 | 4 | 109.11 | 5.28 | 4-8 GW |
 | Vogtle | 13,400 | 10 | 1147 | 4 | 110.89 | 3.50 | 4-4 GW |
 
+**OB 5%, no SMR**
+
+| Cost case | Capex EUR/kW | Years | fixN | Best N (4 GW grid) | Cost | Saving vs none | Within 1% of minimum |
+|---|---|---|---|---|---|---|---|
+| Dukovany official, central | 10,200 | 9 | 911 | 16 | 107.53 | 6.85 | 12-20 GW |
+| Dukovany, 7 years | 10,200 | 7 | 877 | 20 | 105.99 | 8.40 | 12-24 GW |
+| Dukovany, top of EC bracket | 12,700 | 9 | 1077 | 8 | 113.51 | 0.88 | 0-12 GW |
+| v7 central capex | 8,540 | 7 | 772 | 24 | 99.69 | 14.70 | 20-28 GW |
+| Barakah | 5,500 | 8 | 590 | 36 | 84.88 | 29.51 | 32-36 GW |
+| Saeul budget | 2,965 | 8 | 426 | 36 | 68.34 | 46.05 | 36-36 GW |
+| Risk median | 9,680 | 15 | 988 | 12 | 110.74 | 3.64 | 8-16 GW |
+| Vogtle | 13,400 | 10 | 1147 | 0 | 114.39 | 0.00 | 0-8 GW |
+
 **PI 7%**
 
 | Cost case | Capex EUR/kW | Years | fixN | Best N (4 GW grid) | Cost | Saving vs none | Within 1% of minimum |
@@ -139,6 +182,19 @@ fixN = capex x idc(r, y) x CRF(r, 60) + 27.75 x 0.9 x 8.76 + grid; O&M, availabi
 | Barakah | 5,500 | 8 | 759 | 32 | 103.57 | 30.22 | 28-36 GW |
 | Saeul budget | 2,965 | 8 | 519 | 36 | 79.60 | 54.19 | 36-40 GW |
 | Risk median | 9,680 | 15 | 1434 | 4 | 133.44 | 0.34 | 0-4 GW |
+| Vogtle | 13,400 | 10 | 1603 | 0 | 133.79 | 0.00 | 0-0 GW |
+
+**OB 7%, no SMR**
+
+| Cost case | Capex EUR/kW | Years | fixN | Best N (4 GW grid) | Cost | Saving vs none | Within 1% of minimum |
+|---|---|---|---|---|---|---|---|
+| Dukovany official, central | 10,200 | 9 | 1239 | 12 | 131.49 | 2.30 | 4-16 GW |
+| Dukovany, 7 years | 10,200 | 7 | 1168 | 12 | 129.10 | 4.69 | 8-16 GW |
+| Dukovany, top of EC bracket | 12,700 | 9 | 1484 | 0 | 133.79 | 0.00 | 0-0 GW |
+| v7 central capex | 8,540 | 7 | 1017 | 20 | 122.13 | 11.66 | 16-24 GW |
+| Barakah | 5,500 | 8 | 759 | 32 | 103.57 | 30.22 | 28-36 GW |
+| Saeul budget | 2,965 | 8 | 519 | 36 | 79.60 | 54.19 | 36-36 GW |
+| Risk median | 9,680 | 15 | 1434 | 0 | 133.79 | 0.00 | 0-4 GW |
 | Vogtle | 13,400 | 10 | 1603 | 0 | 133.79 | 0.00 | 0-0 GW |
 
 ## 4. Variants (one assumption changed, 5%, free optimum)
