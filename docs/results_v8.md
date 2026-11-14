@@ -123,8 +123,9 @@ fixN = capex x idc(r, y) x CRF(r, 60) + 27.75 x 0.9 x 8.76 + grid; O&M, availabi
 
 | Cost case | Capex EUR/kW | Years | fixN | Best N (4 GW grid) | Cost | Saving vs none | Within 1% of minimum |
 |---|---|---|---|---|---|---|---|
-| Dukovany official, central | 10,200 | 9 | 911 | 24 | 114.44 | 13.33 | 16-28 GW |
+| Dukovany contract, central | 10,200 | 9 | 911 | 24 | 114.44 | 13.33 | 16-28 GW |
 | Dukovany, 7 years | 10,200 | 7 | 877 | 24 | 112.13 | 15.64 | 20-28 GW |
+| Dukovany, midpoint of EC bracket | 11,400 | 9 | 991 | 16 | 118.82 | 8.95 | 12-24 GW |
 | Dukovany, top of EC bracket | 12,700 | 9 | 1077 | 12 | 122.65 | 5.11 | 8-20 GW |
 | v7 central capex | 8,540 | 7 | 772 | 28 | 104.02 | 23.75 | 28-32 GW |
 | Barakah | 5,500 | 8 | 590 | 36 | 86.93 | 40.84 | 36-36 GW |
@@ -136,8 +137,9 @@ fixN = capex x idc(r, y) x CRF(r, 60) + 27.75 x 0.9 x 8.76 + grid; O&M, availabi
 
 | Cost case | Capex EUR/kW | Years | fixN | Best N (4 GW grid) | Cost | Saving vs none | Within 1% of minimum |
 |---|---|---|---|---|---|---|---|
-| Dukovany official, central | 10,200 | 9 | 911 | 16 | 107.53 | 6.85 | 4-20 GW |
+| Dukovany contract, central | 10,200 | 9 | 911 | 16 | 107.53 | 6.85 | 4-20 GW |
 | Dukovany, 7 years | 10,200 | 7 | 877 | 20 | 105.99 | 8.40 | 12-24 GW |
+| Dukovany, midpoint of EC bracket | 11,400 | 9 | 991 | 4 | 109.13 | 5.26 | 4-8 GW |
 | Dukovany, top of EC bracket | 12,700 | 9 | 1077 | 4 | 110.10 | 4.29 | 4-4 GW |
 | v7 central capex | 8,540 | 7 | 772 | 24 | 99.69 | 14.70 | 20-28 GW |
 | Barakah | 5,500 | 8 | 590 | 36 | 84.88 | 29.51 | 32-36 GW |
@@ -149,8 +151,9 @@ fixN = capex x idc(r, y) x CRF(r, 60) + 27.75 x 0.9 x 8.76 + grid; O&M, availabi
 
 | Cost case | Capex EUR/kW | Years | fixN | Best N (4 GW grid) | Cost | Saving vs none | Within 1% of minimum |
 |---|---|---|---|---|---|---|---|
-| Dukovany official, central | 10,200 | 9 | 911 | 16 | 107.53 | 6.85 | 12-20 GW |
+| Dukovany contract, central | 10,200 | 9 | 911 | 16 | 107.53 | 6.85 | 12-20 GW |
 | Dukovany, 7 years | 10,200 | 7 | 877 | 20 | 105.99 | 8.40 | 12-24 GW |
+| Dukovany, midpoint of EC bracket | 11,400 | 9 | 991 | 12 | 110.82 | 3.57 | 8-16 GW |
 | Dukovany, top of EC bracket | 12,700 | 9 | 1077 | 8 | 113.51 | 0.88 | 0-12 GW |
 | v7 central capex | 8,540 | 7 | 772 | 24 | 99.69 | 14.70 | 20-28 GW |
 | Barakah | 5,500 | 8 | 590 | 36 | 84.88 | 29.51 | 32-36 GW |
@@ -162,8 +165,9 @@ fixN = capex x idc(r, y) x CRF(r, 60) + 27.75 x 0.9 x 8.76 + grid; O&M, availabi
 
 | Cost case | Capex EUR/kW | Years | fixN | Best N (4 GW grid) | Cost | Saving vs none | Within 1% of minimum |
 |---|---|---|---|---|---|---|---|
-| Dukovany official, central | 10,200 | 9 | 1239 | 16 | 141.01 | 8.58 | 12-20 GW |
+| Dukovany contract, central | 10,200 | 9 | 1239 | 16 | 141.01 | 8.58 | 12-20 GW |
 | Dukovany, 7 years | 10,200 | 7 | 1168 | 16 | 137.82 | 11.77 | 12-24 GW |
+| Dukovany, midpoint of EC bracket | 11,400 | 9 | 1357 | 12 | 145.49 | 4.09 | 8-16 GW |
 | Dukovany, top of EC bracket | 12,700 | 9 | 1484 | 4 | 148.49 | 1.10 | 0-12 GW |
 | v7 central capex | 8,540 | 7 | 1017 | 28 | 128.37 | 21.21 | 20-28 GW |
 | Barakah | 5,500 | 8 | 759 | 36 | 106.06 | 43.52 | 32-36 GW |
@@ -175,8 +179,9 @@ fixN = capex x idc(r, y) x CRF(r, 60) + 27.75 x 0.9 x 8.76 + grid; O&M, availabi
 
 | Cost case | Capex EUR/kW | Years | fixN | Best N (4 GW grid) | Cost | Saving vs none | Within 1% of minimum |
 |---|---|---|---|---|---|---|---|
-| Dukovany official, central | 10,200 | 9 | 1239 | 4 | 131.26 | 2.53 | 4-16 GW |
+| Dukovany contract, central | 10,200 | 9 | 1239 | 4 | 131.26 | 2.53 | 4-16 GW |
 | Dukovany, 7 years | 10,200 | 7 | 1168 | 12 | 129.10 | 4.69 | 8-16 GW |
+| Dukovany, midpoint of EC bracket | 11,400 | 9 | 1357 | 4 | 132.58 | 1.21 | 0-4 GW |
 | Dukovany, top of EC bracket | 12,700 | 9 | 1484 | 0 | 133.79 | 0.00 | 0-4 GW |
 | v7 central capex | 8,540 | 7 | 1017 | 20 | 122.13 | 11.66 | 16-24 GW |
 | Barakah | 5,500 | 8 | 759 | 32 | 103.57 | 30.22 | 28-36 GW |
@@ -188,8 +193,9 @@ fixN = capex x idc(r, y) x CRF(r, 60) + 27.75 x 0.9 x 8.76 + grid; O&M, availabi
 
 | Cost case | Capex EUR/kW | Years | fixN | Best N (4 GW grid) | Cost | Saving vs none | Within 1% of minimum |
 |---|---|---|---|---|---|---|---|
-| Dukovany official, central | 10,200 | 9 | 1239 | 12 | 131.49 | 2.30 | 4-16 GW |
+| Dukovany contract, central | 10,200 | 9 | 1239 | 12 | 131.49 | 2.30 | 4-16 GW |
 | Dukovany, 7 years | 10,200 | 7 | 1168 | 12 | 129.10 | 4.69 | 8-16 GW |
+| Dukovany, midpoint of EC bracket | 11,400 | 9 | 1357 | 4 | 133.76 | 0.03 | 0-8 GW |
 | Dukovany, top of EC bracket | 12,700 | 9 | 1484 | 0 | 133.79 | 0.00 | 0-0 GW |
 | v7 central capex | 8,540 | 7 | 1017 | 20 | 122.13 | 11.66 | 16-24 GW |
 | Barakah | 5,500 | 8 | 759 | 32 | 103.57 | 30.22 | 28-36 GW |
@@ -199,20 +205,22 @@ fixN = capex x idc(r, y) x CRF(r, 60) + 27.75 x 0.9 x 8.76 + grid; O&M, availabi
 
 ## 4. Variants (one assumption changed, 5%, free optimum)
 
-| Variant | PI nuclear GW | PI saving | OB nuclear GW | OB saving |
-|---|---|---|---|---|
-| Central | 23.2 | 13.35 | 15.7 | 6.86 |
-| Exports earn nothing | 25.4 | 15.26 | 18.3 | 8.58 |
-| Exports earn the import price (115.94) | 18.0 | 11.86 | 14.1 | 5.56 |
-| Net imports allowed up to 10% of demand | 23.4 | 11.81 | 12.6 | 4.09 |
-| Net exports allowed | 22.8 | 13.68 | 15.8 | 6.87 |
-| Critical weeks chosen by low PV+wind (v7) | 18.2 | 10.45 | 14.5 | 6.50 |
-| v7 import rule: 38% capacity credit, no exports | 11.9 | 5.96 | 7.2 | 2.14 |
-| Batteries at the MACSE award price | 18.1 | 11.38 | 14.0 | 4.99 |
-| Eight weather years (2016-2019 + 1994, 1998, 2014, 2015) | 27.1 | 17.49 | 15.5 | 7.97 |
-| Nuclear built in 7 years | 26.7 | 15.75 | 18.2 | 8.48 |
-| Nuclear at the top of the official bracket (12,700 EUR/kW) | 14.0 | 5.21 | 14.4 | 5.89 |
-| Nuclear at the v7 inputs (fixN 670) | 33.6 | 32.31 | 28.4 | 21.62 |
+The rows 'v7 trade rule' and 'v7 nuclear inputs' change several assumptions together (see the label); every other row changes one.
+
+| Variant | PI nuclear GW | PI saving | PI cost with nuclear | PI cost without | OB nuclear GW | OB saving | OB cost with nuclear | OB cost without |
+|---|---|---|---|---|---|---|---|---|
+| Central | 23.2 | 13.35 | 114.42 | 127.77 | 15.7 | 6.86 | 107.53 | 114.39 |
+| Exports earn nothing | 25.4 | 15.26 | 117.20 | 132.46 | 18.3 | 8.58 | 110.50 | 119.08 |
+| Exports earn the import price (115.94) | 18.0 | 11.86 | 111.10 | 122.96 | 14.1 | 5.56 | 103.71 | 109.27 |
+| Net imports allowed up to 10% of demand | 23.4 | 11.81 | 114.11 | 125.92 | 12.6 | 4.09 | 107.12 | 111.21 |
+| Net exports allowed | 22.8 | 13.68 | 114.09 | 127.77 | 15.8 | 6.87 | 107.52 | 114.39 |
+| Critical weeks chosen by low PV+wind (v7) | 18.2 | 10.45 | 113.64 | 124.09 | 14.5 | 6.50 | 107.03 | 113.53 |
+| v7 trade rule (bundle): 38% foreign capacity credit and availability in critical weeks, weeks chosen by low PV+wind, no exports, no annual balance, import price x1.17 in those weeks | 11.9 | 5.96 | 109.99 | 115.95 | 7.2 | 2.14 | 103.38 | 105.52 |
+| Batteries at the MACSE award price | 18.1 | 11.38 | 108.92 | 120.31 | 14.0 | 4.99 | 105.09 | 110.08 |
+| Eight weather years (2016-2019 + 1994, 1998, 2014, 2015) | 27.1 | 17.49 | 118.62 | 136.11 | 15.5 | 7.97 | 110.71 | 118.68 |
+| Nuclear built in 7 years | 26.7 | 15.75 | 112.02 | 127.77 | 18.2 | 8.48 | 105.90 | 114.39 |
+| Nuclear at the top of the official bracket (12,700 EUR/kW) | 14.0 | 5.21 | 122.56 | 127.77 | 14.4 | 5.89 | 108.50 | 114.39 |
+| Nuclear at the v7 inputs (bundle: 8,540 EUR/kW, 7 y, 80-year life, O&M 32, availability 92%; fixN 670) | 33.6 | 32.31 | 95.46 | 127.77 | 28.4 | 21.62 | 92.77 | 114.39 |
 
 ## 5. Central systems (3 h, 5%)
 
