@@ -126,3 +126,7 @@ Italian: no long or medium dashes; plain words; no question headings; no filler;
 - OB against PI: at the top of the bracket OB has more nuclear than PI (14.4 against 14.0 GW) because OB also puts small reactors at target cost.
 - The flat optimum explains the movements of a few GW, not the whole 74%-29% swing: 36 GW costs 4.3% more than the optimum in PI; the large swings came from changed rules, costs and demand.
 - Time steps: 4 years x 365 days x 8 = 11,680 steps at 3 hours.
+
+## 11. Trade rule framing (15 November, overrides "favours nuclear" anywhere above)
+- The central rule (no foreign capacity in the critical weeks) is NOT described as a choice that favours nuclear. Reason: the critical weeks fall almost all in November-January (11 of 12 in 2016-2019, one in August); in 2024 85% of Italy's imports came from Switzerland (43.1%) and France (41.6%) (Il Sole 24 Ore); in winter France has its peak and its firm capacity is nuclear; Switzerland was a net importer almost every day of winter 2025/26 with Goesgen offline (economiesuisse); France was a net importer in 2022 when reactors were stopped (Banque de France). Relying on imports in those weeks means relying largely on foreign nuclear; a system without Italian nuclear built that way imports nuclear.
+- The v7 trade rule stays as a variant with its price. Its direction as a limit is uncertain (depends on free foreign winter capacity in 2040); the partial case is the 38% credit with balance kept: 17.9 GW PI, 14.1 GW OB.
