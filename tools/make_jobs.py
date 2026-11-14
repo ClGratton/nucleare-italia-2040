@@ -98,19 +98,6 @@ def review_checks(step=3):
         sp = base(cs, step); sp['techs'] = 'techs_v8_grid350.json'; out.append(job(f"v8_{cs}_r5_grid350_opt_h{step}", sp))
     return out
 
-def costs_2040(step=3, Ns=(0, 4, 8, 12, 16, 20, 24, 28, 32)):
-    """PV, onshore wind, batteries and first-plant electrolysers at 2040 costs (model/techs_v8_2040.json), 5%. Value curves for PI and for OB
-    with SMRs switched off (large reactors only), plus free optima with SMRs available. Nuclear series learning is read on these curves."""
-    out = []
-    for cs in ('PI', 'OB'):
-        for N in Ns:
-            sp = base(cs, step, nuc=(N > 0)); sp['techs'] = 'techs_v8_2040.json'
-            if cs == 'OB': sp['off'] = sp['off'] + ['SMR']
-            if N > 0: sp['N_fix'] = float(N)
-            out.append(job(f"v8_{cs}_r5_c2040_{'nosmr_' if cs == 'OB' and N > 0 else ''}N{N:02d}_h{step}", sp))
-        sp = base(cs, step); sp['techs'] = 'techs_v8_2040.json'; out.append(job(f"v8_{cs}_r5_c2040_opt_h{step}", sp))
-    return out
-
 def write(name, jobs):
     p = os.path.join(ROOT, 'jobs', name); json.dump(jobs, open(p, 'w'), indent=1); print(name, len(jobs), 'jobs')
 
@@ -123,5 +110,3 @@ if __name__ == '__main__':
     write('batch5_ob_without_smr_h3.json', ob_without_smr(3))
     write('batch6_review_checks_h3.json', review_checks(3))
     write('smoke6_h12.json', review_checks(12))
-    write('batch7_costs_2040_h3.json', costs_2040(3))
-    write('smoke7_h12.json', [j for j in costs_2040(12) if j['tag'].endswith(('opt_h12', 'N00_h12'))])

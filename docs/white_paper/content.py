@@ -506,7 +506,6 @@ b([
 ])
 p("<b>Limiti che favoriscono il nucleare.</b>")
 b([
- "<b>Costi fermi a oggi fino al 2040.</b> Fotovoltaico, eolico, batterie ed elettrolizzatori restano ai costi di oggi. Anche il nucleare è ai costi di oggi, ma la tendenza osservata dei primi è in discesa. Una variante con i costi al 2040 è in preparazione.",
  "<b>Tetti al fotovoltaico.</b> I tetti al fotovoltaico a terra e all'agrivoltaico sono una scelta nostra, e nel sistema PI senza nucleare tutti questi blocchi sono al tetto.",
  "<b>Flessibilità della domanda.</b> È limitata alla ricarica intelligente del 25% delle auto elettriche.",
  "<b>Guasti di modo comune.</b> Il modello non ha fermate contemporanee di più reattori per la stessa causa.",
@@ -523,6 +522,7 @@ b([
 p("<b>Limiti di direzione non nota.</b>")
 b([
  "<b>Costo di rete.</b> È un'ipotesi degli autori, non un dato di Terna, e copre solo la trasmissione. Ogni nuovo kW di fotovoltaico e di eolico a terra paga circa 240 €/kW (13 €/MWh per il fotovoltaico e 8 €/MWh per l'eolico, su 40 anni); i nuovi kW oltre 137 GW di eolico e fotovoltaico in totale pagano un secondo onere di circa 236 €/kW. L'eolico in mare non paga questo onere, il nucleare paga 2 €/MWh. Nel sistema PI senza nucleare la media su tutto il nuovo fotovoltaico ed eolico è circa 375 €/kW. Il Piano di sviluppo di Terna, oltre 23 miliardi di euro per 65 GW di rinnovabili in più al 2030 [@ternapds], implica in media circa 350 €/kW. Il confronto non dice in che direzione sbagli il nostro valore. Una verifica con circa 340 €/kW su ogni nuovo kW e il secondo onere oltre 108 GW dà 26,7 GW (PI) e 19,1 GW (OB), a passo di 3 ore.",
+ "<b>Costi di oggi per tutte le fonti.</b> Nessuna tecnologia ha riduzioni di costo al 2040, nemmeno il nucleare, salvo i costi obiettivo del caso OB. Le proiezioni per fotovoltaico, batterie e nucleare costruito in serie scendono tutte, ma nessuna è un costo osservato, e lo studio non ne usa nessuna.",
  "<b>Regola sugli scambi.</b> Il caso centrale non conta su centrali estere nelle settimane critiche, che in inverno sono in buona parte nucleari (sezione 2). Con la regola della versione 7 il nucleare è 11,9 GW (PI) e 7,2 GW (OB) e il sistema costa meno: 4,44 €/MWh in meno con nucleare e 11,82 senza nel caso PI. La direzione dipende da quanta capacità libera avranno i vicini in inverno nel 2040; con il 38% della capacità estera e il pareggio annuo il nucleare è 17,9 GW (PI) e 14,1 GW (OB).",
  "<b>Quota della domanda.</b> La quota del nucleare conta anche l'energia nucleare esportata. Gonfia la quota, non i GW.",
  "<b>Crediti di capacità e tecnologie minori.</b> Sono ipotesi i crediti di capacità (batterie alla potenza per 4/6,6, idroelettrico a 15 GW pieni), i tempi di cantiere di diverse tecnologie minori e il tetto di 10 GW al solare termodinamico.",

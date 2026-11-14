@@ -142,3 +142,7 @@ Italian: no long or medium dashes; plain words; no question headings; no filler;
 - "Five cost cases from the contract cost upward" (the contract included); four above it.
 - The 14.0-27.1 GW range of the variants excludes the v7 nuclear-inputs bundle (33.6 GW).
 - Value curve: the 462 EUR/kW-yr block is 36-40 GW.
+
+## 13. Costs to 2040 (15 November); overrides section 12 where it disagrees
+- Decision: no 2040 cost projection is used for any technology. Projections for PV, batteries and nuclear series (and others) all point down and none is an observed cost; using them for some technologies and not for others would break the one-cost-rule symmetry. All technologies stay at today's costs (OB target costs aside). In the limits this item has unknown direction, not "favours nuclear". The batch-7 variant was withdrawn before running.
+- Battery cost: the 3-hour variant with batteries at the MACSE price (about 95 EUR/kWh, 6.6 h) gives 18.1 GW (PI) and 14.0 GW (OB) against 23.2 and 15.7: it moves the optimum but keeps it at or above about 15 GW in PI and near it in OB. A 12-hour test cannot show battery effects (4-hour batteries inside 12-hour steps) and must not be quoted.
