@@ -72,10 +72,11 @@ for lab, (c, f0, rt) in CUR.items():
 
 W("\n## 4. Variants (one assumption changed, 5%, free optimum)\n")
 VN = [('', 'Central'), ('exp0', 'Exports earn nothing'), ('exppar', 'Exports earn the import price (115.94)'), ('x10', 'Net imports allowed up to 10% of demand'),
-      ('xfree', 'Net exports allowed'), ('vreweek', 'Critical weeks chosen by low PV+wind (v7)'), ('v7imp', 'v7 import rule: 38% capacity credit, no exports'),
+      ('xfree', 'Net exports allowed'), ('vreweek', 'Critical weeks chosen by low PV+wind (v7)'), ('v7imp', 'v7 trade rule (bundle): 38% foreign capacity credit and availability in critical weeks, weeks chosen by low PV+wind, no exports, no annual balance, import price x1.17 in those weeks'),
       ('macse', 'Batteries at the MACSE award price'), ('wx8', 'Eight weather years (2016-2019 + 1994, 1998, 2014, 2015)'),
-      ('nuc7y', 'Nuclear built in 7 years'), ('nuctop', 'Nuclear at the top of the official bracket (12,700 EUR/kW)'), ('nucv7', 'Nuclear at the v7 inputs (fixN 670)')]
-W("| Variant | PI nuclear GW | PI saving | OB nuclear GW | OB saving |\n|---|---|---|---|---|")
+      ('nuc7y', 'Nuclear built in 7 years'), ('nuctop', 'Nuclear at the top of the official bracket (12,700 EUR/kW)'), ('nucv7', 'Nuclear at the v7 inputs (bundle: 8,540 EUR/kW, 7 y, 80-year life, O&M 32, availability 92%; fixN 670)')]
+W("The rows 'v7 trade rule' and 'v7 nuclear inputs' change several assumptions together (see the label); every other row changes one.\n")
+W("| Variant | PI nuclear GW | PI saving | PI cost with nuclear | PI cost without | OB nuclear GW | OB saving | OB cost with nuclear | OB cost without |\n|---|---|---|---|---|---|---|---|---|")
 VAR = {}
 for key, lab in VN:
     row = [lab]
@@ -84,8 +85,8 @@ for key, lab in VN:
         if key.startswith('nuc'): b = f'v8_{cs}_r5_N00_h3'
         if a in R:
             g = nuc(a)[0]; sv = cost(b) - cost(a) if b in R else None; VAR[(key, cs)] = (g, sv)
-            row += [f"{g:.1f}", '' if sv is None else f"{sv:.2f}"]
-        else: row += ['', '']
+            row += [f"{g:.1f}", '' if sv is None else f"{sv:.2f}", f"{cost(a):.2f}", '' if b not in R else f"{cost(b):.2f}"]
+        else: row += ['', '', '', '']
     W('| ' + ' | '.join(row) + ' |')
 
 W("\n## 5. Central systems (3 h, 5%)\n")
@@ -117,11 +118,17 @@ INK = '#1f2933'; MUT = '#6b7785'; GRID = '#e3e7ec'; BLUE = '#2a6fb0'; ORA = '#c8
 plt.rcParams.update({'font.size': 8.5, 'axes.edgecolor': MUT, 'axes.labelcolor': INK, 'xtick.color': MUT, 'ytick.color': MUT, 'axes.spines.top': False, 'axes.spines.right': False,
                      'font.family': 'DejaVu Sans', 'axes.linewidth': 0.6})
 T = {'it': dict(x='Potenza nucleare (GW)', y='Valore del blocco successivo (€/kW all\'anno)', c5='capitale al 5%', c7='capitale al 7%', pi='Primo impianto (PI)', ob='Obiettivo (OB), senza piccoli reattori',
-                obs='Obiettivo (OB), con piccoli reattori disponibili', cen='Dukovany ufficiale', top='massimo intervallo UE', vog='Vogtle', bar='Barakah', yc='Costo del sistema (€/MWh)', band='entro l\'1% dal minimo',
+                obs='Obiettivo (OB), con piccoli reattori disponibili', cen='Dukovany, contratto', top='massimo intervallo UE', vog='Vogtle', bar='Barakah', yc='Costo del sistema (€/MWh)', band='entro l\'1% dal minimo',
                 var='Nucleare ottimo (GW)'),
      'en': dict(x='Nuclear capacity (GW)', y='Value of the next block (EUR/kW-yr)', c5='5% cost of capital', c7='7% cost of capital', pi='First plant (PI)', ob='Target (OB), no SMRs',
-                obs='Target (OB), SMRs available', cen='Dukovany official', top='top of EC bracket', vog='Vogtle', bar='Barakah', yc='System cost (EUR/MWh)', band='within 1% of the minimum',
+                obs='Target (OB), SMRs available', cen='Dukovany contract', top='top of EC bracket', vog='Vogtle', bar='Barakah', yc='System cost (EUR/MWh)', band='within 1% of the minimum',
                 var='Optimal nuclear (GW)')}
+def numfmt(ax, lang, dec=0):
+    from matplotlib.ticker import FuncFormatter
+    def f(v, _):
+        s = f"{v:,.{dec}f}"
+        return s.replace(',', 'X').replace('.', ',').replace('X', '.') if lang == 'it' else s
+    ax.yaxis.set_major_formatter(FuncFormatter(f))
 def fig_value(lang):
     t = T[lang]; fig, axs = plt.subplots(1, 2, figsize=(7.2, 3.3), sharey=True)
     for ax, rt, r, ttl in ((axs[0], 'r5', 0.05, t['c5']), (axs[1], 'r7', 0.07, t['c7'])):
@@ -130,13 +137,13 @@ def fig_value(lang):
             c, f0, _ = CUR[lab]; xs = []; ys = []
             for a, b, v in marginal(c, f0): xs += [a, b]; ys += [v, v]
             ax.plot(xs, ys, color=col, ls=ls, lw=1.6 if ls == '-' else 1.1, label=name)
-        for name, k, y, key in (('Dukovany official, central', 10200, 9, 'cen'), ('top', 12700, 9, 'top'), ('Vogtle', 13400, 10, 'vog'), ('Barakah', 5500, 8, 'bar')):
+        for name, k, y, key in (('Dukovany contract, central', 10200, 9, 'cen'), ('top', 12700, 9, 'top'), ('Vogtle', 13400, 10, 'vog'), ('Barakah', 5500, 8, 'bar')):
             fx = fixN(k, r, y); ax.axhline(fx, color=INK if key == 'cen' else MUT, lw=0.9 if key == 'cen' else 0.5, ls='-' if key == 'cen' else (0, (4, 3)))
             below = key == 'top'
             ax.text(47.5, fx - 14 if below else fx + 12, f"{t[key]} {fx:,.0f}".replace(',', '.' if lang == 'it' else ','), ha='right', va='top' if below else 'bottom', fontsize=6.8,
                     color=INK if key == 'cen' else MUT, bbox=dict(fc='white', ec='none', pad=0.4, alpha=0.85))
         ax.set_title(ttl, fontsize=8.5, color=INK, loc='left'); ax.set_xlim(0, 48); ax.set_ylim(0, 1700); ax.set_xlabel(t['x']); ax.grid(axis='y', color=GRID, lw=0.5); ax.set_axisbelow(True)
-    axs[0].set_ylabel(t['y']); axs[0].legend(frameon=False, fontsize=6.8, loc='lower left')
+    axs[0].set_ylabel(t['y']); axs[0].legend(frameon=False, fontsize=6.8, loc='lower left'); numfmt(axs[0], lang)
     fig.tight_layout(); fig.savefig(os.path.join(FD, f'fig_value_{lang}.png'), dpi=220); fig.savefig(os.path.join(FD, f'fig_value_{lang}.pdf')); plt.close(fig)
 def fig_cost(lang):
     t = T[lang]; fig, ax = plt.subplots(figsize=(4.6, 3.2))
@@ -145,7 +152,7 @@ def fig_cost(lang):
         c, f0, _ = CUR[lab]; xs = [N for N in c if N <= 40]; ys = [c[N] for N in xs]; m = min(ys)
         ax.plot(xs, ys, color=col, lw=1.6, marker='o', ms=3, label=name); ax.fill_between([0, 40], m, m * 1.01, color=col, alpha=0.10, lw=0)
         ax.text(40.5, m * 1.005, t['band'], fontsize=6.5, color=col, va='center')
-    ax.set_xlim(0, 52); ax.set_xlabel(t['x']); ax.set_ylabel(t['yc']); ax.grid(axis='y', color=GRID, lw=0.5); ax.set_axisbelow(True); ax.legend(frameon=False, fontsize=7, loc='upper center')
+    ax.set_xlim(0, 52); ax.set_xlabel(t['x']); ax.set_ylabel(t['yc']); ax.grid(axis='y', color=GRID, lw=0.5); ax.set_axisbelow(True); ax.legend(frameon=False, fontsize=7, loc='upper center'); numfmt(ax, lang, 1)
     fig.tight_layout(); fig.savefig(os.path.join(FD, f'fig_cost_{lang}.png'), dpi=220); fig.savefig(os.path.join(FD, f'fig_cost_{lang}.pdf')); plt.close(fig)
 for lang in ('it', 'en'): fig_value(lang); fig_cost(lang)
 print('figures written to', FD)

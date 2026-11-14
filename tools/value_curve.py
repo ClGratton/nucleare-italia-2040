@@ -22,7 +22,7 @@ def fixN(capex, r, y, life=60, om_fix_MWh=27.75, grid=2.0, av=0.90):
     return capex * idc(r, y) * crf(r, life) + om_fix_MWh * 0.9 * 8.76 + grid * av * 8.76 * crf(r, 40) / crf(0.05, 40)
 
 CASES = [  # name, overnight capex EUR/kW, construction years
-    ('Dukovany official, central', 10200, 9), ('Dukovany, 7 years', 10200, 7), ('Dukovany, top of EC bracket', 12700, 9),
+    ('Dukovany contract, central', 10200, 9), ('Dukovany, 7 years', 10200, 7), ('Dukovany, midpoint of EC bracket', 11400, 9), ('Dukovany, top of EC bracket', 12700, 9),
     ('v7 central capex', 8540, 7), ('Barakah', 5500, 8), ('Saeul budget', 2965, 8), ('Risk median', 9680, 15), ('Vogtle', 13400, 10)]
 
 def load(path, step, rate, infix=''):
