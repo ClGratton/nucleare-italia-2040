@@ -102,14 +102,23 @@ def mix(t):
     return dict(pv=g('PV'), on=sum((v.get('GW') or 0) for k, v in u.items() if re.match(r'E\d', k)), off=sum((v.get('GW') or 0) for k, v in u.items() if re.match(r'O\d', k)),
                 nuc=nuc(t)[0], csp=g('CSP'), batt=e('BATT'), h2=e('H2'), caes=e('CAES'), ldes=e('LDES'), imp=u.get('IMPORT', {}).get('GW') or 0,
                 trade=R[t]['res'].get('import_TWh') or 0, cf=R[t]['res'].get('nuc_cf'))
-W("| System | PV GW | Onshore GW | Offshore GW | Nuclear GW | CSP GW | Batteries GWh | Hydrogen store GWh | Compressed air GWh | Interconnection GW | Energy swapped TWh/yr | Nuclear load factor |\n|---|---|---|---|---|---|---|---|---|---|---|---|")
+W("| System | PV GW | Onshore GW | Offshore GW | Nuclear GW | CSP GW | Batteries GWh | Hydrogen store GWh | Compressed air GWh | 100-hour storage GWh | Interconnection GW | Energy swapped TWh/yr | Nuclear load factor |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|")
 for t, lab in (('v8_PI_r5_opt_h3', 'PI with nuclear'), ('v8_PI_r5_N00_h3', 'PI without'), ('v8_OB_r5_opt_h3', 'OB with nuclear'), ('v8_OB_r5_N00_h3', 'OB without')):
     if t in R:
-        m = mix(t); W(f"| {lab} | {m['pv']:.0f} | {m['on']:.1f} | {m['off']:.1f} | {m['nuc']:.1f} | {m['csp']:.1f} | {m['batt']:.0f} | {m['h2']:.0f} | {m['caes']:.0f} | {m['imp']:.1f} | {m['trade']:.1f} | {'' if not m['cf'] else f'{m[chr(99)+chr(102)]:.3f}'} |")
+        m = mix(t); W(f"| {lab} | {m['pv']:.0f} | {m['on']:.1f} | {m['off']:.1f} | {m['nuc']:.1f} | {m['csp']:.1f} | {m['batt']:.0f} | {m['h2']:.0f} | {m['caes']:.0f} | {m['ldes']:.0f} | {m['imp']:.1f} | {m['trade']:.1f} | {'' if not m['cf'] else f'{m[chr(99)+chr(102)]:.3f}'} |")
 W("\nCost components (EUR/MWh):\n")
 for t in ('v8_PI_r5_opt_h3', 'v8_PI_r5_N00_h3', 'v8_OB_r5_opt_h3', 'v8_OB_r5_N00_h3'):
     if t in R: W(f"- `{t}`: " + ', '.join(f"{k} {v:.2f}" for k, v in R[t]['res']['comp'].items() if abs(v) > 0.05))
 
+W("\n## 6. Other runs: six-hour step, review checks, OB at 7% without SMRs\n")
+W("| Run | File | Nuclear GW (large + SMR) | of which SMR | System cost EUR/MWh |\n|---|---|---|---|---|")
+for fn in ('v8_runs_h6.jsonl', 'v8_runs_review.jsonl', 'v8_runs.jsonl'):
+    for l in open(os.path.join(ROOT, 'results', fn)):
+        j = json.loads(l); t = j['tag']
+        if fn == 'v8_runs.jsonl' and t != 'v8_OB_r7_nosmr_opt_h3': continue
+        if fn == 'v8_runs_h6.jsonl' and not t.endswith('opt_h6'): continue
+        u = j['res']['units']; g = sum((u[k].get('GW') or 0) for k in ('NUC', 'SMR') if k in u); sm = (u.get('SMR', {}).get('GW') or 0)
+        W(f"| {t} | {fn} | {g:.2f} | {sm:.2f} | {j['res']['obj_EUR_yr'] / 356.6e6:.3f} |")
 open(os.path.join(ROOT, 'docs', 'results_v8.md'), 'w').write('\n'.join(out) + '\n')
 json.dump(dict(curves={k: dict(cost=v[0], fixN=v[1]) for k, v in CUR.items()}, variants={f"{k[0] or 'central'}|{k[1]}": v for k, v in VAR.items()}),
           open(os.path.join(ROOT, 'results', 'v8_summary.json'), 'w'), indent=1)

@@ -365,9 +365,10 @@ tab([
  _srow("Batterie (GWh)", 6),
  _srow("Stoccaggio di idrogeno (TWh)", 7, _twh),
  _srow("Aria compressa (GWh)", 8),
- _srow("Interconnessione (GW)", 9),
- _srow("Energia scambiata, per direzione (TWh l'anno)", 10),
- _srow("Fattore di carico del nucleare (%)", 11, _pct),
+ _srow("Accumulo da 100 ore (GWh)", 9),
+ _srow("Interconnessione (GW)", 10),
+ _srow("Energia scambiata, per direzione (TWh l'anno)", 11),
+ _srow("Fattore di carico del nucleare (%)", 12, _pct),
 ], [36, 16, 16, 16, 16],
  "Tabella 6. I quattro sistemi centrali, capitale al 5%, passo di 3 ore. Fonte: docs/results_v8.md, sezione 5. Lo stoccaggio di idrogeno è convertito da GWh a TWh (nostro calcolo).", align='lrrrr')
 

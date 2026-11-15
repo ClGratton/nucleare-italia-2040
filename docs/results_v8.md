@@ -226,12 +226,12 @@ The rows 'v7 trade rule' and 'v7 nuclear inputs' change several assumptions toge
 
 ## 5. Central systems (3 h, 5%)
 
-| System | PV GW | Onshore GW | Offshore GW | Nuclear GW | CSP GW | Batteries GWh | Hydrogen store GWh | Compressed air GWh | Interconnection GW | Energy swapped TWh/yr | Nuclear load factor |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| PI with nuclear | 76 | 33.4 | 0.0 | 23.2 | 0.0 | 129 | 2089 | 0 | 13.9 | 17.7 | 0.875 |
-| PI without | 193 | 59.6 | 2.6 | 0.0 | 0.0 | 281 | 14785 | 0 | 18.9 | 27.7 |  |
-| OB with nuclear | 85 | 44.6 | 0.0 | 15.7 | 10.0 | 13 | 4100 | 214 | 13.6 | 20.2 | 0.891 |
-| OB without | 161 | 59.6 | 2.0 | 0.0 | 10.0 | 152 | 8679 | 80 | 18.1 | 29.8 |  |
+| System | PV GW | Onshore GW | Offshore GW | Nuclear GW | CSP GW | Batteries GWh | Hydrogen store GWh | Compressed air GWh | 100-hour storage GWh | Interconnection GW | Energy swapped TWh/yr | Nuclear load factor |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| PI with nuclear | 76 | 33.4 | 0.0 | 23.2 | 0.0 | 129 | 2089 | 0 | 0 | 13.9 | 17.7 | 0.875 |
+| PI without | 193 | 59.6 | 2.6 | 0.0 | 0.0 | 281 | 14785 | 0 | 0 | 18.9 | 27.7 |  |
+| OB with nuclear | 85 | 44.6 | 0.0 | 15.7 | 10.0 | 13 | 4100 | 214 | 310 | 13.6 | 20.2 | 0.891 |
+| OB without | 161 | 59.6 | 2.0 | 0.0 | 10.0 | 152 | 8679 | 80 | 632 | 18.1 | 29.8 |  |
 
 Cost components (EUR/MWh):
 
@@ -239,3 +239,15 @@ Cost components (EUR/MWh):
 - `v8_PI_r5_N00_h3`: pv 56.19, on 23.83, off 2.70, grid_over 4.57, hydro_new 0.40, import 11.41, interr 0.71, geo 2.42, bio 2.07, battery 17.00, h2 11.22, export_revenue -4.75
 - `v8_OB_r5_opt_h3`: pv 20.26, on 16.56, nuclear 44.18, import 7.17, interr 0.71, geo 2.03, bio 1.42, csp 8.92, battery 0.79, caes 5.37, h2 2.29, ldes 1.29, export_revenue -3.46
 - `v8_OB_r5_N00_h3`: pv 45.33, on 23.83, off 1.91, grid_over 3.31, hydro_new 0.40, import 11.78, interr 0.71, geo 2.03, bio 1.89, csp 8.92, battery 9.18, caes 2.00, h2 5.57, ldes 2.63, export_revenue -5.11
+
+## 6. Other runs: six-hour step, review checks, OB at 7% without SMRs
+
+| Run | File | Nuclear GW (large + SMR) | of which SMR | System cost EUR/MWh |
+|---|---|---|---|---|
+| v8_PI_r5_opt_h6 | v8_runs_h6.jsonl | 21.66 | 0.00 | 113.366 |
+| v8_OB_r5_opt_h6 | v8_runs_h6.jsonl | 13.73 | 0.00 | 105.256 |
+| v8_PI_r5_credit38_opt_h3 | v8_runs_review.jsonl | 17.89 | 0.00 | 110.522 |
+| v8_OB_r5_credit38_opt_h3 | v8_runs_review.jsonl | 14.06 | 0.00 | 104.810 |
+| v8_PI_r5_grid350_opt_h3 | v8_runs_review.jsonl | 26.67 | 0.00 | 115.436 |
+| v8_OB_r5_grid350_opt_h3 | v8_runs_review.jsonl | 19.15 | 0.00 | 108.937 |
+| v8_OB_r7_nosmr_opt_h3 | v8_runs.jsonl | 11.04 | 0.00 | 131.434 |
