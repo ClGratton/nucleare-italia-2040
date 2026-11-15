@@ -35,6 +35,14 @@ def load(path, step, rate, infix=''):
         cs, N = m.group(1), int(m.group(2)); r = j['res']
         C.setdefault(cs, {})[N] = r['obj_EUR_yr'] / 356.6e6; E[cs] = 356.6   # unrounded cost; E = energy denominator, TWh
         if N > 0: f0[cs] = j['info']['NUC_capex_yr_kW']
+    # With SMRs available (OB, no infix), N counts large reactors and N = 0 is the system with SMRs only: the cheapest free-optimum run of the
+    # same rate in which no large reactor is built (its cost does not depend on the cost of large reactors). Same rule as tools/report_v8.py.
+    if not infix and 'OB' in C:
+        for l in open(path):
+            try: j = json.loads(l)
+            except Exception: continue
+            if re.match(rf'v8_OB_{rate}_(nuctop_)?opt_h{step}$', j['tag']) and j['res']['N_GW'] < 1e-6:
+                C['OB'][0] = min(C['OB'][0], j['res']['obj_EUR_yr'] / 356.6e6)
     return C, f0, E
 
 def main():
