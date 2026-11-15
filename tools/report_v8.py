@@ -25,6 +25,11 @@ def curve(cs, rate, infix=''):
         m = re.match(rf'v8_{cs}_{rate}_{infix}N(\d+)_h3$', t)
         if m: c[int(m.group(1))] = j['res']['obj_EUR_yr'] / 356.6e6; f0 = j['info'].get('NUC_capex_yr_kW', f0) if int(m.group(1)) > 0 else f0
     if infix and f'v8_{cs}_{rate}_N00_h3' in R: c[0] = cost(f'v8_{cs}_{rate}_N00_h3')
+    # With SMRs available, the point with no large reactors is the system with SMRs only (cheaper than N00, which has no nuclear at all).
+    # Its cost does not depend on the cost of large reactors: free-optimum runs in which no large reactor is built.
+    if cs == 'OB' and not infix:
+        smr_only = [cost(t) for t in (f'v8_OB_{rate}_opt_h3', f'v8_OB_{rate}_nuctop_opt_h3') if t in R and R[t]['res']['N_GW'] < 1e-6]
+        if smr_only: c[0] = min(c[0], min(smr_only))
     return dict(sorted(c.items())), f0
 
 def marginal(c, f0):
@@ -62,12 +67,14 @@ for cs, rt, infix, lab in (('PI', 'r5', '', 'PI 5%'), ('OB', 'r5', '', 'OB 5%, S
     for N in c: W(f"| {N} | {c[N]:.3f} | {'' if N not in mv else f'{mv[N]:.0f}'} |")
 
 W("\n## 3. Cost cases read on the value curves\n")
+W("On the OB curves with SMRs available, N counts large reactors and N = 0 is the system with SMRs only; the saving is against the system with no nuclear at all.\n")
 W("fixN = capex x idc(r, y) x CRF(r, 60) + 27.75 x 0.9 x 8.76 + grid; O&M, availability and life as in the central case for every cost case.\n")
 for lab, (c, f0, rt) in CUR.items():
     r = 0.05 if rt == 'r5' else 0.07
     W(f"\n**{lab}**\n\n| Cost case | Capex EUR/kW | Years | fixN | Best N (4 GW grid) | Cost | Saving vs none | Within 1% of minimum |\n|---|---|---|---|---|---|---|---|")
     for name, k, y in CASES:
         fx = fixN(k, r, y); nb, cb, sv, lo, hi = read_case(c, f0, fx)
+        sv = cost(f"v8_{lab.split()[0]}_{rt}_N00_h3") - cb   # saving against the system with no nuclear at all
         W(f"| {name} | {k:,} | {y} | {fx:.0f} | {nb} | {cb:.2f} | {sv:.2f} | {lo}-{hi} GW |")
 
 W("\n## 4. Variants (one assumption changed, 5%, free optimum)\n")

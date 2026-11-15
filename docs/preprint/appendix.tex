@@ -13,14 +13,14 @@ Table~\ref{tab:costN} gives the system cost of every run with nuclear capacity f
 
 \begin{table}[H]
 \centering\footnotesize
-\caption{System cost $C(N)$ in EUR/MWh with nuclear capacity fixed at $N$, three-hour step; runs at fixN 911.0 (5\%) and 1{,}239.3 (7\%). The OB runs without SMRs stop at 36\,GW.}\label{tab:costN}
+\caption{System cost $C(N)$ in EUR/MWh with nuclear capacity fixed at $N$, three-hour step; runs at fixN 911.0 (5\%) and 1{,}239.3 (7\%). The OB runs without SMRs stop at 36\,GW. $^{b}$With SMRs available, $N=0$ is the system with SMRs only and no large reactors (free-optimum runs in which no large reactor is built); without SMRs it is the system with no nuclear.}\label{tab:costN}
 \begin{tabular}{@{}rrrrrrr@{}}
 \toprule
  & \multicolumn{3}{c}{5\%} & \multicolumn{3}{c}{7\%}\\
 \cmidrule(lr){2-4}\cmidrule(l){5-7}
 $N$, GW & PI & OB, no SMR & OB, SMR available & PI & OB, no SMR & OB, SMR available\\
 \midrule
-0 & 127.769 & 114.388 & 114.388 & 149.584 & 133.789 & 133.789\\
+0 & 127.769 & 114.388 & 108.502$^{b}$ & 149.584 & 133.789 & 131.164$^{b}$\\
 4 & 123.205 & 111.760 & 108.239 & 145.738 & 132.436 & 131.261\\
 8 & 119.741 & 109.790 & 107.976 & 143.183 & 131.744 & 131.359\\
 12 & 117.074 & 108.141 & 107.713 & 141.530 & 131.491 & 131.491\\
@@ -38,7 +38,7 @@ $N$, GW & PI & OB, no SMR & OB, SMR available & PI & OB, no SMR & OB, SMR availa
 
 \begin{table}[H]
 \centering\footnotesize
-\caption{Cost cases on the six curves; ``bracket'' is the Commission's bracket for the overnight cost of Dukovany. Best capacity on the 4\,GW grid and, in parentheses, range of grid points within 1\% of the minimum cost (GW); fixN in EUR/kW-yr. With SMRs available, $N$ is the capacity of large reactors and SMRs fill the gap. ``Previous central capex'': the overnight cost of the previous version (8{,}540\,EUR/kW, 7 years) under the present rule. The last two rows are read on the 5\% curves with nuclear alone at a higher rate; SMRs would pay the same rate, so the column with SMRs at 5\% does not apply. The savings of every case are in \texttt{docs/results\_v8.md}.}\label{tab:allcasesN}
+\caption{Cost cases on the six curves; ``bracket'' is the Commission's bracket for the overnight cost of Dukovany. Best capacity on the 4\,GW grid and, in parentheses, range of grid points within 1\% of the minimum cost (GW); fixN in EUR/kW-yr. With SMRs available, $N$ is the capacity of large reactors, SMRs fill the gap, and $N=0$ is the system with SMRs only. ``Previous central capex'': the overnight cost of the previous version (8{,}540\,EUR/kW, 7 years) under the present rule. The last two rows are read on the 5\% curves with nuclear alone at a higher rate; SMRs would pay the same rate, so the column with SMRs at 5\% does not apply. The savings of every case are in \texttt{docs/results\_v8.md}.}\label{tab:allcasesN}
 \begin{adjustbox}{max width=\linewidth}
 \begin{tabular}{@{}lrlllrlll@{}}
 \toprule
@@ -50,11 +50,11 @@ Saeul and Shin Hanul budget & 426 & 40 (36--40) & 36 (36) & 36 (36--40) & 519 & 
 Barakah (floor) & 590 & 36 (36) & 36 (32--36) & 36 (32--36) & 759 & 36 (32--36) & 32 (28--36) & 32 (28--36)\\
 Previous central capex & 772 & 28 (28--32) & 24 (20--28) & 24 (20--28) & 1{,}017 & 28 (20--28) & 20 (16--24) & 20 (16--24)\\
 Dukovany contract, 7 years & 877 & 24 (20--28) & 20 (12--24) & 20 (12--24) & 1{,}168 & 16 (12--24) & 12 (8--16) & 12 (8--16)\\
-Dukovany contract, central & 911 & 24 (16--28) & 16 (12--20) & 16 (4--20) & 1{,}239 & 16 (12--20) & 12 (4--16) & 4 (4--16)\\
-Risk median & 988 & 16 (12--24) & 12 (8--16) & 4 (4--8) & 1{,}434 & 8 (4--12) & 0 (0--4) & 4 (0--4)\\
-Dukovany, midpoint of the bracket & 991 & 16 (12--24) & 12 (8--16) & 4 (4--8) & 1{,}357 & 12 (8--16) & 4 (0--8) & 4 (0--4)\\
-Dukovany, top of the bracket & 1{,}077 & 12 (8--20) & 8 (0--12) & 4 (4) & 1{,}484 & 4 (0--12) & 0 (0) & 0 (0--4)\\
-Vogtle & 1{,}147 & 12 (4--16) & 0 (0--8) & 4 (4) & 1{,}603 & 0 (0--4) & 0 (0) & 0 (0)\\
+Dukovany contract, central & 911 & 24 (16--28) & 16 (12--20) & 16 (0--20) & 1{,}239 & 16 (12--20) & 12 (4--16) & 0 (0--12)\\
+Risk median & 988 & 16 (12--24) & 12 (8--16) & 0 (0--4) & 1{,}434 & 8 (4--12) & 0 (0--4) & 0 (0)\\
+Dukovany, midpoint of the bracket & 991 & 16 (12--24) & 12 (8--16) & 0 (0--4) & 1{,}357 & 12 (8--16) & 4 (0--8) & 0 (0)\\
+Dukovany, top of the bracket & 1{,}077 & 12 (8--20) & 8 (0--12) & 0 (0) & 1{,}484 & 4 (0--12) & 0 (0) & 0 (0)\\
+Vogtle & 1{,}147 & 12 (4--16) & 0 (0--8) & 0 (0) & 1{,}603 & 0 (0--4) & 0 (0) & 0 (0)\\
 \midrule
 Contract, nuclear at 6\%, rest at 5\% & 1{,}064 & 16 (8--20) & 8 (4--12) & n.a. & & & & \\
 Contract, nuclear at 7\%, rest at 5\% & 1{,}235 & 4 (0--12) & 0 (0--4) & n.a. & & & & \\

@@ -151,3 +151,8 @@ Italian: no long or medium dashes; plain words; no question headings; no filler;
 - When only nuclear pays a higher rate, the grid charge in fixN stays at the system rate (5%), as for every other technology: fixN 1,064 at 6% and 1,235 at 7%. PI 6%: 16 GW (8-20), saving 5.65; OB without SMRs 6%: 8 GW (4-12), saving 1.16. PI 7%: 4 GW (0-12), saving 0.93; OB without SMRs 7%: 0 (0-4).
 - Barakah: owner's costs are 12.57% of the overnight cost, i.e. x1.1438 on the contract; about 4,800 EUR/kW without them.
 - Conditions of the recommendation (three, everywhere): built at the Dukovany contract cost; nuclear financed at about the alternatives' rate (5% for all in the central case; with 7% for all, 15 GW holds only with first-plant costs for the alternatives); no foreign capacity in the critical weeks. "Midpoint still holds 15 GW" is at 5%.
+
+## 15. OB curve with SMRs available (15 November, round 10); overrides earlier sections
+- On this curve N counts large reactors and N = 0 is the system with SMRs only (108.50 EUR/MWh at 5%, 14.4 GW of SMRs; 131.16 at 7%, 11.1 GW), not the system with no nuclear. The first block is worth 934 (5%) and 1,231 (7%); the 1,459 and 1,465 of earlier drafts were an artefact of using the no-nuclear system as N = 0.
+- Ranges within 1% on this curve: 0-20 GW at 5%, 0-12 GW at 7%. Cost cases: midpoint, risk median, top of bracket and Vogtle give 0 large reactors at 5% (saving 5.89 against no nuclear, from the SMRs); at 7% every case from the contract up gives 0 large reactors (saving 2.63). Savings are against the system with no nuclear.
+- The OB curves without SMRs (value of nuclear as a whole) and the "11 of 20" count are unchanged.
