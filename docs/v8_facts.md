@@ -148,7 +148,7 @@ Italian: no long or medium dashes; plain words; no question headings; no filler;
 - Battery cost: the 3-hour variant with batteries at the MACSE price (about 95 EUR/kWh, 6.6 h) gives 18.1 GW (PI) and 14.0 GW (OB) against 23.2 and 15.7: it moves the optimum but keeps it at or above about 15 GW in PI and near it in OB. A 12-hour test cannot show battery effects (4-hour batteries inside 12-hour steps) and must not be quoted.
 
 ## 14. Nuclear-only financing cases (15 November, round 5); overrides section 12
-- When only nuclear pays a higher rate, the grid charge in fixN stays at the system rate (5%), as for every other technology: fixN 1,064 at 6% and 1,235 at 7%. PI 6%: 16 GW (8-20), saving 5.65; OB without SMRs 6%: 8 GW (4-12), saving 1.16. PI 7%: 4 GW (0-12), saving 0.93; OB without SMRs 7%: 0 (0-4).
+- When only nuclear pays a higher rate, the grid charge in fixN stays at the system rate (5%), as for every other technology: fixN 1,064 at 6% and 1,235 at 7%; SMRs at 7% under the same rule 1,226. PI 6%: 16 GW (8-20), saving 5.65; OB without SMRs 6%: 8 GW (4-12), saving 1.16. PI 7%: 4 GW (0-12), saving 0.93; OB without SMRs 7%: 0 (0-4).
 - Barakah: owner's costs are 12.57% of the overnight cost, i.e. x1.1438 on the contract; about 4,800 EUR/kW without them.
 - Conditions of the recommendation (three, everywhere): built at the Dukovany contract cost; nuclear financed at about the alternatives' rate (5% for all in the central case; with 7% for all, 15 GW holds only with first-plant costs for the alternatives); no foreign capacity in the critical weeks. "Midpoint still holds 15 GW" is at 5%.
 
