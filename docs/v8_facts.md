@@ -463,7 +463,7 @@ Checks:
 
 - Time step: at 6 hours the model gives 21.7 GW (PI, 21.66, cost 113.366) and 13.7 GW (OB, 13.73, cost 105.256) at 5%. The 3-hour step raises the optimum by 1.6 GW in PI (23.22 against 21.66) and 1.9 GW in OB (15.65 against 13.73).
 - The adequacy requirement is the same at both steps, so the difference does not come from the reserve.
-- Hourly data were not rebuilt. The direction is known from the 12-, 6- and 3-hour sequence; the size at 1 hour is not. The 3-hour results may still understate nuclear slightly.
+- Hourly data were not rebuilt. The direction is known from the 12-, 6- and 3-hour sequence: nuclear 17.4, 21.7, 23.2 GW (PI) and 6.0, 13.7, 15.7 GW (OB); the 12-hour runs are the smoke tests in tests/expected_smoke_h12.jsonl, reproduced with the current code on 15 November 2026. The size at 1 hour is not known. The 3-hour results may still understate nuclear slightly.
 - Only 3-hour results are compared with each other.
 - Grid check: about 340 EUR/kW on every new kW plus the second charge above 108 GW gives 26.7 GW in PI (26.67, cost 115.436) and 19.1 GW in OB (19.15, cost 108.937), against 23.2 and 15.7 central.
 - Result files: `results/v8_runs.jsonl` (main), `results/v8_runs_h6.jsonl` (6-hour step), `results/v8_runs_review.jsonl` (38% credit and grid checks).
@@ -635,6 +635,7 @@ Where 15 GW does not hold (two unfavourable conditions combined):
 - OB at the top of the bracket: 8 GW with large reactors only, 0-12 GW within 1%, saving 0.88 EUR/MWh; 14.4 GW as SMRs at target cost.
 - 7% with the top of the bracket: 4 GW in PI (0-12 within 1%); no large reactors in OB, where SMRs stay at 11.1 GW.
 - 7% with the risk median: 8 GW in PI; no large reactors in OB (SMRs 11.1 GW).
+- 7% with the Vogtle cost: no large reactors in PI (0-4 within 1%) or OB (SMRs 11.1 GW).
 - OB at the Vogtle cost: no large reactors (0-8 within 1%); about 14.4 GW of SMRs at target cost.
 - In PI the first 4 GW are worth building in every cost case examined at 5%, Vogtle included.
 - Construction cost and the rate at which nuclear is financed are the first things to verify.
