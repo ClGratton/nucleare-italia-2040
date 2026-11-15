@@ -15,7 +15,7 @@ for l in open(os.path.join(ROOT, 'results', 'v8_runs.jsonl')):
 def nuc(t):
     u = R[t]['res']['units']; gw = sum((u[k].get('GW') or 0) for k in ('NUC', 'SMR') if k in u); twh = sum((u[k].get('TWh') or 0) for k in ('NUC', 'SMR') if k in u)
     return gw, twh / R[t]['res']['demand_TWh'] * 100, (u.get('SMR', {}).get('GW') or 0)
-def cost(t): return R[t]['res']['cost_new']
+def cost(t): return R[t]['res']['obj_EUR_yr'] / 356.6e6   # unrounded system cost, EUR/MWh (cost_new is rounded to 3 decimals)
 E = 356.6   # TWh: demand not met by existing hydro (denominator of the cost)
 
 def curve(cs, rate, infix=''):
