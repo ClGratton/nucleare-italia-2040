@@ -7,7 +7,7 @@
   "peak_ref_step": 3,
   "grid_pv": 13.0,
   "grid_on": 8.0,
-  "src": "grid_thr_total_GW: 137 GW is an assumption of the authors for the TOTAL wind+PV stock above which a second grid charge applies (not a Terna figure), so the existing fleet kept in the model is subtracted (v7 bug: only new blocks were counted). peak_ref_step: the reserve requirement uses the peak of the 3-hour data at every time step (v7 used the peak of the step-averaged load: 64.7/67.0/76.9 GW at 12/6/3 h). Grid charge 13 (PV) and 8 (wind) EUR/MWh at 1,066 and 1,709 h = 245 EUR/kW over 40 years (Terna: 23 bn EUR for 94 GW), transmission only; it now follows the discount rate."
+  "src": "grid_thr_total_GW: 137 GW is an assumption of the authors for the TOTAL wind+PV stock above which a second grid charge applies (not a Terna figure), so the existing fleet kept in the model is subtracted (v7 bug: only new blocks were counted). peak_ref_step: the reserve requirement uses the peak of the 3-hour data at every time step (v7 used the peak of the step-averaged load: 64.7/67.0/76.9 GW at 12/6/3 h). Grid charge 13 (PV) and 8 (wind) EUR/MWh at 1,066 and 1,709 h = about 238 and 235 EUR/kW over 40 years (an assumption of the authors, not a Terna figure), transmission only; it now follows the discount rate."
  },
  "disp": [
   {
