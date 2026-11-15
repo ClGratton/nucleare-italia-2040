@@ -93,7 +93,7 @@ Marginal value of a block of nuclear capacity = annual fixed cost (EUR/kW-yr) at
 | 16 | 132.516 | 1054 |
 | 20 | 134.598 | 981 |
 | 24 | 137.500 | 858 |
-| 28 | 141.778 | 801 |
+| 28 | 141.778 | 802 |
 | 32 | 146.689 | 740 |
 | 36 | 152.289 | 479 |
 | 40 | 160.818 | 201 |
@@ -110,7 +110,7 @@ Marginal value of a block of nuclear capacity = annual fixed cost (EUR/kW-yr) at
 | 16 | 132.516 | 1054 |
 | 20 | 134.598 | 981 |
 | 24 | 137.500 | 858 |
-| 28 | 141.778 | 801 |
+| 28 | 141.778 | 802 |
 | 32 | 146.689 | 740 |
 | 36 | 152.289 |  |
 
@@ -126,9 +126,9 @@ fixN = capex x idc(r, y) x CRF(r, 60) + 27.75 x 0.9 x 8.76 + grid; O&M, availabi
 | Dukovany contract, central | 10,200 | 9 | 911 | 24 | 114.44 | 13.33 | 16-28 GW |
 | Dukovany, 7 years | 10,200 | 7 | 877 | 24 | 112.13 | 15.64 | 20-28 GW |
 | Dukovany, midpoint of EC bracket | 11,400 | 9 | 991 | 16 | 118.82 | 8.95 | 12-24 GW |
-| Dukovany, top of EC bracket | 12,700 | 9 | 1077 | 12 | 122.65 | 5.11 | 8-20 GW |
+| Dukovany, top of EC bracket | 12,700 | 9 | 1077 | 12 | 122.65 | 5.12 | 8-20 GW |
 | v7 central capex | 8,540 | 7 | 772 | 28 | 104.02 | 23.75 | 28-32 GW |
-| Barakah | 5,500 | 8 | 590 | 36 | 86.93 | 40.84 | 36-36 GW |
+| Barakah | 5,500 | 8 | 590 | 36 | 86.92 | 40.84 | 36-36 GW |
 | Saeul budget | 2,965 | 8 | 426 | 40 | 69.99 | 57.78 | 36-40 GW |
 | Risk median | 9,680 | 15 | 988 | 16 | 118.72 | 9.05 | 12-24 GW |
 | Vogtle | 13,400 | 10 | 1147 | 12 | 125.01 | 2.76 | 4-16 GW |
@@ -143,7 +143,7 @@ fixN = capex x idc(r, y) x CRF(r, 60) + 27.75 x 0.9 x 8.76 + grid; O&M, availabi
 | Dukovany, top of EC bracket | 12,700 | 9 | 1077 | 4 | 110.10 | 4.29 | 4-4 GW |
 | v7 central capex | 8,540 | 7 | 772 | 24 | 99.69 | 14.70 | 20-28 GW |
 | Barakah | 5,500 | 8 | 590 | 36 | 84.88 | 29.51 | 32-36 GW |
-| Saeul budget | 2,965 | 8 | 426 | 36 | 68.34 | 46.05 | 36-40 GW |
+| Saeul budget | 2,965 | 8 | 426 | 36 | 68.34 | 46.04 | 36-40 GW |
 | Risk median | 9,680 | 15 | 988 | 4 | 109.11 | 5.28 | 4-8 GW |
 | Vogtle | 13,400 | 10 | 1147 | 4 | 110.89 | 3.50 | 4-4 GW |
 

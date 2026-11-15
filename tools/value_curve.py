@@ -33,7 +33,7 @@ def load(path, step, rate, infix=''):
         m = re.match(rf'v8_(PI|OB)_{rate}_{infix}N(\d+)_h{step}$', j['tag']) or (infix and re.match(rf'v8_(PI|OB)_{rate}_N(00)_h{step}$', j['tag']))
         if not m: continue
         cs, N = m.group(1), int(m.group(2)); r = j['res']
-        C.setdefault(cs, {})[N] = r['cost_new']; E[cs] = r['obj_EUR_yr'] / r['cost_new'] / 1e6
+        C.setdefault(cs, {})[N] = r['obj_EUR_yr'] / 356.6e6; E[cs] = 356.6   # unrounded cost; E = energy denominator, TWh
         if N > 0: f0[cs] = j['info']['NUC_capex_yr_kW']
     return C, f0, E
 

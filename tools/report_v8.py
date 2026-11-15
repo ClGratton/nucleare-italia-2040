@@ -23,7 +23,7 @@ def curve(cs, rate, infix=''):
     c = {}; f0 = None
     for t, j in R.items():
         m = re.match(rf'v8_{cs}_{rate}_{infix}N(\d+)_h3$', t)
-        if m: c[int(m.group(1))] = j['res']['cost_new']; f0 = j['info'].get('NUC_capex_yr_kW', f0) if int(m.group(1)) > 0 else f0
+        if m: c[int(m.group(1))] = j['res']['obj_EUR_yr'] / 356.6e6; f0 = j['info'].get('NUC_capex_yr_kW', f0) if int(m.group(1)) > 0 else f0
     if infix and f'v8_{cs}_{rate}_N00_h3' in R: c[0] = cost(f'v8_{cs}_{rate}_N00_h3')
     return dict(sorted(c.items())), f0
 

@@ -259,7 +259,7 @@ tab([
  _ccrow("Dukovany in 7 anni", "Dukovany, 7 years", "Stesso costo, cantiere più breve"),
  _ccrow("Punto medio dell'intervallo ufficiale", "Dukovany, midpoint of EC bracket", "Con metà degli imprevisti spesi"),
  _ccrow("Massimo dell'intervallo ufficiale", "Dukovany, top of EC bracket", "Con tutti gli imprevisti spesi"),
- _ccrow("Barakah", "Barakah", "Contratto del dicembre 2009 da 20,4 miliardi di dollari, rivalutato, più il 12,57% di costi del proprietario (circa 4.800 €/kW senza). È un minimo: il costo finale non è pubblico [@barakah]"),
+ _ccrow("Barakah", "Barakah", "Contratto del dicembre 2009 da 20,4 miliardi di dollari, rivalutato, più il 12,57% di costi del proprietario (circa 4.900 €/kW senza). È un minimo: il costo finale non è pubblico [@barakah]"),
  _ccrow("Saeul (bilancio di Shin Hanul)", "Saeul budget", "Un bilancio di previsione, non un costo finale [@saeul]"),
  _ccrow("Mediana dei cantieri occidentali recenti", "Risk median", "Flamanville 3, Olkiluoto 3, Mochovce 3-4, Vogtle 3-4. Hinkley Point C è escluso: con Hinkley circa 10.300 €/kW [@risk]"),
  _ccrow("Vogtle", "Vogtle", "Vogtle 3 e 4, Stati Uniti [@vogtle]"),
@@ -501,7 +501,7 @@ p("I limiti sono elencati qui con la direzione dell'effetto sul nucleare, quando
 p("<b>Semplificazioni che rendono il risultato prudente per il nucleare.</b>")
 b([
  "<b>Passo di 3 ore.</b> I dati orari non sono stati ricostruiti. Passando da 6 a 3 ore il nucleare sale di 1,6 GW (PI) e 1,9 GW (OB); a passo orario può salire ancora, di quanto non è noto.",
- "<b>Quattro anni meteorologici.</b> Con otto anni, compresi i quattro peggiori, il caso PI sale a 27,1 GW.",
+ "<b>Quattro anni meteorologici.</b> Con otto anni, compresi i quattro peggiori, il caso PI sale a 27,1 GW; il caso OB resta circa uguale (15,5 GW contro 15,7).",
  "<b>Un solo nodo e idroelettrico uguale ogni anno.</b> La rete interna non limita gli spostamenti di energia e mancano gli anni secchi: entrambe le cose favoriscono il sistema con più fotovoltaico.",
 ])
 p("<b>Limiti che favoriscono il nucleare.</b>")
@@ -521,7 +521,7 @@ b([
 ])
 p("<b>Limiti di direzione non nota.</b>")
 b([
- "<b>Costo di rete.</b> È un'ipotesi degli autori, non un dato di Terna, e copre solo la trasmissione. Ogni nuovo kW di fotovoltaico e di eolico a terra paga circa 240 €/kW (13 €/MWh per il fotovoltaico e 8 €/MWh per l'eolico, su 40 anni); i nuovi kW oltre 137 GW di eolico e fotovoltaico in totale pagano un secondo onere di circa 236 €/kW. L'eolico in mare non paga questo onere, il nucleare paga 2 €/MWh. Nel sistema PI senza nucleare la media su tutto il nuovo fotovoltaico ed eolico è circa 367 €/kW. Il Piano di sviluppo di Terna, oltre 23 miliardi di euro per 65 GW di rinnovabili in più al 2030 [@ternapds], implica in media circa 350 €/kW. Il confronto non dice in che direzione sbagli il nostro valore. Una verifica con circa 340 €/kW su ogni nuovo kW e il secondo onere oltre 108 GW dà 26,7 GW (PI) e 19,1 GW (OB), a passo di 3 ore.",
+ "<b>Costo di rete.</b> È un'ipotesi degli autori, non un dato di Terna, e copre solo la trasmissione. Ogni nuovo kW di fotovoltaico e di eolico a terra paga circa 240 €/kW (13 €/MWh per il fotovoltaico e 8 €/MWh per l'eolico, su 40 anni); i nuovi kW oltre 137 GW di eolico e fotovoltaico in totale pagano un secondo onere di circa 236 €/kW. L'eolico in mare non paga l'onere per MWh ma conta per la soglia e paga il secondo onere; il nucleare paga 2 €/MWh. Nel sistema PI senza nucleare la media su tutto il nuovo fotovoltaico ed eolico è circa 367 €/kW. Il Piano di sviluppo di Terna, oltre 23 miliardi di euro per 65 GW di rinnovabili in più al 2030 [@ternapds], implica in media circa 350 €/kW. Il confronto non dice in che direzione sbagli il nostro valore. Una verifica con circa 340 €/kW su ogni nuovo kW e il secondo onere oltre 108 GW dà 26,7 GW (PI) e 19,1 GW (OB), a passo di 3 ore.",
  "<b>Costi di oggi per tutte le fonti.</b> Nessuna tecnologia ha riduzioni di costo al 2040, nemmeno il nucleare, salvo i costi obiettivo del caso OB. Le proiezioni per fotovoltaico, batterie e nucleare costruito in serie scendono tutte, ma nessuna è un costo osservato, e lo studio non ne usa nessuna: la scelta si fa oggi, ai prezzi di oggi per tutte le fonti (sezione 3).",
  "<b>Quota della domanda.</b> La quota del nucleare conta anche l'energia nucleare esportata. Gonfia la quota, non i GW.",
  "<b>Crediti di capacità e tecnologie minori.</b> Sono ipotesi i crediti di capacità (batterie alla potenza per 4/6,6, idroelettrico a 15 GW pieni), i tempi di cantiere di diverse tecnologie minori e il tetto di 10 GW al solare termodinamico.",
