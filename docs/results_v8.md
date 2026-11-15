@@ -251,3 +251,29 @@ Cost components (EUR/MWh):
 | v8_PI_r5_grid350_opt_h3 | v8_runs_review.jsonl | 26.67 | 0.00 | 115.436 |
 | v8_OB_r5_grid350_opt_h3 | v8_runs_review.jsonl | 19.15 | 0.00 | 108.937 |
 | v8_OB_r7_nosmr_opt_h3 | v8_runs.jsonl | 11.04 | 0.00 | 131.434 |
+
+## 7. Nuclear alone financed at a higher rate (read on the 5% curves)
+
+Nuclear capital at the rate shown, every other technology and the grid charge at 5%. fixN = capex x idc(r, 9) x CRF(r, 60) + 27.75 x 0.9 x 8.76 + 2 x 0.9 x 8.76.
+
+| Case | fixN | PI best N | PI within 1% | PI saving | OB no SMR best N | OB no SMR within 1% | OB no SMR saving |
+|---|---|---|---|---|---|---|---|
+| Contract, nuclear at 6% | 1,064 | 16 | 8-20 | 5.65 | 8 | 4-12 | 1.16 |
+| Contract, nuclear at 7% | 1,235 | 4 | 0-12 | 0.93 | 0 | 0-4 | 0.00 |
+
+SMRs at target cost financed at 7% with the grid charge at 5%: fixN 1,226.
+
+
+## 8. Imports under the previous trade rule and grid charge in the PI system without nuclear
+
+- `v8_PI_r5_v7imp_opt_h3`: imports 52.0 TWh/yr, exports 0.0
+- `v8_PI_r5_v7imp_N00_h3`: imports 57.7 TWh/yr, exports 0.0
+- `v8_OB_r5_v7imp_opt_h3`: imports 56.0 TWh/yr, exports 0.0
+- `v8_OB_r5_v7imp_N00_h3`: imports 70.7 TWh/yr, exports 0.0
+
+- `v8_PI_r5_N00_h3`: new PV 168.84 GW, new onshore 46.00 GW, offshore 2.61 GW (total 217.45); above the 137 GW threshold 118.28 GW. Charges 237.8 (PV) and 234.6 (onshore) EUR/kW, second charge 236.2 EUR/kW; average over all new PV and wind 362.7 EUR/kW.
+
+## 9. Critical weeks (central rule: highest residual load with 100 GW PV and 40 GW onshore wind; previous rule: lowest PV+wind)
+
+- residual: 2016: week 4 (month 1), week 47 (month 11), week 50 (month 12); 2017: week 4 (month 1), week 5 (month 2), week 47 (month 11); 2018: week 4 (month 1), week 8 (month 2), week 45 (month 11); 2019: week 3 (month 1), week 47 (month 11), week 49 (month 12)
+- vre: 2016: week 4 (month 1), week 43 (month 10), week 50 (month 12); 2017: week 42 (month 10), week 45 (month 11), week 47 (month 11); 2018: week 38 (month 9), week 41 (month 10), week 45 (month 11); 2019: week 35 (month 8), week 42 (month 10), week 43 (month 10)

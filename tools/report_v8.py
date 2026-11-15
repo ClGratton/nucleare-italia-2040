@@ -119,6 +119,38 @@ for fn in ('v8_runs_h6.jsonl', 'v8_runs_review.jsonl', 'v8_runs.jsonl'):
         if fn == 'v8_runs_h6.jsonl' and not t.endswith('opt_h6'): continue
         u = j['res']['units']; g = sum((u[k].get('GW') or 0) for k in ('NUC', 'SMR') if k in u); sm = (u.get('SMR', {}).get('GW') or 0)
         W(f"| {t} | {fn} | {g:.2f} | {sm:.2f} | {j['res']['obj_EUR_yr'] / 356.6e6:.3f} |")
+W("\n## 7. Nuclear alone financed at a higher rate (read on the 5% curves)\n")
+W("Nuclear capital at the rate shown, every other technology and the grid charge at 5%. fixN = capex x idc(r, 9) x CRF(r, 60) + 27.75 x 0.9 x 8.76 + 2 x 0.9 x 8.76.\n")
+W("| Case | fixN | PI best N | PI within 1% | PI saving | OB no SMR best N | OB no SMR within 1% | OB no SMR saving |\n|---|---|---|---|---|---|---|---|")
+from value_curve import idc, crf
+def fix_alone(capex, r, y): return capex * idc(r, y) * crf(r, 60) + 27.75 * 0.9 * 8.76 + 2.0 * 0.9 * 8.76
+for r in (0.06, 0.07):
+    fx = fix_alone(10200, r, 9); row = [f"Contract, nuclear at {r:.0%}", f"{fx:,.0f}"]
+    for lab in ('PI 5%', 'OB 5%, no SMR'):
+        c, f0, rt = CUR[lab]; nb, cb, sv, lo, hi = read_case(c, f0, fx); sv = cost(f"v8_{lab.split()[0]}_r5_N00_h3") - cb
+        row += [str(nb), f"{lo}-{hi}", f"{sv:.2f}"]
+    W('| ' + ' | '.join(row) + ' |')
+W(f"\nSMRs at target cost financed at 7% with the grid charge at 5%: fixN {fix_alone(11700, 0.07, 5):,.0f}.\n")
+
+W("\n## 8. Imports under the previous trade rule and grid charge in the PI system without nuclear\n")
+for t in ('v8_PI_r5_v7imp_opt_h3', 'v8_PI_r5_v7imp_N00_h3', 'v8_OB_r5_v7imp_opt_h3', 'v8_OB_r5_v7imp_N00_h3'):
+    if t in R: W(f"- `{t}`: imports {R[t]['res']['units']['IMPORT']['TWh']:.1f} TWh/yr, exports {R[t]['res'].get('export_TWh') or 0:.1f}")
+t = 'v8_PI_r5_N00_h3'; u = R[t]['res']['units']
+pv = sum(v['GW'] for k, v in u.items() if k.startswith('PV_') and isinstance(v, dict)); on = sum(v['GW'] for k, v in u.items() if re.match(r'E[1-9]', k)); off = sum(v['GW'] for k, v in u.items() if re.match(r'O\d', k))
+a5 = crf(0.05, 40); g_pv = 13 * 1066 / 1000 / a5; g_on = 8 * 1709 / 1000 / a5; g_x = 0.5 * (13 * 1066 + 8 * 1709) / 1000 / a5; ex = R[t]['res']['thr_excess_GW']
+W(f"\n- `{t}`: new PV {pv:.2f} GW, new onshore {on:.2f} GW, offshore {off:.2f} GW (total {pv + on + off:.2f}); above the 137 GW threshold {ex:.2f} GW. "
+  f"Charges {g_pv:.1f} (PV) and {g_on:.1f} (onshore) EUR/kW, second charge {g_x:.1f} EUR/kW; average over all new PV and wind {(pv * g_pv + on * g_on + ex * g_x) / (pv + on + off):.1f} EUR/kW.")
+
+W("\n## 9. Critical weeks (central rule: highest residual load with 100 GW PV and 40 GW onshore wind; previous rule: lowest PV+wind)\n")
+sys.path.insert(0, os.path.join(ROOT, 'model'))
+import hl5, spec7
+D = hl5.build_data(hl5.load_inputs(os.path.join(ROOT, 'data', 'inputs_main.npz')), step=3); T = len(D['load']); Ty = T // 4; wk = 56
+for rank in ('residual', 'vre'):
+    m = spec7.critical_mask(D, T, rank=rank); txt = []
+    for y in range(4):
+        ws = sorted(set((i - y * Ty) // wk for i in range(y * Ty, (y + 1) * Ty) if m[i]))
+        txt.append(f"{2016 + y}: " + ', '.join(f"week {w + 1} (month {int(D['m12'][y * Ty + w * wk + 28]) + 1})" for w in ws))
+    W(f"- {rank}: " + '; '.join(txt))
 open(os.path.join(ROOT, 'docs', 'results_v8.md'), 'w').write('\n'.join(out) + '\n')
 json.dump(dict(curves={k: dict(cost=v[0], fixN=v[1]) for k, v in CUR.items()}, variants={f"{k[0] or 'central'}|{k[1]}": v for k, v in VAR.items()}),
           open(os.path.join(ROOT, 'results', 'v8_summary.json'), 'w'), indent=1)
