@@ -90,7 +90,7 @@ def review_checks(step=3):
     """Two checks asked by the independent review of 14 November, free nuclear, 5%.
     credit38: the central trade rule with ONE change, foreign plants count for 38% in the critical weeks (credit and availability), to separate
     that effect from the other four changes bundled in the v7 trade rule.
-    grid350: grid charge at 350 EUR/kW above 108 GW of wind+PV (model/techs_v8_grid350.json) instead of 245 EUR/kW above 137 GW."""
+    grid350: base grid charge scaled by 350/245 (about 340 EUR/kW on every new PV and onshore wind kW instead of about 238) and second charge (13.77 EUR/kW-yr, unchanged) above 108 GW of wind+PV instead of 137 GW (model/techs_v8_grid350.json)."""
     out = []
     for cs in ('PI', 'OB'):
         sp = base(cs, step); sp['cases'] = {'IMPORT': 'credit38'}; out.append(job(f"v8_{cs}_r5_credit38_opt_h{step}", sp))
