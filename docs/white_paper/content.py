@@ -273,7 +273,7 @@ h2("Gli errori della versione precedente")
 p("La versione 7 usava per Dukovany 8.540 €/kW, 7 anni di cantiere, 80 anni di vita, 32 €/MWh di esercizio e una disponibilità del 92%: un costo fisso di 670 €/kW all'anno. La revisione sui documenti ufficiali ha trovato questi errori.")
 b([
  "<b>Combustibile e potenza.</b> Il costo era stato ridotto di 382 €/kW togliendo il combustibile dal prezzo del contratto, ma il combustibile è un contratto separato. Il prezzo era poi diviso per la potenza lorda: la potenza vendibile è 976 MW per unità, non 1.055, e il solo contratto di costruzione vale 8.446 €/kW netto.",
- "<b>Costi del proprietario.</b> Erano stimati con una percentuale presa da una banca dati statunitense (12,57%). Ora si usa il dato pubblico ceco, 85 miliardi di corone.",
+ "<b>Costi del proprietario.</b> Erano stimati con una percentuale presa da una banca dati statunitense (12,57%). Ora si usa il dato pubblico ceco, 85 miliardi di corone. Per Barakah un dato pubblico non esiste, e la percentuale resta l'unico modo di stimarli.",
  "<b>Confronto con il dato ufficiale.</b> 8.540 €/kW per 2,11 GW fanno 18,0 miliardi di euro, sotto il minimo ufficiale di 20 miliardi. Il modello finanziario ceco ha 9 anni di cantiere e 60 di esercizio, non 7 e 80, e costi di esercizio di 35-45 €/MWh, non 32.",
  "<b>Altri casi.</b> Vogtle era a 15.540 €/kW perché gli oneri finanziari erano contati due volte: il valore corretto è 13.400. Barakah era a 4.670 €/kW: con la rivalutazione corretta del contratto del 2009 e i costi del proprietario vale 5.500, che resta un minimo. Il caso chiamato Saeul è in realtà un bilancio di previsione di Shin Hanul. Il testo diceva anche che la Commissione aveva approvato l'aiuto: l'indagine è aperta.",
 ])
