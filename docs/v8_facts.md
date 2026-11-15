@@ -290,7 +290,7 @@ Reading the curves:
 SMR substitution (OB curve with SMRs available):
 
 - On this curve N counts large reactors only. N = 0 is the system with SMRs only: 14.4 GW of SMRs at 5% (108.50 EUR/MWh) and 11.1 GW at 7% (131.16 EUR/MWh). It is not the system with no nuclear.
-- When large reactors are fixed below the optimum, SMRs fill the gap, so a block of large reactors is worth only the cost of the SMRs it displaces: 934, 934 and 927 EUR/kW-yr for the blocks from 0 to 16 GW at 5%; 1,231, 1,231 and 1,228 for the blocks from 0 to 12 GW at 7%.
+- When large reactors are fixed below the optimum, SMRs fill the gap, so a block of large reactors is worth only the cost of the SMRs it displaces: at 5%, 934 EUR/kW-yr for each block from 0 to 12 GW and 927 for 12 to 16 GW; at 7%, 1,231 for each block from 0 to 8 GW and 1,228 for 8 to 12 GW.
 - At target cost SMRs are near-perfect substitutes of large reactors at the central cost: 934 against 911 EUR/kW-yr at 5%, 1,231 against 1,239 at 7%.
 - The order changes with the rate because the 5-year SMR build, against 9 years, saves more interest during construction at 7%. With a 7-year SMR build the advantage would disappear.
 - The model therefore builds only large reactors in OB at 5% (15.7 GW) and only SMRs in OB at 7% (11.1 GW), but the choice is worth little (0.27 EUR/MWh at 7%).
@@ -588,7 +588,7 @@ Simplifications that make the result cautious for nuclear:
 Limits that favour nuclear (removing them would lower optimal nuclear capacity):
 
 - Caps on ground-mounted and agrivoltaic PV are our choice; every such block is at its cap in the PI system without nuclear. Not quantified.
-- Demand flexibility limited to smart charging of 25% of electric cars and to interruptible load. Not quantified.
+- Demand flexibility limited to smart charging (25% of electric-car charging) and to interruptible load. Not quantified.
 - No common-mode outages of the nuclear fleet.
 - Assumed availability shape, 95% in the peak months.
 - Nuclear load factor of 87.5% (PI) and 89.1% (OB) results from the optimisation with 90% mean availability and no ramp constraints. It may be optimistic against fleets that modulate (France 2024: 67%, authors' estimate from the audit file). The world fleet had 83% in 2024; the IAEA median is 86.4%.
