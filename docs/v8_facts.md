@@ -19,7 +19,7 @@ and on net imports of 52-71 TWh a year, about today's level (7 to 12 GW).
 
 ## 2. Model (unchanged structure, corrected inputs)
 
-- Linear capacity-expansion model, HiGHS, one node, zero direct emissions, one fleet for four weather years (2016-2019) optimised together, 3-hour step (11,680 steps); about 350,000 variables and 440,000 constraints per run.
+- Linear capacity-expansion model, HiGHS, one node, zero direct emissions, one fleet for four weather years (2016-2019) optimised together, 3-hour step (11,680 steps); 350,000 to 390,000 variables and 425,000 to 475,000 constraints per run.
 - Demand 400 TWh in 2040: 338 base + 15 heat pumps + 47 electric vehicles; hourly Terna load of 2016-2019 paired with the same weather year (PECD capacity factors). Existing hydropower 15 GW, 43.4 TWh, is given; costs are per MWh of the remaining 356.6 TWh.
 - Technologies as decision variables: PV (ground, agrivoltaic, industrial and other roofs, by zone, finite land), onshore and offshore wind (finite blocks), large nuclear, small modular reactors, batteries, hydrogen (electrolyser, underground storage, turbine), compressed air, 100-hour storage, pumped hydro, new hydro, geothermal, bioenergy, solar thermal (CSP), interruptible load, smart charging, interconnection.
 - PI and OB: technologies without commercial plants (hydrogen chain, compressed air, CSP at scale, SMR, 100-hour storage, enhanced geothermal) have a first-plant cost (PI) and a makers' target cost (OB). 100-hour storage is off in PI (no observed cost). OB is a lower bound for nuclear: it assumes every alternative reaches its target.
