@@ -27,7 +27,7 @@ Conventions used throughout:
 - At a 5% real cost of capital: 23.2 GW (44.5% of demand) in PI; 15.7 GW (30.5%) in OB.
 - At 7%: 15.6 GW (29.9%) in PI; 11.1 GW (21.6%) in OB, all SMRs.
 - The answer is a value curve, not a point. The optimum is flat: in PI at 5% every capacity between 16 and 28 GW costs within 1% of the minimum.
-- About 15 GW is in or near the optimum in most cases examined: on the 4 GW grid, 16 GW is within 1% of the minimum in 11 of 20 combinations of five cost cases and four curves (section 7).
+- About 15 GW is in or near the optimum in most of the cost cases from the contract cost upward, not all: on the 4 GW grid, 16 GW is within 1% of the minimum in 11 of 20 combinations of the five cost cases from the contract cost upward and four curves (section 7).
 - The model describes a steady state, with 2040 demand and all fleets already built. It is not a transition path and has no limit on the build rate; the time needed to reach 15 GW is outside its scope.
 
 ## 2. Model
@@ -576,6 +576,7 @@ Reviews:
 Not limits:
 
 - The nuclear construction cost at the contract price is not a limit: it follows the same rule as every technology, and the other costs are read on the curve as cost cases.
+- Today's prices for every technology are not a limit: the decision is taken now (section 3). Projections all point down; none is an observed cost and none is used.
 - The trade rule is a planning standard, not a limit (section 9).
 - Financing nuclear at about the alternatives' rate is a condition of the recommendation, not a limit (section 8).
 
@@ -603,7 +604,6 @@ Limits that favour the system without nuclear (removing them would raise optimal
 
 Both directions or unknown:
 
-- All technologies at today's costs, nuclear included (OB target costs aside). Projections all point down; none is an observed cost and none is used.
 - Grid charge (about 240 EUR/kW on all new PV and onshore wind plus about 236 above 137 GW in total; average about 363 in the PI system without nuclear, against about 350 implied by the Terna plan). Check: 26.7 GW in PI, 19.1 GW in OB.
 - Nuclear OPEX 40 EUR/MWh, midpoint of 35-45: 35 lowers fixN by about 39 EUR/kW-yr, 45 raises it by 39.
 - Capacity credits (batteries at power x 4/6.6, hydro at 15 GW in full) and build times of several minor technologies are assumptions. Not quantified.
