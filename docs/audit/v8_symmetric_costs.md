@@ -94,7 +94,7 @@ MACSE 2025: 12,959 EUR/MWh-yr against a 37,000 cap, about 7 h average duration, 
 
 ## 9. Grid integration
 
-- Terna PdS 2025: over EUR 23 bn 2025-2034, up to ~40 bn in total; zonal transfer 16 to over 35 GW; +65 GW RES by 2030, of which ~43 GW on the HV grid [38]. Derived: 23 bn / 65 GW = ~350 EUR/kW (upper bound; plan also serves security and demand).
+- Terna PdS 2025: over EUR 23 bn 2025-2034, up to ~40 bn in total; zonal transfer 16 to over 35 GW; +65 GW RES by 2030, of which ~43 GW to be integrated on the HV grid; the same plan also gives 43 GW of wind and PV installed in 2023 (section 1.2) [38]. Derived: 23 bn / 65 GW = ~350 EUR/kW (upper bound; plan also serves security and demand).
 - e-distribuzione 2025-2029: ~EUR 12.0 bn (HV 1.9, MV 5.9, LV 3.4, digital 0.8), no split for distributed generation; 63 GW of producers connected by 2027, over 18 GW new [39].
 - Connection paid by plant: 70 EUR/kWp (1 MW) [3]; 8-14% of PV LCOE, 4-6% of wind LCOE [1]. Requests to Terna end 2024: PV 152 GW, onshore wind 110 GW, stand-alone storage 253 GW [41].
 
