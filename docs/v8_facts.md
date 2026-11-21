@@ -30,6 +30,22 @@ Conventions used throughout:
 - About 15 GW is in or near the optimum in most of the cost cases from the contract cost upward, not all: on the 4 GW grid, 16 GW is within 1% of the minimum in 11 of 20 combinations of the five cost cases from the contract cost upward and four curves (section 7).
 - The model describes a steady state, with 2040 demand and all fleets already built. It is not a transition path and has no limit on the build rate; the time needed to reach 15 GW is outside its scope.
 
+
+## Inputs corrected after the runs (21 November 2026)
+
+The result numbers in this file come from runs made before these corrections; elsewhere in this file inputs are stated as used in the runs. The corrected inputs are in model/techs_v8.json and tools/make_jobs.py and will be used in the next runs.
+
+- Dukovany owner's costs: CZK 89 bn (85 to spend plus almost 4 already spent; CT24, 13 Oct 2025) instead of 85, so CZK 496 bn, EUR 20.09 bn, 10,292 EUR/kW net, rounded 10,300 (runs: 10,200); fixN 918 at 5% and 1,249 at 7% (runs: 911 and 1,239). Against nuclear, about +0.8%.
+- New foreign interconnection 6.93 GW (runs: 7.33): SACOI3 (0.4 GW) is the Sardinia-mainland line inside Italy (Terna, Rapporto capacita obiettivo 2025, p.25).
+- Interruptible load: 2.4 GW at up to 46 EUR/kW-yr, at most 120 h a year (ARERA 12/2026/R/eel); the 1.35 GW block at 105 EUR/kW-yr is removed (ARERA 564/2023 sets a cap for 2024 only and no quantity).
+- Smart charging: 35% of electric-car charging (T&E 2024, Car I scenario, 2040, EU-wide, includes V2X) instead of 25% (the 2030 value).
+- Compressed-gas storage: Energy Dome prices, 220 EUR/kWh for the first plants (PI; runs: 239 attributed to Hydrostor, whose project page gives no capital cost) and 123 EUR/kWh series target (OB, 220 x 0.56, our calculation; runs: 105), round-trip efficiency 75% (runs: 65%); life 30 years, assumption.
+- Geothermal low case (5,115 USD/kW) removed: not found in NREL ATB 2024.
+- Korean budget case: 2,670 EUR/kW (runs: 2,965), fixN 407 at 5%.
+- Nuclear-input bundle and the 8,540 EUR/kW in 7 years case removed: those inputs were found wrong.
+- New pumped hydro kept, with its source: The European House Ambrosetti and Edison (Edison press release, 3 Apr 2023), EUR 10.5 bn for 4.5 GW, about 2,330 EUR/kW, 291 EUR/kWh at 8 h, up to 35 GWh.
+- With the corrected fixN the best capacity on the 4 GW grid changes in two cost cases, both in OB at 5%: Dukovany in 7 years on both OB curves (20 to 16 GW; 883 against the 877 block) and the Korean budget on the OB curve with SMRs (36 to 40 GW; 407 against the 409 block).
+
 ## 2. Model
 
 - Linear capacity-expansion programme, solved with HiGHS (Huangfu and Hall, 2018). All runs reported ended with status optimal.
