@@ -98,6 +98,23 @@ def review_checks(step=3):
         sp = base(cs, step); sp['techs'] = 'techs_v8_grid350.json'; out.append(job(f"v8_{cs}_r5_grid350_opt_h{step}", sp))
     return out
 
+def comparison_runs(step=3):
+    """Runs for the comparison with other studies, free nuclear, 5%.
+    nz: net-zero mode, gas with and without capture and direct air capture allowed (as in net-zero energy-system models), with and without nuclear.
+    island: no imports and no exports at all, with and without nuclear.
+    barakah_opt: nuclear at 5,500 EUR/kW and 8 years as a free optimum (the value curve stops at 36 GW).
+    csp3300 (OB): concentrated solar at a yield of 3,300 h, with and without nuclear."""
+    out = []
+    for cs in ('PI', 'OB'):
+        for nuc in (True, False):
+            tail = 'opt' if nuc else 'N00'
+            sp = base(cs, step, nuc=nuc); sp['mode'] = 'NZ'; out.append(job(f"v8_{cs}_r5_nz_{tail}_h{step}", sp))
+            sp = base(cs, step, nuc=nuc); sp.pop('export', None); sp['off'] = sp['off'] + ['IMPORT']; out.append(job(f"v8_{cs}_r5_island_{tail}_h{step}", sp))
+        sp = base(cs, step); sp['nuc'] = dict(NUC, capex=5500, y=8, r=0.05); out.append(job(f"v8_{cs}_r5_barakah_opt_h{step}", sp))
+    for nuc in (True, False):
+        sp = base('OB', step, nuc=nuc); sp['cases'] = {'CSP': 'y3300'}; out.append(job(f"v8_OB_r5_csp3300_{'opt' if nuc else 'N00'}_h{step}", sp))
+    return out
+
 def write(name, jobs):
     p = os.path.join(ROOT, 'jobs', name); json.dump(jobs, open(p, 'w'), indent=1); print(name, len(jobs), 'jobs')
 
