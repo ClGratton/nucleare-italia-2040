@@ -1,12 +1,5 @@
 \appendix
 \renewcommand{\thetable}{\thesection\arabic{table}}
-\section{Audit and error register}\label{app:audit}
-\setcounter{table}{0}
-The project keeps a register of every error found in its documents, inputs and code since the first version, compiled from the project records on 11 November 2026 \citep{Repo}. It holds 98 entries, each with what was wrong, who found it, the correction, the effect on the nuclear result and the status. By category: wording or claim 33, method 26, cost input 15, source citation 7, data 7, model code 6, document build 4. By status at that date, before the corrections of the present version: fixed 80, declared as limit 12, still open 6. The most frequent kinds of error were claims stronger than the results (23 entries), one-sided simplifications (21) and comparisons of quantities that are not homogeneous (13).
-
-The present version follows an independent audit of 11 November 2026 of the nuclear cost inputs, the other cost inputs, the data and assumptions and the model code, under the rule that every correction applied to one technology must be checked for all the others. Its main findings, all applied here: fuel is not inside the CZK\,407 billion contract, and the capacity to use is the net 976\,MWe per unit; the Vogtle cost was overstated; auction prices implied capital costs below observed ones (about 681\,EUR/kW for ground PV; about 95\,EUR/kWh for batteries of about 6.6 hours, while the regulatory 150.5\,EUR/kWh is for 4 hours, a different product); interest during construction and fixed operating cost were not applied to every technology; exports earned nothing while imports paid the Italian price; the reserve requirement changed with the time step; and two code bugs, a grid threshold that counted new plants only and wind and grid costs that did not follow the rate at 7\%, had both penalised nuclear. A second independent review, of 14 November 2026, led to the bracket-midpoint cost case, to the labels of the two bundles and to the limits stated by direction. A third review, of 15 November 2026, corrected the description of the grid charge and of the critical weeks, labelled the cases with large reactors only and added the condition on the financing of nuclear.
-
-\FloatBarrier
 \section{Value-curve tables}\label{app:curves}
 \setcounter{table}{0}
 Table~\ref{tab:costN} gives the system cost of every run with nuclear capacity fixed at $N$, from which Table~\ref{tab:value} follows by Eq.~\eqref{eq:value}; Table~\ref{tab:allcasesN} reads the cost cases on all six curves by Eq.~\eqref{eq:identity}.
@@ -38,7 +31,7 @@ $N$, GW & PI & OB, no SMR & OB, SMR available & PI & OB, no SMR & OB, SMR availa
 
 \begin{table}[H]
 \centering\footnotesize
-\caption{Cost cases on the six curves; ``bracket'' is the Commission's bracket for the overnight cost of Dukovany. Best capacity on the 4\,GW grid and, in parentheses, range of grid points within 1\% of the minimum cost (GW); fixN in EUR/kW-yr. With SMRs available, $N$ is the capacity of large reactors, SMRs fill the gap, and $N=0$ is the system with SMRs only. ``Previous central capex'': the overnight cost of the previous version (8{,}540\,EUR/kW, 7 years) under the present rule. The last two rows are read on the 5\% curves with nuclear alone at a higher rate; SMRs would pay the same rate, so the column with SMRs at 5\% does not apply. The savings of every case are in \texttt{docs/results\_v8.md}.}\label{tab:allcasesN}
+\caption{Cost cases on the six curves; ``bracket'' is the Commission's bracket for the overnight cost of Dukovany. Best capacity on the 4\,GW grid and, in parentheses, range of grid points within 1\% of the minimum cost (GW); fixN in EUR/kW-yr, as in the runs (Section~\ref{sec:corrections}). With SMRs available, $N$ is the capacity of large reactors, SMRs fill the gap, and $N=0$ is the system with SMRs only. The last two rows are read on the 5\% curves with nuclear alone at a higher rate; SMRs would pay the same rate, so the column with SMRs at 5\% does not apply. The savings of every case are in \texttt{docs/results\_v8.md}.}\label{tab:allcasesN}
 \begin{adjustbox}{max width=\linewidth}
 \begin{tabular}{@{}lrlllrlll@{}}
 \toprule
@@ -46,9 +39,9 @@ $N$, GW & PI & OB, no SMR & OB, SMR available & PI & OB, no SMR & OB, SMR availa
 \cmidrule(lr){2-5}\cmidrule(l){6-9}
 Cost case & fixN & PI & OB, no SMR & OB, SMR & fixN & PI & OB, no SMR & OB, SMR\\
 \midrule
-Saeul and Shin Hanul budget & 426 & 40 (36--40) & 36 (36) & 36 (36--40) & 519 & 40 (36--40) & 36 (36) & 36 (36--40)\\
+Korean budget (Shin Hanul) & 426 & 40 (36--40) & 36 (36) & 36 (36--40) & 519 & 40 (36--40) & 36 (36) & 36 (36--40)\\
 Barakah (floor) & 590 & 36 (36) & 36 (32--36) & 36 (32--36) & 759 & 36 (32--36) & 32 (28--36) & 32 (28--36)\\
-Previous central capex & 772 & 28 (28--32) & 24 (20--28) & 24 (20--28) & 1{,}017 & 28 (20--28) & 20 (16--24) & 20 (16--24)\\
+8{,}540\,EUR/kW in 7 years & 772 & 28 (28--32) & 24 (20--28) & 24 (20--28) & 1{,}017 & 28 (20--28) & 20 (16--24) & 20 (16--24)\\
 Dukovany contract, 7 years & 877 & 24 (20--28) & 20 (12--24) & 20 (12--24) & 1{,}168 & 16 (12--24) & 12 (8--16) & 12 (8--16)\\
 Dukovany contract, central & 911 & 24 (16--28) & 16 (12--20) & 16 (0--20) & 1{,}239 & 16 (12--20) & 12 (4--16) & 0 (0--12)\\
 Risk median & 988 & 16 (12--24) & 12 (8--16) & 0 (0--4) & 1{,}434 & 8 (4--12) & 0 (0--4) & 0 (0)\\
@@ -80,19 +73,19 @@ Nuclear, other & & grid 2\,EUR/MWh & & Variable cost 12.25\,EUR/MWh; minimum loa
 PV & new: see Table~\ref{tab:inputs}; existing: none & 20\,EUR/kWp-yr & 25, 1 (a) & New: tracker yield 1.12 (ground, agrivoltaic), degradation 0.5\% a year. Existing: 24.2\,GW, yield scaled by 0.857 \citep{GSEPV2025}\\
 Onshore wind & see Table~\ref{tab:inputs} & & 25, 2 (a) & 69.6\,GW in blocks from 2{,}400 to 1{,}200 full-load hours; existing 13.6\,GW pay O\&M only\\
 Offshore wind, fixed & 3{,}400 & 80\,EUR/kW-yr & 25, 3 (a) & \citet{PoliMiRER2025}. One fixed-bottom plant exists in Italy (Beleolico, Taranto, 30\,MW, 2022), none floating. No per-MWh grid charge; counts toward the 137\,GW threshold\\
-Pumped hydro & new: 291\,EUR/kWh (2{,}330\,EUR/kW at 8 h) & 1.5\% a year & 30, 5 & New: up to 35\,GWh. Existing: 7.3\,GW, 53\,GWh. Efficiency 75\%\\
-Compressed air & 239\,EUR/kWh, 8 h (PI); 105\,EUR/kWh, 10 h (OB) & 1.5\% a year & 30 (a), 3 & Efficiency 65\%. PI: Hydrostor Silver City; OB: a maker's target\\
+Pumped hydro & existing only & & & 7.3\,GW, 53\,GWh \citep{TernaStato2025}; efficiency 75\%. New pumped hydro removed: no source found (Section~\ref{sec:corrections})\\
+Compressed air & 239\,EUR/kWh, 8 h (PI); 123\,EUR/kWh, 10 h (OB) & 1.5\% a year & 30 (a), 3 & PI: Hydrostor Silver City, efficiency 65\%; the project page confirms 8 hours and a design life of 50 years or more but gives no capital cost, so the PI cost has no primary source \citep{HydrostorSC}. OB: Energy Dome series target, 220\,EUR/kWh $\times$ 0.56 (our calculation), efficiency 75\% \citep{EnergyDome}\\
 Electrolyser & 2{,}056 (PI), 450 (OB) & 3\% a year & 20, 2 & Efficiency 63\% (PI), 69\% (OB). \citet{IEAGHR2025}\\
 Hydrogen store & \multicolumn{2}{@{}P{5.2cm}}{113 (PI), 56 (OB) EUR per MWh of working capacity per year (annual price)} & & Desk study \citep{HystoriesD86}; 80\% treated as capital (a)\\
-Hydrogen turbine & 1{,}079 (PI), 1{,}324 (OB) & 31, 44\,EUR/kW-yr & 35 and 30, 4 & Efficiency 40\% (PI), 55\% (OB); variable cost 3.5 and 2.0\,EUR/MWh\\
+Hydrogen turbine & 1{,}079 (PI), 1{,}324 (OB) & 31, 44\,EUR/kW-yr & 35 and 30, 4 & Efficiency 40\% (PI), 55\% (OB); variable cost 3.5 and 2.0\,EUR/MWh. OB operating cost: combined-cycle values of ACER used as a proxy (a)\\
 100-hour storage & \multicolumn{2}{@{}P{5.2cm}}{1{,}486\,EUR per MWh of capacity per year (annual price, OB only)} & & Maker's target \citep{FormTarget2021}; efficiency 50\%\\
-Solar thermal (CSP) & 9{,}491 (PI), 3{,}287 (OB) & 67\,EUR/kW-yr & 25, 3 & 2{,}900\,MWh per MW a year; ceiling 10\,GW (a). PI: Andasol 1 (2008)\\
+Solar thermal (CSP) & 9{,}491 (PI), 3{,}287 (OB) & 67\,EUR/kW-yr & 25, 3 & 2{,}900\,MWh per MW a year; ceiling 10\,GW (a). PI: Andasol 1, EUR\,310 million in 2008 \citep{Andasol}; OB: world mean of 2024 \citep{IRENA2025}\\
 New hydropower & 6{,}500 & 100\,EUR/kW-yr & 25, 3 & Up to 0.24\,GW; 5{,}000 hours\\
-Geothermal & 3{,}589 and 5{,}675; enhanced 6{,}257 (PI), 2{,}681 (OB) & 98\,EUR/kW-yr & 25, 3 & New: 0.183, 0.8 and 0.5\,GW; existing 0.817\,GW at O\&M\\
-Bioenergy & 2{,}898 & 4\% a year & 20, 2 & Biogas up to 4.0\,TWh, solid biomass 2.5\,TWh, waste 2.2\,TWh (must run)\\
-Interruptible load & \multicolumn{2}{@{}P{5.2cm}}{46\,EUR/kW-yr for 2.4\,GW; 105 for a further 1.35\,GW (annual prices)} & & At most 120 hours a year \citep{ARERA12}\\
-Smart charging & none & & & 25\% of vehicle charging shifts within 12 hours; infrastructure cost not found and set to zero, so its benefit is an upper bound\\
-Interconnection & new lines 1{,}120--1{,}900 & 1.5\% a year (a) & 40, 4 (a) & Existing 11.535\,GW, up to 7.33\,GW new. Imports 115.94, exports 61.07\,EUR/MWh\\
+Geothermal & 3{,}589 and 5{,}675; enhanced 6{,}257 (PI), 2{,}681 (OB) & 98\,EUR/kW-yr & 25, 3 & New: 0.183, 0.8 and 0.5\,GW; existing 0.817\,GW at O\&M. Sources: \citet{IRENA2025}, \citet{NRELATB2024}; enhanced: the maker's target for its first 100\,MW (7{,}000\,USD/kW) and long-term target (3{,}000\,USD/kW), not observed costs \citep{Fervo2026}\\
+Bioenergy & 2{,}898 & 4\% a year & 20, 2 & Biogas up to 4.0\,TWh, solid biomass 2.5\,TWh, waste 2.2\,TWh (must run); wood chips 33\,EUR/MWh thermal \citep{AIEL2025}\\
+Interruptible load & \multicolumn{2}{@{}P{5.2cm}}{Up to 46\,EUR/kW-yr for 2.4\,GW (annual price; a price cap, so an upper bound)} & & At most 120 hours a year \citep{ARERA12}\\
+Smart charging & none & & & 35\% of vehicle charging shifts within 12 hours \citep{TandE2024}; infrastructure cost not found and set to zero, so its benefit is an upper bound\\
+Interconnection & new lines 1{,}120--1{,}900 & 1.5\% a year (a) & 40, 4 (a) & Existing 11.535\,GW, up to 6.93\,GW new (SACOI3 excluded). Imports 115.94, exports 61.07\,EUR/MWh\\
 Grid & \multicolumn{2}{@{}P{5.2cm}}{New PV 13, new onshore wind 8, nuclear 2\,EUR/MWh; about 240\,EUR/kW over 40 years} & & Authors' assumption (a), transmission only; second charge above 137\,GW of wind and PV in total (99.2\,GW new)\\
 \bottomrule
 \end{tabularx}
