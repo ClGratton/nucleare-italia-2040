@@ -41,7 +41,6 @@ Cost case & fixN & PI & OB, no SMR & OB, SMR & fixN & PI & OB, no SMR & OB, SMR\
 \midrule
 Korean budget (Shin Hanul) & 426 & 40 (36--40) & 36 (36) & 36 (36--40) & 519 & 40 (36--40) & 36 (36) & 36 (36--40)\\
 Barakah (floor) & 590 & 36 (36) & 36 (32--36) & 36 (32--36) & 759 & 36 (32--36) & 32 (28--36) & 32 (28--36)\\
-8{,}540\,EUR/kW in 7 years & 772 & 28 (28--32) & 24 (20--28) & 24 (20--28) & 1{,}017 & 28 (20--28) & 20 (16--24) & 20 (16--24)\\
 Dukovany contract, 7 years & 877 & 24 (20--28) & 20 (12--24) & 20 (12--24) & 1{,}168 & 16 (12--24) & 12 (8--16) & 12 (8--16)\\
 Dukovany contract, central & 911 & 24 (16--28) & 16 (12--20) & 16 (0--20) & 1{,}239 & 16 (12--20) & 12 (4--16) & 0 (0--12)\\
 Risk median & 988 & 16 (12--24) & 12 (8--16) & 0 (0--4) & 1{,}434 & 8 (4--12) & 0 (0--4) & 0 (0)\\
@@ -73,8 +72,8 @@ Nuclear, other & & grid 2\,EUR/MWh & & Variable cost 12.25\,EUR/MWh; minimum loa
 PV & new: see Table~\ref{tab:inputs}; existing: none & 20\,EUR/kWp-yr & 25, 1 (a) & New: tracker yield 1.12 (ground, agrivoltaic), degradation 0.5\% a year. Existing: 24.2\,GW, yield scaled by 0.857 \citep{GSEPV2025}\\
 Onshore wind & see Table~\ref{tab:inputs} & & 25, 2 (a) & 69.6\,GW in blocks from 2{,}400 to 1{,}200 full-load hours; existing 13.6\,GW pay O\&M only\\
 Offshore wind, fixed & 3{,}400 & 80\,EUR/kW-yr & 25, 3 (a) & \citet{PoliMiRER2025}. One fixed-bottom plant exists in Italy (Beleolico, Taranto, 30\,MW, 2022), none floating. No per-MWh grid charge; counts toward the 137\,GW threshold\\
-Pumped hydro & existing only & & & 7.3\,GW, 53\,GWh \citep{TernaStato2025}; efficiency 75\%. New pumped hydro removed: no source found (Section~\ref{sec:corrections})\\
-Compressed air & 239\,EUR/kWh, 8 h (PI); 123\,EUR/kWh, 10 h (OB) & 1.5\% a year & 30 (a), 3 & PI: Hydrostor Silver City, efficiency 65\%; the project page confirms 8 hours and a design life of 50 years or more but gives no capital cost, so the PI cost has no primary source \citep{HydrostorSC}. OB: Energy Dome series target, 220\,EUR/kWh $\times$ 0.56 (our calculation), efficiency 75\% \citep{EnergyDome}\\
+Pumped hydro & existing: none; new: 291\,EUR/kWh at 8 hours, about 2{,}330\,EUR/kW (our calculation) & new: 1.5\% a year & new: 30 (a), 5 & Existing 7.3\,GW, 53\,GWh \citep{TernaStato2025}; efficiency 75\%. New: up to 35\,GWh (about 4.5\,GW for 8 hours), from the study of The European House Ambrosetti and Edison, EUR\,10.5 billion for 4.5\,GW \citep{EdisonPumped2023}; not built in any central run\\
+Compressed-gas storage (CO$_2$) & 220\,EUR/kWh, 10 h (PI); 123\,EUR/kWh, 10 h (OB) & 1.5\% a year & 30 (a), 3 & Energy Dome: price of the first plants, 220\,EUR/kWh with EPC and margin (PI), and series target, 220 $\times$ 0.56 (OB, our calculation); round-trip efficiency 75\% \citep{EnergyDome}\\
 Electrolyser & 2{,}056 (PI), 450 (OB) & 3\% a year & 20, 2 & Efficiency 63\% (PI), 69\% (OB). \citet{IEAGHR2025}\\
 Hydrogen store & \multicolumn{2}{@{}P{5.2cm}}{113 (PI), 56 (OB) EUR per MWh of working capacity per year (annual price)} & & Desk study \citep{HystoriesD86}; 80\% treated as capital (a)\\
 Hydrogen turbine & 1{,}079 (PI), 1{,}324 (OB) & 31, 44\,EUR/kW-yr & 35 and 30, 4 & Efficiency 40\% (PI), 55\% (OB); variable cost 3.5 and 2.0\,EUR/MWh. OB operating cost: combined-cycle values of ACER used as a proxy (a)\\
