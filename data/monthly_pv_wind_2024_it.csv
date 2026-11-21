@@ -1,0 +1,20 @@
+# Monthly electricity output of solar PV and wind in Italy in 2024, GWh.
+# Solar PV: GSE, Solare fotovoltaico. Rapporto statistico 2024, September 2025
+#   https://www.rinnovabili.it/wp-content/uploads/2025/09/Solare-Fotovoltaico-Rapporto-Statistico-2024.pdf
+# Wind: Terna, Rapporto mensile sul sistema elettrico, dicembre 2024
+#   https://www.infobuildenergia.it/wp-content/uploads/2025/01/Rapporto_Mensile_Dicembre_24_8dd358635ce3ac2.pdf
+# Copied from version 7 (results/monthly.json, written by monthly_calc.py); the sources were not reopened in version 8.
+# Annual totals: PV 35,992 GWh, wind 22,068 GWh.
+month,pv_GWh,wind_GWh
+1,1541,2814
+2,1903,2293
+3,2749,2405
+4,3641,2069
+5,3974,1679
+6,4241,1324
+7,4700,1190
+8,4304,916
+9,3168,1621
+10,2204,1368
+11,1956,1757
+12,1611,2632
