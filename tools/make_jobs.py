@@ -65,8 +65,7 @@ def variants(step=3):
                 out.append(job(f"v8_{cs}_r5_{name}_{'opt' if nuc else 'N00'}_h{step}", sp))
     # nuclear cost variants on the free optimum: v7 inputs, 7-year build, top of the official bracket
     for cs in ('PI', 'OB'):
-        for name, nd, cases in (('nucv7', dict(capex=8540, y=7, r=0.05), {'NUC': 'v7'}),      # superseded v7 inputs (8,540 EUR/kW gross, 7 y, 80 y, O&M 32, availability 0.92)
-                                ('nuc7y', dict(NUC, y=7, r=0.05), None),                       # seven years of construction
+        for name, nd, cases in (('nuc7y', dict(NUC, y=7, r=0.05), None),                       # seven years of construction
                                 ('nuctop', dict(NUC, capex=12700, r=0.05), None)):             # top of the official cost bracket
             sp = base(cs, step); sp['nuc'] = nd
             if cases: sp['cases'] = cases

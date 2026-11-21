@@ -576,7 +576,7 @@
   {
    "name": "PUMPED_NEW",
    "grp": "pumped_new",
-   "on": false,
+   "on": true,
    "dur": 8.0,
    "GWh_hi": 35.0,
    "eur_kWh": 291.0,
@@ -590,7 +590,7 @@
      "eur_kWh": 500.0
     }
    },
-   "src": "Switched off on 21 Nov 2026: the pipeline (3.26 GW / 26 GWh) and the 4.5 GW / 35 GWh scenario value were not found in Terna-Snam DDS 2024 or Terna PdS 2025. Not built in any central run before the change.",
+   "src": "The European House Ambrosetti and Edison study on new pumped hydro (Edison press release, 3 Apr 2023): EUR 10.5 bn initial investment for 4.5 GW of new capacity, about 2,330 EUR/kW (our calculation), 291 EUR/kWh at 8 h; 35 GWh cap = 4.5 GW at about 8 h. Switched back on 21 Nov 2026 after a mistaken removal (the Terna-Snam DDS 2024 is not the source).",
    "build_y": 5,
    "om_frac": 0.015
   },
