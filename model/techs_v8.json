@@ -76,7 +76,12 @@
    "cap_GW": 15.0,
    "floor": 0.37,
    "credit": 1.0,
-   "excl": true
+   "excl": true,
+   "cases": {
+    "credit10": {
+     "credit": 0.6667
+    }
+   }
   },
   {
    "name": "HYDRO_NEW",
@@ -190,6 +195,14 @@
     },
     "vre_weeks": {
      "scarcity_rank": "vre"
+    },
+    "nonew": {
+     "blocks": [
+      {
+       "cap_hi": 11.535,
+       "capex_kW": 0
+      }
+     ]
     }
    },
    "src": "v8 central: net self-sufficiency (set in the job spec: export.X = 0), no imports and no capacity credit in the 3 weeks of each year with the highest residual load (load minus the output of 100 GW of PV and 40 GW of onshore wind; v7 ranked weeks by low PV+wind and missed the January peaks). Import price 115.94 EUR/MWh (PUN 2025, GME). Exports: capacity 6,095/11,535 of the import capacity (Terna 2025 export and import limits), revenue 61.07 EUR/MWh (France 2025 day-ahead average, GME/RTE), variants 0 and 115.94. New lines: capex as v7 with interest during construction (4 y, assumption) and O&M 1.5%/yr (proxy, assumption). | v7 note: existing 11.535 GW (ARERA 366/2025); blocks Terna/ARERA (v7_storage_flex.md sez.8.2); total new 7.33 GW = Terna 2040 need (Nord 4.38 + Est 1.85 + Nord Africa 1.10). Price: PUN 2025 average 115.94 EUR/MWh (GME), varied x0.5 and x1.5. Credit 38% = 4.4/11.5 (capacity market 2025). No export modelled. Availability in the 5% worst weeks of each year (lowest mean of normalised PV and onshore profiles, 3 SACOI3 (0.4 GW) removed on 21 Nov 2026: it is the Sardinia-mainland line inside Italy (Terna, Rapporto capacita obiettivo 2025, p.25), not a link abroad; new foreign lines 6.93 GW.",
@@ -439,6 +452,9 @@
     },
     "ch8": {
      "credit_hours": 8.0
+    },
+    "c20": {
+     "cap_new_GW": 20.0
     }
    },
    "src": "Yield: Andasol 1-3 (50 MW, 7.5 h storage, DNI 2136) guaranteed net 165 GWh/yr = 3307 h/MW (Dinter, Operation experience, SolarPACES/SASEC; observed annual output not found), scaled linearly by DNI 1875 (middle of 1800-1950 for Sicily, given by the coordinator, not measured by us) = 2903, rounded 2900. ENEA 2026 4100 MWh/MW at Priolo is a simulation for a 1 MW plant with 50000 m2 per MW (81.5 kWh/m2), solar multiple not stated: not used. Capex first plant: Andasol 1 EUR 310 M for 49.9 MW (2008), SolarPACES USD 10618.6/kW in 2020 USD / 1.1188 = 9491 EUR/kW (only European plant with a published cost and 7.5 h storage; recent Spanish plants such as Solgest-1 do not publish cost); target: IRENA 2024 world average 3677 USD/kW / 1.1188 = 3287 EUR/kW. Credit: mean over the top 1% load steps of min(1, daily budget on that day / 4 h) with the daily budget from the national PV profile; 10 GW is OUR ceiling (not sourced); sensitivity 3 GW (c3). | v8: target capex is the IRENA 2024 world average, driven by Chinese plants (not Andasol); 3 years of construction added.",

@@ -115,6 +115,45 @@ def comparison_runs(step=3):
         sp = base('OB', step, nuc=nuc); sp['cases'] = {'CSP': 'y3300'}; out.append(job(f"v8_OB_r5_csp3300_{'opt' if nuc else 'N00'}_h{step}", sp))
     return out
 
+def sensitivity_runs(step=3):
+    """Sensitivities named in the documents (each changes one assumption of the central case), 5% unless stated, free nuclear and without nuclear."""
+    out = []
+    def both(name, cs, ch, nuc_only=False, r=0.05):
+        for nuc in ((True,) if nuc_only else (True, False)):
+            sp = base(cs, step, r, nuc=nuc)
+            for k, v in ch.items():
+                if k == 'cases': sp['cases'] = dict(sp.get('cases', {}), **v)
+                elif k == 'nuc': sp['nuc'] = dict(sp['nuc'], **v)
+                elif k == 'off+': sp['off'] = sp['off'] + v
+                elif v is None: sp.pop(k, None)
+                else: sp[k] = v
+            out.append(job(f"v8_{cs}_{rt(r)}_{name}_{'opt' if nuc else 'N00'}_h{step}", sp, r))
+    for cs in ('PI', 'OB'):
+        both('x05', cs, dict(export=dict(EXP, X=0.05)))                       # net imports up to 5% of demand
+        both('ximp', cs, dict(export=dict(EXP, X=None)))                      # net imports without limit (critical-week rule kept)
+        both('d385', cs, dict(D_total=385e6)); both('d439', cs, dict(D_total=439e6))     # demand 385 and 439 TWh
+        for ev in ('flat', 'night', 'day'): both(f'ev{ev}', cs, dict(ev_mode=ev))        # electric-vehicle charging profile
+        both('hpflat', cs, dict(hp_mode='flat'))                              # heat pumps without the heating-degree-day shape
+        both('vre075', cs, dict(vre_cap_scale=0.75)); both('vre150', cs, dict(vre_cap_scale=1.5))   # new PV and wind supply 75% and 150%
+        both('hdry', cs, dict(hyd='dry')); both('hwet', cs, dict(hyd='wet'))  # dry (2023) and wet (2024) hydro years
+        both('av84', cs, dict(nuc=dict(av_scale=0.84 / 0.92)), nuc_only=True)  # mean nuclear availability 84%
+        both('avflat', cs, dict(nuc=dict(av_flat=True)), nuc_only=True)        # same availability in every month
+        both('minl0', cs, dict(nuc=dict(minload=0.0)), nuc_only=True)          # no minimum load for nuclear
+        both('ncredlow', cs, dict(nuc=dict(credit=0.851)), nuc_only=True)   # nuclear adequacy credit at the lowest monthly availability
+        both('res100', cs, dict(reserve=1.0)); both('hcred10', cs, dict(cases={'HYDRO': 'credit10'}))   # reserve margin 0; hydro counted as 10 GW
+        for nm, ch in (('noh2', {'off+': ['H2']}), ('nobio', {'off+': ['BIO_GAS', 'BIO_SOL']}), ('nogeo', {'off+': ['GEO_G1', 'GEO_G2', 'GEO_EGS']}),
+                       ('nonewlines', {'cases': {'IMPORT': 'nonew'}})):
+            sp = base(cs, step, nuc=False)
+            for k, v in ch.items():
+                if k == 'off+': sp['off'] = sp['off'] + v
+                else: sp['cases'] = dict(sp.get('cases', {}), **v)
+            out.append(job(f"v8_{cs}_r5_{nm}_N00_h{step}", sp))
+        for r in (0.05, 0.07):                                                # Mastrantuono et al.: 4,000 USD2022/kW = 3,575 EUR/kW, 10 years
+            sp = base(cs, step, r); sp['nuc'] = dict(NUC, capex=3575, y=10, r=r); out.append(job(f"v8_{cs}_{rt(r)}_mastr_opt_h{step}", sp, r))
+        both('island', cs, dict(export=None, **{'off+': ['IMPORT']}), r=0.07)   # no trade at 7%
+    for c in ('c3', 'c20'): both(f'csp{c}', 'OB', dict(cases={'CSP': c}))   # CSP ceilings 3 and 20 GW
+    return out
+
 def write(name, jobs):
     p = os.path.join(ROOT, 'jobs', name); json.dump(jobs, open(p, 'w'), indent=1); print(name, len(jobs), 'jobs')
 
@@ -127,3 +166,6 @@ if __name__ == '__main__':
     write('batch5_ob_without_smr_h3.json', ob_without_smr(3))
     write('batch6_review_checks_h3.json', review_checks(3))
     write('smoke6_h12.json', review_checks(12))
+    write('batch8_comparison_h3.json', comparison_runs(3))
+    write('batch9_sensitivity_h3.json', sensitivity_runs(3))
+    write('smoke9_h12.json', comparison_runs(12) + sensitivity_runs(12))

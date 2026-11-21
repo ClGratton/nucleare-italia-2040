@@ -42,6 +42,7 @@ def build(D, blocks, J, mode='ZD', nuc=None, cases=None, default_novel='first', 
     grid_x = 0.5 * (13.0 * 1066.0 + 8.0 * 1709.0) / 1000.0 * (crf(R_GLOBAL, 40) / crf(0.05, 40))
     T = len(D['load']); mon = D['m12']
     AVn = np.minimum(1.0, np.array(AV, dtype=float) * float(nuc.get('av_scale', 1.0)))   # nuclear availability by month (v8: av_scale sets the mean)
+    if nuc.get('av_flat'): AVn = np.full(12, float(np.mean(AVn)))   # sensitivity: same availability in every month
     av = AVn[mon]; avm = float(av.mean())
     hm = np.asarray(D['hb'][:12], dtype=float)
     disp = []; info = {}
@@ -54,7 +55,7 @@ def build(D, blocks, J, mode='ZD', nuc=None, cases=None, default_novel='first', 
         u = _apply(u0, cases.get(nm), default_novel)
         if nm == 'NUC' and 'capex' in nuc: u['capex_kW'] = nuc['capex']
         if nm == 'NUC':
-            for k_ in ('life', 'om_fix_MWh', 'var', 'minload', 'om_cf'):
+            for k_ in ('life', 'om_fix_MWh', 'var', 'minload', 'om_cf', 'credit'):
                 if k_ in nuc: u[k_] = nuc[k_]
         d = dict(name=nm, grp=u.get('grp'))
         if u.get('builtin') == 'hydro':

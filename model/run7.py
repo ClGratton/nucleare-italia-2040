@@ -4,6 +4,9 @@ import hl5, hl7, blocks_v6, spec7
 def run(a, inp=None):
     a = dict(a); tag = a.pop('tag', ''); inp = inp or hl5.load_inputs(a.pop('inputs', os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data', 'inputs_main.npz')))
     step = a.pop('step', 3); dk = dict(step=step)
+    for k in ('D_total', 'ev_mode', 'hp_mode', 'hyd'):
+        if k in a: dk[k] = a.pop(k)
+    vcs = a.pop('vre_cap_scale', None)   # scale of the caps of new PV and wind blocks (sensitivity)
     for k in ('years', 'wyears'):
         if k in a: dk[k] = tuple(a.pop(k))
     if a.pop('v6reg', False):
@@ -16,6 +19,9 @@ def run(a, inp=None):
         J = hl7.load_techs(os.path.join(os.path.dirname(os.path.abspath(__file__)), a.pop('techs', 'techs_v7.json')))
         v8 = J.get('vre')    # bottom-up PV and wind costs (v8); absent in techs_v7.json
         blocks = blocks_v6.pv_blocks(hp['pv'], v8=v8) + blocks_v6.wind_blocks(hp['on'], v8=v8)
+        if vcs:
+            for b in blocks:
+                if b['own'] != 'existing': b['cap'] = b['cap'] * vcs
         G = J.get('global', {})
         if G.get('grid_thr_total_GW'):   # the threshold is defined on the total wind + PV stock: subtract the existing fleet kept in the model
             a.setdefault('grid_thr', G['grid_thr_total_GW'] - sum(b['cap'] for b in blocks if b['own'] == 'existing'))
