@@ -62,7 +62,7 @@ The result numbers in this file come from runs made before these corrections; el
 - Base load: Terna load of 2016-2019, each paired with the same weather year. Solar and wind capacity factors: Pan-European Climatic Database (PECD 2021.3).
 - Solar and wind output is bounded by the profile, so curtailment is free.
 - New ground-mounted and agrivoltaic PV have trackers: yield 1.12 times the fixed-tilt profile.
-- Puglia PV projects filed for environmental assessment declare 1,596-1,712 kWh/kWp, against 1,462 kWh/kWp in the model.
+- Puglia PV projects filed for environmental assessment declare 1,596-1,712 kWh/kWp; the model's new ground-mounted blocks give 1,476 (North) to 1,638 (South and islands) kWh/kWp in the first year and 1,387 to 1,539 as a mean over the life (our calculation).
 - PV degradation 0.5% a year lowers mean output over the life to 0.94 of the first year. Comparison: Fraunhofer assumes 0.25% a year; the observed US median is 0.75% a year.
 - Existing plants kept in the model: 37.8 GW (24.2 GW PV, 13.6 GW onshore wind). They pay operating cost only.
 - Existing PV yield is scaled by 0.857, from 1,304 to 1,117 equivalent hours, the national fleet in 2025.
@@ -180,7 +180,7 @@ Central case: Dukovany 5-6, two APR1000 reactors of Korea Hydro & Nuclear Power 
 The central value in seven steps:
 
 - 1. EPC contract signed with KHNP in June 2025: CZK 407 billion. The fuel contract is separate (CZK 15-20 billion for about ten years) and is not inside the CZK 407 billion.
-- 2. State preparation and owner's costs: CZK 85 billion (Czech television CT24, 13 October 2025). This figure is not in the decision. It is inside the Commission's bracket of EUR 3.0-5.0 billion for development capital expenditure.
+- 2. State preparation and owner's costs: CZK 89 billion: 85 still to spend plus almost 4 already spent, as summed by Czech television CT24, 13 October 2025 (the runs used 85). This figure is not in the decision. It is inside the Commission's bracket of EUR 3.0-5.0 billion for development capital expenditure.
 - 3. Exchange rate: 2025 average ECB reference rate, 24.688 CZK per euro. CZK 492 billion = EUR 19.93 billion.
 - 4. Net capacity: sellable capacity "up to 976 MWe" per unit (1,055 MWe is gross), 1,952 MW in all, 15.4 TWh a year, a 90% load factor (recitals 40-41).
 - 5. Overnight cost: EUR 19.93 billion / 1,952 MW = 10,210 EUR/kW net, rounded to 10,200 (our calculation). The EPC contract alone is 8,446 EUR/kW net.
@@ -561,7 +561,7 @@ Errors corrected in the nuclear cost of v7:
 - v7 used 8,540 EUR/kW, 7 years, 80-year life, O&M 32 EUR/MWh, availability 92%: fixN 670 EUR/kW-yr.
 - v7 deducted fuel from the contract price (382 EUR/kW). This was wrong: fuel is a separate contract.
 - v7 divided by gross capacity; the sellable capacity is 976 MW per unit, not 1,055.
-- v7 estimated owner's costs with a 12.57% share from a US database; the public Czech figure (CZK 85 billion) now replaces it.
+- The public Czech figure for owner's costs (CZK 89 billion, CT24) replaces a 12.57% share from a US database.
 - 8,540 EUR/kW x 2.11 GW = 18.0 bn EUR, below the official minimum of 20 bn.
 - v7 had Vogtle at 15,540 EUR/kW because financing was counted twice (only part of it had been removed); corrected value 13,400.
 - v7 had Barakah at 4,670 EUR/kW; with correct revaluation of the 2009 contract and owner's costs it is 5,500, still a floor.
@@ -664,7 +664,7 @@ Status key from the preprint: no mark = read again for v8; [S] = located by web 
 Nuclear:
 
 - European Commission, State aid SA.117794 (2025/N), Dukovany 5-6, opening decision, OJ C/2026/2825, 27 May 2026. Contract, capacity, financial model, OPEX, bracket, financing package. Read again.
-- Ceska televize, CT24, 13 October 2025: owner's costs CZK 85 billion. [S]; number not rechecked on the text.
+- Ceska televize, CT24, 13 October 2025: owner's costs CZK 85 billion still to spend plus almost 4 already spent, CZK 89 billion in all. Checked on the text on 21 Nov 2026.
 - World Nuclear News, 4 June 2025: Dukovany contract signed. [S].
 - Eurostat ert_bil_eur_a: ECB 2025 average 24.688 CZK/EUR. [N]; checked in the 11 November audit, page not reopened.
 - World Nuclear Association, UAE country profile: Barakah 2009 contract USD 20.4 billion (audit item A8). [S]; not verified in the v8 revision.
@@ -688,7 +688,7 @@ Other costs:
 - Utility Dive, 26 July 2021: Form Energy 100-hour battery. [S].
 - Minor inputs in `model/techs_v8.json` (SolarPACES/Andasol, IRENA 2024, NREL ATB 2024, Fervo, AIEL 2025, Hydrostor, Energy Dome, Terna, Ambrosetti, ACER, Transport & Environment 2024, Terna and ARERA interconnection projects). Not verified in the v8 revision.
 - ARERA 12/2026/R/eel, 3 February 2026: interruptible load 2.4 GW at 46 EUR/kW-yr, at most 120 hours. [S]; not verified in the v8 revision.
-- ARERA 564/2023: interruptible load up to 3.75 GW at 105 EUR/kW-yr. Not verified in the v8 revision.
+- ARERA 564/2023: sets a price cap for interruptible load for 2024 only and no quantity (checked on 21 Nov 2026); ARERA 12/2026/R/eel gives 2,400 MW at up to 46,000 EUR/MW-yr, at most 120 h a year.
 - GSE, PV statistical report 2025: 1,117 equivalent hours. Read again.
 - ANEV brochure 2026: Italian wind fleet 2025.
 - NREL PV Fleet Performance Data Initiative 2024: US degradation. Fraunhofer ISE LCOE 2024.

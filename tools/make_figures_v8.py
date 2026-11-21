@@ -14,7 +14,7 @@ Every plotted number is checked against docs/results_v8.md; the script stops if 
 2. fig_systems: installed capacity and system cost of the four central systems (3 h, 5%), composition as in results_v8.md section 5.
 3. fig_nuccost: cost of a nuclear MWh against construction cost, cost rule of model/spec7.py, availability 90%, with the cost cases.
 4. fig_saving:  saving (cost without nuclear minus cost with nuclear) against fixN, read on the value curves at 5% and 7%.
-The v7 figure of the monthly cost per useful MWh is not redrawn: the v8 runs store no monthly results.
+The monthly cost per useful MWh is not drawn: the runs store no monthly results.
 """
 import csv, json, os, re, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -134,6 +134,7 @@ def fig_systems(lang):
 
 # ---------------------------------------------------------------- cost cases (results_v8.md section 3)
 CASES = [(r[0], num(r[1]), int(r[2]), num(r[3])) for r in MD['3|PI 5%'][1:]]
+CASES = [c for c in CASES if c[0] != 'v7 central capex']   # inputs found wrong; not shown
 FIX7 = {r[0]: num(r[3]) for r in MD['3|PI 7%'][1:]}
 for name, k, y, f5 in CASES:
     check(round(fixN(k, 0.05, y)), f5, 0, f'fixN {name} 5%'); check(round(fixN(k, 0.07, y)), FIX7[name], 0, f'fixN {name} 7%')
@@ -214,7 +215,7 @@ def fig_saving(lang):
             ax.plot([fx], [sv], mk, color=col, mec='white', mew=0.6, ms=5.5, zorder=6)
             ax.text(fx - 14, sv + (1.6 if cs == 'PI' else -1.6), f"{cs} {fmt(sv, lang, 2)}", ha='right', va='center', fontsize=6.8, color=col,
                     bbox=dict(fc='white', ec='none', pad=0.3, alpha=0.85))
-        ax.set_title(ttl, fontsize=8.5, color=INK, loc='left'); ax.set_xlim(lo, hi); ax.set_ylim(0, 58); axfmt(ax.xaxis, lang)
+        ax.set_title(ttl, fontsize=8.5, color=INK, loc='left'); ax.set_xlim(lo, hi); ax.set_ylim(0, 70); axfmt(ax.xaxis, lang)
         ax.set_xlabel('Costo fisso annuo del nucleare (€/kW all\'anno)' if it else 'Nuclear annual fixed cost fixN (EUR/kW-yr)'); ax.grid(axis='y', color=GRID, lw=0.5); ax.set_axisbelow(True)
     axs[0].set_ylabel('Risparmio (€/MWh)' if it else 'Saving (EUR/MWh)'); axfmt(axs[0].yaxis, lang)
     h, l = axs[0].get_legend_handles_labels()
