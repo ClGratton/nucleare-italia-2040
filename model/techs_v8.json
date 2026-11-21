@@ -124,11 +124,6 @@
      "capex_kW": 1417
     },
     {
-     "name": "SACOI3",
-     "cap_hi": 0.4,
-     "capex_kW": 1435
-    },
-    {
      "name": "GRITA2",
      "cap_hi": 1.0,
      "capex_kW": 1900
@@ -183,7 +178,11 @@
     "pm3": {
      "scarcity_price_mult": 3.0
     },
-    "credit38": {"credit": 0.38, "scarcity_avail": 0.38}, "v7credit": {
+    "credit38": {
+     "credit": 0.38,
+     "scarcity_avail": 0.38
+    },
+    "v7credit": {
      "credit": 0.38,
      "scarcity_avail": 0.38,
      "scarcity_price_mult": 1.17,
@@ -193,7 +192,7 @@
      "scarcity_rank": "vre"
     }
    },
-   "src": "v8 central: net self-sufficiency (set in the job spec: export.X = 0), no imports and no capacity credit in the 3 weeks of each year with the highest residual load (load minus the output of 100 GW of PV and 40 GW of onshore wind; v7 ranked weeks by low PV+wind and missed the January peaks). Import price 115.94 EUR/MWh (PUN 2025, GME). Exports: capacity 6,095/11,535 of the import capacity (Terna 2025 export and import limits), revenue 61.07 EUR/MWh (France 2025 day-ahead average, GME/RTE), variants 0 and 115.94. New lines: capex as v7 with interest during construction (4 y, assumption) and O&M 1.5%/yr (proxy, assumption). | v7 note: existing 11.535 GW (ARERA 366/2025); blocks Terna/ARERA (v7_storage_flex.md sez.8.2); total new 7.33 GW = Terna 2040 need (Nord 4.38 + Est 1.85 + Nord Africa 1.10). Price: PUN 2025 average 115.94 EUR/MWh (GME), varied x0.5 and x1.5. Credit 38% = 4.4/11.5 (capacity market 2025). No export modelled. Availability in the 5% worst weeks of each year (lowest mean of normalised PV and onshore profiles, 3",
+   "src": "v8 central: net self-sufficiency (set in the job spec: export.X = 0), no imports and no capacity credit in the 3 weeks of each year with the highest residual load (load minus the output of 100 GW of PV and 40 GW of onshore wind; v7 ranked weeks by low PV+wind and missed the January peaks). Import price 115.94 EUR/MWh (PUN 2025, GME). Exports: capacity 6,095/11,535 of the import capacity (Terna 2025 export and import limits), revenue 61.07 EUR/MWh (France 2025 day-ahead average, GME/RTE), variants 0 and 115.94. New lines: capex as v7 with interest during construction (4 y, assumption) and O&M 1.5%/yr (proxy, assumption). | v7 note: existing 11.535 GW (ARERA 366/2025); blocks Terna/ARERA (v7_storage_flex.md sez.8.2); total new 7.33 GW = Terna 2040 need (Nord 4.38 + Est 1.85 + Nord Africa 1.10). Price: PUN 2025 average 115.94 EUR/MWh (GME), varied x0.5 and x1.5. Credit 38% = 4.4/11.5 (capacity market 2025). No export modelled. Availability in the 5% worst weeks of each year (lowest mean of normalised PV and onshore profiles, 3 SACOI3 (0.4 GW) removed on 21 Nov 2026: it is the Sardinia-mainland line inside Italy (Terna, Rapporto capacita obiettivo 2025, p.25), not a link abroad; new foreign lines 6.93 GW.",
    "scarcity_avail": 0.0,
    "scarcity_price_mult": 1.0,
    "build_y": 4,
@@ -208,10 +207,6 @@
     {
      "cap_hi": 2.4,
      "capex_yr_kW": 46.0
-    },
-    {
-     "cap_hi": 1.35,
-     "capex_yr_kW": 105.0
     }
    ],
    "hours_yr": 120,
@@ -223,7 +218,7 @@
      "scale": 2.93
     }
    },
-   "src": "ARERA 12/2026 (2.4 GW at 46000 EUR/MW-yr, max 120 h/yr); to 3.75 GW at 105000 (ARERA 564/2023). Activation price not found: 0."
+   "src": "ARERA 12/2026/R/eel, 3 Feb 2026: requirement 2,400 MW, price cap 46,000 EUR/MW-yr (used as cost: an upper bound), at most 120 h/yr. The 1.35 GW block at 105,000 EUR/MW-yr was removed on 21 Nov 2026: ARERA 564/2023 sets only a cap for 2024 and gives no quantity. Activation price not found: 0."
   },
   {
    "name": "GEO_EX",
@@ -283,15 +278,12 @@
    "hours": 7709,
    "credit": "av",
    "cases": {
-    "low": {
-     "capex_kW": 4572
-    },
     "high": {
      "capex_kW": 8476,
      "om_fix_kW": 207
     }
    },
-   "src": "NREL ATB 2024, pipeline Rete Geotermica 0.8 GW",
+   "src": "NREL ATB 2024, pipeline Rete Geotermica 0.8 GW Low case (5,115 USD/kW) removed on 21 Nov 2026: not found on the NREL ATB 2024 page.",
    "build_y": 3
   },
   {
@@ -568,7 +560,7 @@
   {
    "name": "PUMPED_NEW",
    "grp": "pumped_new",
-   "on": true,
+   "on": false,
    "dur": 8.0,
    "GWh_hi": 35.0,
    "eur_kWh": 291.0,
@@ -582,7 +574,7 @@
      "eur_kWh": 500.0
     }
    },
-   "src": "pipeline 3.26 GW / 26 GWh, up to the Terna-Snam scenario 4.5 GW / 35 GWh; 2330 EUR/kW at 8 h",
+   "src": "Switched off on 21 Nov 2026: the pipeline (3.26 GW / 26 GWh) and the 4.5 GW / 35 GWh scenario value were not found in Terna-Snam DDS 2024 or Terna PdS 2025. Not built in any central run before the change.",
    "build_y": 5,
    "om_frac": 0.015
   },
@@ -594,18 +586,18 @@
    "dur": null,
    "eur_kWh": null,
    "life": 30,
-   "eff": 0.65,
+   "eff": 0.75,
    "cases": {
     "first": {
-     "dur": 8.0,
-     "eur_kWh": 239.0
+     "dur": 10.0,
+     "eur_kWh": 220.0
     },
     "target": {
      "dur": 10.0,
-     "eur_kWh": 105.0
+     "eur_kWh": 123.0
     }
    },
-   "src": "Hydrostor Silver City 1914 EUR/kW 239 EUR/kWh 8 h; Energy Dome target 0.7 x 150.5; life 30 y declared (not found); efficiency 65% (Willow Rock)",
+   "src": "Energy Dome CO2 battery (Energy-Storage.news interview): 'we are pricing at EU220 per kWh with EPC, with margin' (20 MW / 200 MWh), first plants; 'CapEx down by 44% with 30 to 50 identical units' gives 220 x 0.56 = 123 EUR/kWh target (our calculation); round-trip efficiency 75%. Life 30 y: assumption. Changed on 21 Nov 2026 from Hydrostor 239 EUR/kWh at 8 h (capex not on the primary page) and 105 EUR/kWh target (not in the source), efficiency 65%.",
    "build_y": 3,
    "om_frac": 0.015
   },
@@ -680,19 +672,19 @@
    "on": true,
    "kind": "shift",
    "base": "ev",
-   "share": 0.25,
+   "share": 0.35,
    "window": 4,
    "window_off": 3,
    "var": 0.0,
    "cases": {
     "low": {
-     "share": 0.15
+     "share": 0.25
     },
     "high": {
-     "share": 0.35
+     "share": 0.45
     }
    },
-   "src": "T&E 2024 (Car I 25%, 35%); 12 h window; infrastructure cost for unidirectional smart charging not found: 0 here (upper bound of the benefit)"
+   "src": "T&E 2024 V2G study p.28, Car I scenario: 25% (2030) and 35% (2040) of car electricity demand capable of smart charging and V2X, EU-wide; 2040 value used (changed on 21 Nov 2026 from 25%). 12 h window; infrastructure cost for unidirectional smart charging not found: 0 here (upper bound of the benefit). High case 45%: assumption."
   }
  ],
  "dac": {

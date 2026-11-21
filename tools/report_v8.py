@@ -125,7 +125,7 @@ W("| Case | fixN | PI best N | PI within 1% | PI saving | OB no SMR best N | OB 
 from value_curve import idc, crf
 def fix_alone(capex, r, y): return capex * idc(r, y) * crf(r, 60) + 27.75 * 0.9 * 8.76 + 2.0 * 0.9 * 8.76
 for r in (0.06, 0.07):
-    fx = fix_alone(10200, r, 9); row = [f"Contract, nuclear at {r:.0%}", f"{fx:,.0f}"]
+    fx = fix_alone(10300, r, 9); row = [f"Contract, nuclear at {r:.0%}", f"{fx:,.0f}"]
     for lab in ('PI 5%', 'OB 5%, no SMR'):
         c, f0, rt = CUR[lab]; nb, cb, sv, lo, hi = read_case(c, f0, fx); sv = cost(f"v8_{lab.split()[0]}_r5_N00_h3") - cb
         row += [str(nb), f"{lo}-{hi}", f"{sv:.2f}"]
@@ -185,7 +185,7 @@ def fig_value(lang):
             c, f0, _ = CUR[lab]; xs = []; ys = []
             for a, b, v in marginal(c, f0): xs += [a, b]; ys += [v, v]
             ax.plot(xs, ys, color=col, ls=ls, lw=1.6 if ls == '-' else 1.1, label=name)
-        for name, k, y, key in (('Dukovany contract, central', 10200, 9, 'cen'), ('top', 12700, 9, 'top'), ('Vogtle', 13400, 10, 'vog'), ('Barakah', 5500, 8, 'bar')):
+        for name, k, y, key in (('Dukovany contract, central', 10300, 9, 'cen'), ('top', 12700, 9, 'top'), ('Vogtle', 13400, 10, 'vog'), ('Barakah', 5500, 8, 'bar')):
             fx = fixN(k, r, y); ax.axhline(fx, color=INK if key == 'cen' else MUT, lw=0.9 if key == 'cen' else 0.5, ls='-' if key == 'cen' else (0, (4, 3)))
             below = key == 'top'
             ax.text(47.5, fx - 14 if below else fx + 12, t[key] + ' ' + f"{fx:,.0f}".replace(',', '.' if lang == 'it' else ','), ha='right', va='top' if below else 'bottom', fontsize=6.8,

@@ -8,7 +8,7 @@ import json, os
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 Y4 = [2016, 2017, 2018, 2019]
 AV = 0.90 / 0.92                       # nuclear availability: mean 0.90 (Czech model) on the monthly shape of the model (mean 0.92)
-NUC = dict(capex=10200, y=9, av_scale=AV)   # central nuclear case (life, O&M and variable cost come from model/techs_v8.json)
+NUC = dict(capex=10300, y=9, av_scale=AV)   # central nuclear case (life, O&M and variable cost come from model/techs_v8.json)
 EXP = dict(X=0.0, X_exp=0.0, cap_frac=round(6095 / 11535, 4), price=61.07)   # balanced annual swap (imports = exports), Terna export limit; imports cost 115.94, exports earn 61.07 (France 2025 average)
 OFF = {'PI': ['WAVE', 'LDES'], 'OB': ['WAVE']}
 
