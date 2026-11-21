@@ -185,7 +185,7 @@ Other cost cases (same OPEX, life and availability as the central case; only ove
 
 | Cost case | Overnight cost EUR/kW | Build years | fixN at 5% | fixN at 7% |
 |---|---|---|---|---|
-| Saeul and Shin Hanul budget | 2,965 | 8 | 426 | 519 |
+| Saeul and Shin Hanul budget | 2,965 (runs; corrected 2,670) | 8 | 426 (corrected 407) | 519 |
 | Barakah (floor) | 5,500 | 8 | 590 | 759 |
 | Previous version's central capex | 8,540 | 7 | 772 | 1,017 |
 | Dukovany contract, 7 years | 10,200 | 7 | 877 | 1,168 |
@@ -198,7 +198,7 @@ Other cost cases (same OPEX, life and availability as the central case; only ove
 - Barakah: December 2009 contract of USD 20.4 billion for four units (5.6 GW), revalued. Owner's costs are added at 12.57% of the overnight cost, that is x1.1438 (14.4% on top of the contract). Without them: 20.4 bn USD / 5.6 GW x 1.476 / 1.1188 = 4,806, about 4,800 EUR/kW.
 - The 12.57% share is used for Barakah because no owner's-cost figure is published for it; for Dukovany a public figure replaces it.
 - Barakah is a floor, because its final cost is not public.
-- Saeul and Shin Hanul: 2,965 EUR/kW is a budget (6.5 trillion won per 1.4 GW unit, Shin Hanul), not a final cost; authors' estimate.
+- Saeul and Shin Hanul: the runs used 2,965 EUR/kW (6.5 trillion won per unit, for which no source was found). Corrected: 2,670 EUR/kW (fixN 407 at 5%), from KRW 11.7 trillion for two units, 5.85 per unit (Korean press, no KHNP primary found). A budget, not a final cost.
 - Risk median: median of four Western first-of-a-kind builds in 2025 euros per kW: Mochovce 3-4 about 8,756; Olkiluoto 3 about 9,064; Flamanville 3 about 10,300; Vogtle 3-4. The median is the mean of the two central values, 9,680 EUR/kW (our calculation), with 15 years of construction.
 - Flamanville 3: EDF, 13.2 billion EUR 2015. Mochovce 3-4: 6.7 billion EUR for completion.
 - The risk median excludes Hinkley Point C. With it the median would be about 10,300 EUR/kW.
@@ -482,7 +482,7 @@ Central systems at 5%, 3-hour step. PV and onshore wind include existing plants 
 - In TWh the hydrogen stores are 2.1, 14.8, 4.1 and 8.7 (our conversion).
 - PI without nuclear: 59.6 GW of onshore wind is every block except the worst (10 GW at 1,200 hours; 69.6 GW are available).
 - PI without nuclear: every ground-mounted and agrivoltaic PV block is at its cap, and two of the three industrial-roof blocks are built (the northern one is not).
-- PI without nuclear builds far more than the Terna and Snam 2040 scenarios: 193 GW PV against 114-137 GW; 59.6 GW onshore wind against 29-39 GW. The PV and wind supply curves are our estimates.
+- PI without nuclear builds far more than the Terna and Snam 2040 scenarios: 193 GW PV against 105-121 GW; 59.6 GW onshore wind against 29-34 GW. The PV and wind supply curves are our estimates.
 - In OB, CSP is at its 10 GW ceiling with and without nuclear; the ceiling is our assumption.
 - In the OB system with nuclear, compressed air takes the place of almost all batteries.
 
@@ -652,7 +652,7 @@ Nuclear:
 - World Nuclear News, 4 June 2025: Dukovany contract signed. [S].
 - Eurostat ert_bil_eur_a: ECB 2025 average 24.688 CZK/EUR. [N]; checked in the 11 November audit, page not reopened.
 - World Nuclear Association, UAE country profile: Barakah 2009 contract USD 20.4 billion (audit item A8). [S]; not verified in the v8 revision.
-- Shin Hanul budget: 6.5 trillion won per 1.4 GW unit (audit item A9). Not verified in the v8 revision.
+- Shin Hanul budget: KRW 11.7 trillion for two units, 5.85 per unit (Korean press, no KHNP primary found) (audit item A9). Not verified in the v8 revision.
 - Risk median sources (audit item A10): EDF 2022 Flamanville [S]; Nuclear Engineering International, 25 June 2025, Olkiluoto 3 [S]; World Nuclear News, October 2026, Mochovce 4 [S]. Not verified in the v8 revision.
 - Associated Press, 25 May 2023 (via Georgia Public Broadcasting): Vogtle USD 31 billion (audit item A7). [N].
 - POWER Magazine, May 2025: Darlington BWRX-300, CAD 7.7 billion unit 1, CAD 20.9 billion four units. [S]; numbers not rechecked on the text.
@@ -690,7 +690,7 @@ Trade and demand:
 - ARERA 366/2025/R/eel: import capacity 11,535 MW. Read again.
 - Terna, Rapporto di identificazione delle capacita obiettivo 2025: border limits. Read again.
 - Terna, Piano di sviluppo 2025, overview. Read again.
-- Terna and Snam, Documento di descrizione degli scenari 2024: 404-439 TWh; 114-137 GW PV; 29-39 GW onshore wind (audit items B and C8). [S]; not verified in the v8 revision.
+- Terna and Snam, Documento di descrizione degli scenari 2024: 404-439 TWh; 105-121 GW PV; 29-34 GW onshore wind (audit items B and C8). [S]; not verified in the v8 revision.
 - ENTSO-E, PECD 2021.3, Zenodo. [S]; not verified in the v8 revision.
 - Il Sole 24 Ore, 2025: 2024 imports by country. Read again.
 - economiesuisse, 2025: Swiss winter imports. Read again.
