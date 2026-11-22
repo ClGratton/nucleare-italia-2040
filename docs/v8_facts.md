@@ -162,7 +162,7 @@ Other inputs:
 - 100-hour storage: 1,486 EUR per MWh of capacity per year (annual price, OB only; maker's 2021 target of 20 USD/kWh, Form Energy); efficiency 50%. Off in PI because no observed cost exists.
 - CSP: 9,491 EUR/kW (PI, Andasol 1, 310 million EUR for 49.9 MW in 2008), 3,287 EUR/kW (OB); O&M 67 EUR/kW-yr; 25 and 3 years; 2,900 MWh per MW a year; ceiling 10 GW (assumption). IRENA 2024 world mean: 3,677 USD/kW.
 - New hydropower: 6,500 EUR/kW, O&M 100 EUR/kW-yr, 25 and 3 years, up to 0.24 GW, 5,000 hours.
-- Geothermal: 3,589 and 5,675 EUR/kW; enhanced 6,257 (PI) and 2,681 (OB); O&M 98 EUR/kW-yr; 25 and 3 years; new blocks 0.183, 0.8 and 0.5 GW; existing 0.817 GW at O&M only. Fervo: 7,000 USD/kW today, target 3,000 USD/kW.
+- Geothermal: 3,589 and 5,675 EUR/kW; enhanced 6,257 (PI) and 2,681 (OB); O&M 98 EUR/kW-yr; 25 and 3 years; new blocks 0.183, 0.8 and 0.5 GW; existing 0.817 GW at O&M only. Fervo: 7,000 USD/kW is the maker's target for its first 100 MW; 3,000 USD/kW long term.
 - Bioenergy: 2,898 EUR/kW, O&M 4% a year, 20 and 2 years. Biogas up to 4.0 TWh, solid biomass 2.5 TWh, waste 2.2 TWh (must run). Wood chips at 33 EUR/MWh thermal (AIEL 2025).
 - Interruptible load: 46 EUR/kW-yr for 2.4 GW; 105 EUR/kW-yr for a further 1.35 GW (annual prices); at most 120 hours a year.
 - Interconnection: existing 11.535 GW at no cost; up to 7.33 GW of new lines at 1,120-1,900 EUR/kW; O&M 1.5% a year; 40 and 4 years (assumptions).
@@ -181,9 +181,9 @@ The central value in seven steps:
 
 - 1. EPC contract signed with KHNP in June 2025: CZK 407 billion. The fuel contract is separate (CZK 15-20 billion for about ten years) and is not inside the CZK 407 billion.
 - 2. State preparation and owner's costs: CZK 89 billion: 85 still to spend plus almost 4 already spent, as summed by Czech television CT24, 13 October 2025 (the runs used 85). This figure is not in the decision. It is inside the Commission's bracket of EUR 3.0-5.0 billion for development capital expenditure.
-- 3. Exchange rate: 2025 average ECB reference rate, 24.688 CZK per euro. CZK 492 billion = EUR 19.93 billion.
+- 3. Exchange rate: 2025 average ECB reference rate, 24.688 CZK per euro. CZK 496 billion = EUR 20.09 billion (the runs used CZK 492 billion = EUR 19.93 billion).
 - 4. Net capacity: sellable capacity "up to 976 MWe" per unit (1,055 MWe is gross), 1,952 MW in all, 15.4 TWh a year, a 90% load factor (recitals 40-41).
-- 5. Overnight cost: EUR 19.93 billion / 1,952 MW = 10,210 EUR/kW net, rounded to 10,200 (our calculation). The EPC contract alone is 8,446 EUR/kW net.
+- 5. Overnight cost: EUR 20.09 billion / 1,952 MW = 10,292 EUR/kW net, rounded to 10,300 (our calculation; the runs used 10,210, rounded to 10,200). The EPC contract alone is 8,446 EUR/kW net.
 - 6. Czech financial model (recitals 89 and 95): 9-year construction, 60 years of operation, OPEX 35-45 EUR/MWh (fixed O&M, lifecycle investment, fuel, waste account, decommissioning). Midpoint 40 EUR/MWh used: 27.75 fixed at a 90% load factor and 12.25 variable.
 - 7. Annual fixed cost: phi(5%, 9) = 1.255, CRF(5%, 60) = 0.0528 (our calculation). fixN = 10,200 x phi x CRF + 27.75 x 0.9 x 8.76 + grid = 676 + 219 + 16 = 911 EUR/kW-yr. The grid term is the 2 EUR/MWh charge. fixN is 1,239 EUR/kW-yr at 7% (1,239.3 in the runs).
 - OPEX at 35 EUR/MWh would lower fixN by about 39 EUR/kW-yr; at 45, raise it by about 39.
@@ -410,7 +410,7 @@ Why the rule is a planning standard, not a limit or a bias:
 - Today Italy depends on imports: in 2025 it imported 55.2 TWh and exported 7.4 TWh (net 47.8 TWh).
 - Trade is still used to move energy in time: the PI system with nuclear swaps 17.7 TWh a year in each direction.
 
-The previous version's trade rule (a variant with its price):
+The looser trade rule (a variant with its price):
 
 - It is a bundle of five changes: 38% of the import capacity available and counted as firm in the critical weeks; weeks chosen by low PV and wind output; import price x1.17 in those weeks; no exports; no annual balance.
 - Under it the model builds all 7.33 GW of new lines. Italy imports 52.0 TWh a year (PI with nuclear), 57.7 (PI without), 56.0 (OB with), 70.7 (OB without), and exports nothing.
@@ -667,11 +667,11 @@ Nuclear:
 - Ceska televize, CT24, 13 October 2025: owner's costs CZK 85 billion still to spend plus almost 4 already spent, CZK 89 billion in all. Checked on the text on 21 Nov 2026.
 - World Nuclear News, 4 June 2025: Dukovany contract signed. [S].
 - Eurostat ert_bil_eur_a: ECB 2025 average 24.688 CZK/EUR. [N]; checked in the 11 November audit, page not reopened.
-- World Nuclear Association, UAE country profile: Barakah 2009 contract USD 20.4 billion (audit item A8). [S]; not verified in the v8 revision.
+- World Nuclear Association, UAE country profile: Barakah 2009 contract USD 20.4 billion (audit item A8). Checked on 21 Nov 2026 (WNA, updated 16 Jul 2026); the contract also includes commissioning and fuel loads.
 - Shin Hanul budget: KRW 11.7 trillion for two units, 5.85 per unit (Korean press, no KHNP primary found) (audit item A9). Not verified in the v8 revision.
-- Risk median sources (audit item A10): EDF 2022 Flamanville [S]; Nuclear Engineering International, 25 June 2025, Olkiluoto 3 [S]; World Nuclear News, October 2026, Mochovce 4 [S]. Not verified in the v8 revision.
-- Associated Press, 25 May 2023 (via Georgia Public Broadcasting): Vogtle USD 31 billion (audit item A7). [N].
-- POWER Magazine, May 2025: Darlington BWRX-300, CAD 7.7 billion unit 1, CAD 20.9 billion four units. [S]; numbers not rechecked on the text.
+- Risk median sources (audit item A10): EDF 2022 Flamanville [S]; Nuclear Engineering International, 25 June 2025, Olkiluoto 3 [S]; World Nuclear News, October 2026, Mochovce 4. Checked on 21 Nov 2026 (EDF: 13.2 bn in 2015 euros, excluding interim interest; Olkiluoto 3: the currency remains ambiguous; Mochovce 3-4: EUR 6.7 bn, 471 MWe per unit).
+- Associated Press, 25 May 2023 (via Georgia Public Broadcasting): Vogtle USD 31 billion (audit item A7). Checked on 21 Nov 2026.
+- POWER Magazine, May 2025: Darlington BWRX-300, CAD 7.7 billion unit 1, CAD 20.9 billion four units. Checked on the text on 21 Nov 2026.
 - National Audit Office, Sizewell C, HC 33, 20 May 2026, paragraph 2.14. Read again.
 - World Nuclear Association, World Nuclear Performance Report 2025; IAEA, Reference Data Series 2, edition 45.
 
@@ -686,8 +686,8 @@ Other costs:
 - IEA, Global Hydrogen Review 2025, Assumptions Annex. Read again.
 - Hystories D8.6, Italian case study, 15 June 2023: 3.76 EUR/kg, range 2.06-14.95. Reopened and confirmed.
 - Utility Dive, 26 July 2021: Form Energy 100-hour battery. [S].
-- Minor inputs in `model/techs_v8.json` (SolarPACES/Andasol, IRENA 2024, NREL ATB 2024, Fervo, AIEL 2025, Hydrostor, Energy Dome, Terna, Ambrosetti, ACER, Transport & Environment 2024, Terna and ARERA interconnection projects). Not verified in the v8 revision.
-- ARERA 12/2026/R/eel, 3 February 2026: interruptible load 2.4 GW at 46 EUR/kW-yr, at most 120 hours. [S]; not verified in the v8 revision.
+- Minor inputs in `model/techs_v8.json`: checked on 21 Nov 2026, with the corrections listed in the section on inputs corrected after the runs; ACER (turbine O&M) and NREL ATB (geothermal low case) values were not found and are labelled or removed.
+- ARERA 12/2026/R/eel, 3 February 2026: interruptible load 2.4 GW at 46 EUR/kW-yr, at most 120 hours. Checked on 21 Nov 2026; 46,000 EUR/MW-yr is a price cap.
 - ARERA 564/2023: sets a price cap for interruptible load for 2024 only and no quantity (checked on 21 Nov 2026); ARERA 12/2026/R/eel gives 2,400 MW at up to 46,000 EUR/MW-yr, at most 120 h a year.
 - GSE, PV statistical report 2025: 1,117 equivalent hours. Read again.
 - ANEV brochure 2026: Italian wind fleet 2025.
@@ -706,8 +706,8 @@ Trade and demand:
 - ARERA 366/2025/R/eel: import capacity 11,535 MW. Read again.
 - Terna, Rapporto di identificazione delle capacita obiettivo 2025: border limits. Read again.
 - Terna, Piano di sviluppo 2025, overview. Read again.
-- Terna and Snam, Documento di descrizione degli scenari 2024: 404-439 TWh; 105-121 GW PV; 29-34 GW onshore wind (audit items B and C8). [S]; not verified in the v8 revision.
-- ENTSO-E, PECD 2021.3, Zenodo. [S]; not verified in the v8 revision.
+- Terna and Snam, Documento di descrizione degli scenari 2024: 404-439 TWh; 105-121 GW PV; 29-34 GW onshore wind (audit items B and C8). Checked on 21 Nov 2026.
+- ENTSO-E, PECD 2021.3, Zenodo, version 1 by De Felice (JRC), 14 Dec 2021. Checked on 21 Nov 2026.
 - Il Sole 24 Ore, 2025: 2024 imports by country. Read again.
 - economiesuisse, 2025: Swiss winter imports. Read again.
 - Banque de France, 2023: France net importer in 2022. Read again.
