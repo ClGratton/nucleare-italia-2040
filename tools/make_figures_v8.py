@@ -209,7 +209,7 @@ def fig_saving(lang):
             k, y = next((c[1], c[2]) for c in CASES if c[0] == name); fx = fixN(k, r, y)
             ax.axvline(fx, color=INK if key == 'cen' else MUT, lw=0.9 if key == 'cen' else 0.5, ls='-' if key == 'cen' else (0, (4, 3)), zorder=0)
             txt = {'cen': 'Dukovany, contratto' if it else 'Dukovany contract', 'top': 'massimo intervallo ufficiale' if it else 'top of EC bracket', 'vog': 'Vogtle', 'bar': 'Barakah'}[key]
-            ax.text(fx + 12, 57, f"{txt} {fmt(fx, lang)}", rotation=90, ha='left', va='top', fontsize=6.5, color=INK if key == 'cen' else MUT)
+            ax.text(fx + 12, 74, f"{txt} {fmt(fx, lang)}", rotation=90, ha='left', va='top', fontsize=6.5, color=INK if key == 'cen' else MUT, bbox=dict(fc='white', ec='none', pad=0.3, alpha=0.85), zorder=5)
         for cs, mk, col in (('PI', 'D', BLUE), ('OB', 's', ORA)):
             fx, sv = CENTRAL[(cs, rt)]
             ax.plot([fx], [sv], mk, color=col, mec='white', mew=0.6, ms=5.5, zorder=6)
