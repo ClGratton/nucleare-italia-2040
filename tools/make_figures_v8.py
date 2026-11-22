@@ -105,7 +105,7 @@ def fig_systems(lang):
     cats = [('nuc', 'Nucleare' if it else 'Nuclear', BLUE), ('pv', 'Fotovoltaico' if it else 'Solar PV', '#e0a526'), ('on', 'Eolico a terra' if it else 'Onshore wind', '#3a9a6e'),
             ('off', 'Eolico in mare' if it else 'Offshore wind', '#93cbb3'), ('csp', 'Solare termodinamico' if it else 'Solar thermal (CSP)', ORA),
             ('imp', 'Interconnessione' if it else 'Interconnection', '#9a8bb8')]
-    sto = [('batt', 'batterie' if it else 'batteries'), ('h2', 'idrogeno' if it else 'hydrogen'), ('caes', 'aria compressa' if it else 'compressed air'), ('ldes', 'accumulo 100 h' if it else '100-hour')]
+    sto = [('batt', 'batterie' if it else 'batteries'), ('h2', 'idrogeno' if it else 'hydrogen'), ('caes', 'gas compresso' if it else 'compressed gas'), ('ldes', 'accumulo 100 h' if it else '100-hour')]
     fig, ax = plt.subplots(figsize=(7.2, 3.2))
     for i, (t, _) in enumerate(SYS):
         y = len(SYS) - 1 - i; m = MIX[t]; x0 = 0
@@ -215,7 +215,7 @@ def fig_saving(lang):
             ax.plot([fx], [sv], mk, color=col, mec='white', mew=0.6, ms=5.5, zorder=6)
             ax.text(fx - 14, sv + (1.6 if cs == 'PI' else -1.6), f"{cs} {fmt(sv, lang, 2)}", ha='right', va='center', fontsize=6.8, color=col,
                     bbox=dict(fc='white', ec='none', pad=0.3, alpha=0.85))
-        ax.set_title(ttl, fontsize=8.5, color=INK, loc='left'); ax.set_xlim(lo, hi); ax.set_ylim(0, 70); axfmt(ax.xaxis, lang)
+        ax.set_title(ttl, fontsize=8.5, color=INK, loc='left'); ax.set_xlim(lo, hi); ax.set_ylim(0, 75); axfmt(ax.xaxis, lang)
         ax.set_xlabel('Costo fisso annuo del nucleare (€/kW all\'anno)' if it else 'Nuclear annual fixed cost fixN (EUR/kW-yr)'); ax.grid(axis='y', color=GRID, lw=0.5); ax.set_axisbelow(True)
     axs[0].set_ylabel('Risparmio (€/MWh)' if it else 'Saving (EUR/MWh)'); axfmt(axs[0].yaxis, lang)
     h, l = axs[0].get_legend_handles_labels()
