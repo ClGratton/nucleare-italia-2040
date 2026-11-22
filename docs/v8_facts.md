@@ -166,7 +166,7 @@ Other inputs:
 - Bioenergy: 2,898 EUR/kW, O&M 4% a year, 20 and 2 years. Biogas up to 4.0 TWh, solid biomass 2.5 TWh, waste 2.2 TWh (must run). Wood chips at 33 EUR/MWh thermal (AIEL 2025).
 - Interruptible load: 46 EUR/kW-yr for 2.4 GW; 105 EUR/kW-yr for a further 1.35 GW (annual prices); at most 120 hours a year.
 - Interconnection: existing 11.535 GW at no cost; up to 7.33 GW of new lines at 1,120-1,900 EUR/kW; O&M 1.5% a year; 40 and 4 years (assumptions).
-- Pumped hydro sources: Terna (7.3 GW), Ambrosetti (53 GWh), Terna-Snam scenario (4.5 GW and 35 GWh; 2,330 EUR/kW at 8 h).
+- Pumped hydro sources: existing 7.3 GW and 53 GWh, Terna Piano di sviluppo; new 4.5 GW, up to 35 GWh, about 2,330 EUR/kW (291 EUR/kWh at 8 h), The European House Ambrosetti and Edison 2023.
 
 ## 4. Nuclear cost
 
@@ -584,7 +584,7 @@ Reviews:
 - Main findings of 11 November, all applied: fuel not inside the CZK 407 billion contract; use net 976 MWe per unit; Vogtle overstated; auction prices implied capital costs below observed ones; interest during construction and fixed operating cost not applied to every technology; exports earned nothing while imports paid the Italian price; the reserve requirement changed with the time step; the two code bugs.
 - 14 November 2026: second independent review. It led to the bracket-midpoint cost case, the labels of the two bundles and the limits stated by direction.
 - 15 November 2026: third review. It corrected the description of the grid charge and of the critical weeks, labelled the cases with large reactors only, and added the condition on the financing of nuclear.
-- The monthly cost analysis and the comparison with other studies of earlier versions were not re-verified with the present inputs and are left out of v8.
+- The comparison with other studies is in both documents (preprint 4.2, white paper section 7), with sources checked on 21 Nov 2026 and the corrected cost values. The monthly cost per useful MWh is not drawn: the runs store no monthly results; it needs the monthly output added to the rerun.
 - Full cost list with URLs: `docs/audit/v8_symmetric_costs.md`.
 
 ## 14. Limits with their direction
@@ -611,6 +611,8 @@ Limits that favour nuclear (removing them would lower optimal nuclear capacity):
 - Nuclear load factor of 87.5% (PI) and 89.1% (OB) results from the optimisation with 90% mean availability and no ramp constraints. It may be optimistic against fleets that modulate (France 2024: 67%, authors' estimate from the audit file). The world fleet had 83% in 2024; the IAEA median is 86.4%.
 
 Limits that favour the system without nuclear (removing them would raise optimal nuclear capacity):
+- Stability services (inertia, voltage support, black start) are not modelled or costed.
+- End-of-life disposal and recycling of PV, wind and batteries is not costed, while nuclear operating cost includes decommissioning and waste.
 
 - Distribution-grid reinforcement not costed; it serves mostly rooftop and distributed PV, larger in the system without nuclear. Not quantified.
 - Hydrogen storage at 3.76 EUR/kg, the low part of the 2.06-14.95 EUR/kg range of a desk study; electrolysers at target cost in OB. Not quantified.
@@ -665,11 +667,11 @@ Nuclear:
 
 - European Commission, State aid SA.117794 (2025/N), Dukovany 5-6, opening decision, OJ C/2026/2825, 27 May 2026. Contract, capacity, financial model, OPEX, bracket, financing package. Read again.
 - Ceska televize, CT24, 13 October 2025: owner's costs CZK 85 billion still to spend plus almost 4 already spent, CZK 89 billion in all. Checked on the text on 21 Nov 2026.
-- World Nuclear News, 4 June 2025: Dukovany contract signed. [S].
+- World Nuclear News, 4 June 2025: Dukovany contract signed after the court lifted the injunction (https://world-nuclear-news.org/articles/czech-supreme-court-lifts-ban-on-signing-dukovany-contract). Checked on 22 Nov 2026.
 - Eurostat ert_bil_eur_a: ECB 2025 average 24.688 CZK/EUR. [N]; checked in the 11 November audit, page not reopened.
 - World Nuclear Association, UAE country profile: Barakah 2009 contract USD 20.4 billion (audit item A8). Checked on 21 Nov 2026 (WNA, updated 16 Jul 2026); the contract also includes commissioning and fuel loads.
 - Shin Hanul budget: KRW 11.7 trillion for two units, 5.85 per unit (Korean press, no KHNP primary found) (audit item A9). Not verified in the v8 revision.
-- Risk median sources (audit item A10): EDF 2022 Flamanville [S]; Nuclear Engineering International, 25 June 2025, Olkiluoto 3 [S]; World Nuclear News, October 2026, Mochovce 4. Checked on 21 Nov 2026 (EDF: 13.2 bn in 2015 euros, excluding interim interest; Olkiluoto 3: the currency remains ambiguous; Mochovce 3-4: EUR 6.7 bn, 471 MWe per unit).
+- Risk median sources (audit item A10): EDF 2022 Flamanville; Nuclear Engineering International, 25 June 2025, Olkiluoto 3; World Nuclear News, October 2026, Mochovce 4. Checked on 21 Nov 2026 (EDF: 13.2 bn in 2015 euros, excluding interim interest; Olkiluoto 3: the currency remains ambiguous; Mochovce 3-4: EUR 6.7 bn, 471 MWe per unit).
 - Associated Press, 25 May 2023 (via Georgia Public Broadcasting): Vogtle USD 31 billion (audit item A7). Checked on 21 Nov 2026.
 - POWER Magazine, May 2025: Darlington BWRX-300, CAD 7.7 billion unit 1, CAD 20.9 billion four units. Checked on the text on 21 Nov 2026.
 - National Audit Office, Sizewell C, HC 33, 20 May 2026, paragraph 2.14. Read again.
